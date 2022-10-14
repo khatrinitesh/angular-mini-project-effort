@@ -27,6 +27,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppleComponent } from './components/apple/apple.component';
 import { LimeComponent } from './components/lime/lime.component';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
+import { HeroComponent } from './components/hero/hero.component';
+import { HeroformComponent } from './components/heroform/heroform.component';
+import { AddressComponent } from './components/address/address.component';
+import { TemplatedrivenformComponent } from './components/templatedrivenform/templatedrivenform.component';
 
 
 @NgModule({
@@ -41,7 +45,11 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
     ErrorComponent,
     FruitComponent,
     AppleComponent,
-    LimeComponent
+    LimeComponent,
+    HeroComponent,
+    HeroformComponent,
+    AddressComponent,
+    TemplatedrivenformComponent
   ],
   imports: [
     BrowserModule,
