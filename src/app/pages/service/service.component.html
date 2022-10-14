@@ -1,0 +1,17 @@
+<h3>Service page</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <td>Toolbar</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let datas of httpData">
+            <td>{{datas.id}}</td>
+            <td>{{datas.title}}</td>
+            <td><button (click)="deleteItem(post)">Delete</button></td>
+        </tr>
+    </tbody>
+</table>

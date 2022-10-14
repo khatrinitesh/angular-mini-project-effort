@@ -1,0 +1,191 @@
+<!-- <button (click)="start()">start</button>
+<button (click)="stop()">stop</button> -->
+
+<h1>This is the parent component !</h1>
+<h2>It wants to say "Hello" to its child.</h2>
+It also wants to receive a response from its child.
+{{receivedChildMessage}}
+{{receivedChildMessage2}}
+<button (click)="sendToChild('Hello Child!')">Send to Child</button>
+<app-lime [dynamicdata]="dynamicdata" [staticdata]="staticdata" (buttonSend)="ClickOut($event)" [item]="currentItem"
+    [StepMsg]="TextStep" [receivedParentMessage]="messageToSendP" (msgToEmit)="getMsg($event)">
+</app-lime>
+
+<div class="wrapper">
+
+    <form [formGroup]="myFormGrp">
+        <div class="formGroupWrap" [formGroupName]="fg.formGrpName" *ngFor="let fg of FORM_DATA">
+            <h4>{{fg.formGrpLabel}}</h4>
+            <div *ngFor="let fc of fg.formControls">
+
+                <ng-container [ngSwitch]="fc.type">
+                    <ng-container *ngSwitchCase="'text'">
+
+                        <mat-form-field>
+                            <mat-label>{{fc.label}}</mat-label>
+                            <input matInput [formControlName]="fc.name" [name]="fc.name" />
+                        </mat-form-field>
+
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'textarea'">
+
+                        <mat-form-field>
+                            <mat-label>{{fc.label}}</mat-label>
+                            <textarea matInput [formControlName]="fc.name" [name]="fc.name"></textarea>
+                        </mat-form-field>
+
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'checkbox'">
+
+                        <mat-checkbox [formControlName]="fc.name">{{fc.label}}</mat-checkbox>
+
+                    </ng-container>
+                </ng-container>
+            </div>
+        </div>
+    </form>
+    <div><button (click)="enableDisableFormGroup ('disable1')">Disable Form Group 1</button></div>
+    <div><button (click)="enableDisableFormGroup('disable2')">Disable Form Group 2</button></div>
+    <div><button (click)="enableDisableFormGroup('enable1')">Enable Form Group 1</button></div>
+    <div><button (click)="enableDisableFormGroup('enable2')">Enable Form Group 2</button></div>
+    <div><button (click)="enableDisableFormGroup('reset1')">Reset Form Group 1</button></div>
+    <div><button (click)="enableDisableFormGroup ('reset2')">Reset Form Group 2</button></div>
+    <div><button (click)="addControl()">Add New Group with Control</button></div>
+    <div><button (click)="getValues()">Get Value</button></div>
+</div>
+
+<ngb-carousel>
+    <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+            <img class="img-fluid" src="
+                https://reviverestore.org/wp-content/uploads/2017/05/placeholder-image-cropped.jpg"
+                alt="Random first slide">
+        </div>
+        <div class="carousel-caption">
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </div>
+    </ng-template>
+    <ng-template ngbSlide>
+        <img class="img-fluid" src="
+            https://reviverestore.org/wp-content/uploads/2017/05/placeholder-image-cropped.jpg"
+            alt="Random first slide">
+    </ng-template>
+    <ng-template ngbSlide>
+        <img class="img-fluid" src="
+            https://reviverestore.org/wp-content/uploads/2017/05/placeholder-image-cropped.jpg"
+            alt="Random first slide">
+    </ng-template>
+</ngb-carousel>
+
+<button type="button" class="btn btn-outline-secondary mr-2" ngbTooltip="I am Bootstrap Tooltip">
+    Bootstrap Tooltip
+</button>
+
+<div class="form-group">
+    <input type="text" placeholder="Search here" class="form-control" [(ngModel)]="country">
+</div>
+<ul>
+    <li *ngFor="let count of countries | filter:country">
+        {{count.name}}
+    </li>
+</ul>
+
+<div class="form-group">
+    <input type="text" class="form-control" placeholder="Search Here" [(ngModel)]="term">
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>First</th>
+            <th>Last</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of filterData | filter:term">
+            <td>
+                {{item.firstName}}
+            </td>
+            <td>
+                {{item.lastName}}
+            </td>
+            <td>
+                {{item.address}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="myBox" (click)="onClickedOutside($event)" *ngIf="showBox">
+    Click outside this box to hide
+</div>
+
+<ul *ngFor="let person of people">
+    <li *ngIf="person.age < 30">
+        {{person.name}} - {{person.age}} - {{person.country}}
+    </li>
+</ul>
+
+<ul *ngFor="let person of people" [ngSwitch]="person.country">
+    <li *ngSwitchCase="'UK'" class="text-success">
+        {{person.name}} - {{person.country}}
+    </li>
+    <li *ngSwitchCase="'USA'" class="text-danger">
+        {{person.name}} - {{person.country}}
+    </li>
+    <li *ngSwitchCase="'HK'" class="text-warning">
+        {{person.name}} - {{person.country}}
+    </li>
+    <li *ngSwitchCase="'MARS'" class="text-danger">
+        {{person.name}} - {{person.country}}
+    </li>
+</ul>
+
+
+
+<ng-container *ngIf="isDoneNew;  then iAmDone; else iAmNotDone">
+</ng-container>
+
+<ng-template #iAmDone>
+    It's Not Done new 1!
+</ng-template>
+
+<ng-template #iAmNotDone>
+    It's Not Done new 2!
+</ng-template>
+
+<hr />
+
+<div *ngIf="!isDone;else elseNotDone">
+    It is done!
+</div>
+<ng-template #elseNotDone>
+    It is not done!
+</ng-template>
+
+<hr />
+
+<div *ngIf="isLoggedIn; then loggedIn; else loggedOut">
+    Welcome back, friend
+</div>
+
+<ng-template #loggedOut>
+    Please friend, login
+</ng-template>
+
+<hr />
+<!-- negated variable to achieve "if not" -->
+<div *ngIf="!isLoggedIn">
+    Please login, friend
+</div>
+
+<!-- logic && operator -->
+<div *ngIf="isLoggedIn && !isNewUser">
+    Welcome back, friend
+</div>
+<hr />
+<!-- logic OR operator -->
+<div *ngIf="isLoggedIn || isNewUser">
+    Welcome!
+</div>

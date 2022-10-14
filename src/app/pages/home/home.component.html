@@ -1,0 +1,21 @@
+<ul class="list-unstyled">
+    <li *ngFor="let fruit of fruits;first as isFirst; last as isLast; even as isEvent; odd as isOdd">
+        {{i}} - {{fruit.name}} - {{fruit.price}} - {{fruit.quantity}}
+    </li>
+</ul>
+
+<hr />
+<h3>Click count: {{clickCount}}</h3>
+<button (click)="onCountChanged()">increment</button>
+
+<hr />
+<div *ngIf="!showLoginReg">
+    <h3>Login
+        <button (click)="btnLog()">Login</button>
+    </h3>
+</div>
+<div *ngIf="showLoginReg">
+    <h3>Register</h3>
+    <button (click)="btnReg()">Register</button>
+</div>
+<hr />

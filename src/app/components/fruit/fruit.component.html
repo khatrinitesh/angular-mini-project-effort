@@ -1,0 +1,10 @@
+<section>
+    <h3>Fruits</h3>
+    <ul>
+        <li *ngFor="let fruit of fruits">
+            <img [src]="fruit.image" />
+            <p>{{fruit.name}}</p>
+            <button (click)="onSelect()">Select</button>
+        </li>
+    </ul>
+</section>
