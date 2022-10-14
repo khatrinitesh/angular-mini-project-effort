@@ -15,7 +15,7 @@ export class PostService {
   }
 
   deletePost(id) {
-    return this.httpClient.delete(this.url + '/' + id);
+    return this.httpClient.delete(this.url + "/" + id);
   }
 
 }

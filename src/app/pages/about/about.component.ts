@@ -22,6 +22,7 @@ export class AboutComponent implements OnInit {
   public dynamicdata: string = 'This is dynamic data!';
   public staticdata: string = 'This is static data!';
   interval: number;
+  public limeCounter: number = 0;
 
   getMsg(msg: string) {
     this.receivedChildMessage = msg;
