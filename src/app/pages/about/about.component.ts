@@ -23,6 +23,15 @@ export class AboutComponent implements OnInit {
   public staticdata: string = 'This is static data!';
   interval: number;
   public limeCounter: number = 0;
+  public userName = ''
+  public userPhone = ''
+
+  nameEventHander($event: any) {
+    this.userName = $event
+  }
+  phoneEventHander($event: any) {
+    this.userPhone = $event
+  }
 
   getMsg(msg: string) {
     this.receivedChildMessage = msg;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-hero',
@@ -7,11 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroComponent implements OnInit {
 
+  @Output() nameEvent = new EventEmitter<string>();
+  @Output() phoneEvent = new EventEmitter<string>();
+
+  userName: string = '';
+  userPhone: string = '';
+
+  onNameChange() {
+    this.nameEvent.emit(this.userName);
+  }
+
+  onPhoneChange() {
+    this.phoneEvent.emit(this.userPhone);
+  }
+
   constructor(
-    public id: number,
-    public name: string,
-    public power: string,
-    public alterEgo?: string
   ) { }
 
   ngOnInit() {
