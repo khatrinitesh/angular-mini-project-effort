@@ -10,8 +10,14 @@ export class HomeComponent implements OnInit {
   public showLoginReg: boolean = false
   public childTitle: string = 'Child title';
   public clickCount: number = 0;
+  public myExampleTest: string = 'nitesh khatri is example'
+  public receivedTestChild: string = ''
 
   constructor() {
+  }
+
+  buttonExample(msg: any) {
+    this.receivedTestChild = msg
   }
 
 

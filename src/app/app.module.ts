@@ -26,6 +26,8 @@ import { FruitComponent } from './components/fruit/fruit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppleComponent } from './components/apple/apple.component';
 import { LimeComponent } from './components/lime/lime.component';
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
+
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import { LimeComponent } from './components/lime/lime.component';
     MatInputModule,
     MatCheckboxModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    DateInputsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

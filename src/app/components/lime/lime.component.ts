@@ -22,7 +22,6 @@ export class LimeComponent implements OnInit {
     this.msgToEmit.emit(msg);
   }
 
-
   btnSend(data: string) {
     this.buttonSend.emit(data)
   }

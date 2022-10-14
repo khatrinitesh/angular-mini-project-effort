@@ -1,3 +1,14 @@
+<div class="row example-wrapper">
+    <div class="col-xs-12 col-md-6 example-col">
+        <p>Infinite Calendar</p>
+        <kendo-calendar type="infinite"></kendo-calendar>
+    </div>
+    <div class="col-xs-12 col-md-6 example-col">
+        <p>Classic Calendar</p>
+        <kendo-calendar type="classic"></kendo-calendar>
+    </div>
+</div>
+
 <ul class="list-unstyled">
     <li *ngFor="let fruit of fruits;first as isFirst; last as isLast; even as isEvent; odd as isOdd">
         {{i}} - {{fruit.name}} - {{fruit.price}} - {{fruit.quantity}}
@@ -19,3 +30,6 @@
     <button (click)="btnReg()">Register</button>
 </div>
 <hr />
+
+{{receivedTestChild}}
+<app-service [ExampleTextParent]="myExampleTest" (BtnExampleO)="buttonExample($event)"></app-service>

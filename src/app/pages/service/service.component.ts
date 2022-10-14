@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { PostService } from "../../services/post.service";
 
 @Component({
@@ -7,7 +7,12 @@ import { PostService } from "../../services/post.service";
   styleUrls: ['./service.component.scss']
 })
 export class ServiceComponent implements OnInit {
+
+
+  @Input() ExampleTextParent: string = ''
   httpData: any;
+  public txtSendChild: string = 'nitesh khatri is child service'
+  @Output() BtnExampleO = new EventEmitter();
 
   constructor(private postService: PostService) { }
 
@@ -15,6 +20,10 @@ export class ServiceComponent implements OnInit {
     this.postService.getPosts().subscribe(response => {
       this.httpData = response
     })
+  }
+
+  btnSendExample(msg: string) {
+    this.BtnExampleO.emit(msg)
   }
 
   deleteItem(post) {
