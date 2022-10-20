@@ -31,6 +31,8 @@ import { HeroComponent } from './components/hero/hero.component';
 import { HeroformComponent } from './components/heroform/heroform.component';
 import { AddressComponent } from './components/address/address.component';
 import { TemplatedrivenformComponent } from './components/templatedrivenform/templatedrivenform.component';
+import { TeacherComponent } from './components/teacher/teacher.component';
+import { StudentComponent } from './components/student/student.component';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { TemplatedrivenformComponent } from './components/templatedrivenform/tem
     HeroComponent,
     HeroformComponent,
     AddressComponent,
-    TemplatedrivenformComponent
+    TemplatedrivenformComponent,
+    TeacherComponent,
+    StudentComponent
   ],
   imports: [
     BrowserModule,

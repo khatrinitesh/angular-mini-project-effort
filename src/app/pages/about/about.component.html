@@ -1,10 +1,22 @@
-<app-hero (nameEvent)="nameEventHander($event)" (phoneEvent)="phoneEventHander($event)"></app-hero>
-<app-address (nameEvent)="nameEventHander($event)" (phoneEvent)="phoneEventHander($event)"></app-address>
+<h2>Two-way Binding Example</h2>
+<input [(ngModel)]="fullName" /> <br /><br />
+<p> {{fullName}} </p>
+
+<button class="btn" (click)="showToggle()" [ngClass]="classToggled ? 'btn-success' : 'btn-danger'">
+    {{txtChange ? 'HIDE' : 'SHOW'}}
+</button>
+<div *ngIf=" showNew">
+    <h2>Heading title 1</h2>
+    <h2>Heading title 2</h2>
+</div>
+
+<!-- <app-hero (nameEvent)="nameEventHander($event)" (phoneEvent)="phoneEventHander($event)"></app-hero>
+<app-address (nameEvent)="nameEventHander($event)" (phoneEvent)="phoneEventHander($event)"></app-address> -->
 
 <!-- <button (click)="start()">start</button>
 <button (click)="stop()">stop</button> -->
 
-<h1>This is the parent component !</h1>
+<!-- <h1>This is the parent component !</h1>
 <h2>It wants to say "Hello" to its child.</h2>
 It also wants to receive a response from its child.
 {{receivedChildMessage}}
@@ -177,18 +189,18 @@ It also wants to receive a response from its child.
     Please friend, login
 </ng-template>
 
-<hr />
+<hr /> -->
 <!-- negated variable to achieve "if not" -->
-<div *ngIf="!isLoggedIn">
+<!-- <div *ngIf="!isLoggedIn">
     Please login, friend
-</div>
+</div> -->
 
 <!-- logic && operator -->
-<div *ngIf="isLoggedIn && !isNewUser">
+<!-- <div *ngIf="isLoggedIn && !isNewUser">
     Welcome back, friend
 </div>
-<hr />
+<hr /> -->
 <!-- logic OR operator -->
-<div *ngIf="isLoggedIn || isNewUser">
+<!-- <div *ngIf="isLoggedIn || isNewUser">
     Welcome!
-</div>
+</div> -->

@@ -14,9 +14,9 @@ export class HeroformComponent implements OnInit {
     this.submitted = true;
   }
 
-  get diagnostic() {
-    return JSON.stringify(this.model)
-  }
+  // get diagnostic() {
+  //   return JSON.stringify(this.model)
+  // }
 
   constructor() { }
 

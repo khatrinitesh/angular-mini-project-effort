@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+
+
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -8,6 +10,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AboutComponent implements OnInit {
 
+  public showNew: boolean = false
+  public fullName: string = 'hello assurekit'
   public myFormGrp!: FormGroup;
   public receivedChildMessage: string;
   public receivedChildMessage2: string;
@@ -25,6 +29,17 @@ export class AboutComponent implements OnInit {
   public limeCounter: number = 0;
   public userName = ''
   public userPhone = ''
+  public name: string;
+  public subject: string;
+  public txtChange: boolean = false;
+  public classToggled: boolean = false;
+
+  showToggle() {
+    this.showNew = !this.showNew
+    this.txtChange = !this.txtChange
+    this.classToggled = !this.classToggled
+    console.log(this.showNew != this.showNew)
+  }
 
   nameEventHander($event: any) {
     this.userName = $event
