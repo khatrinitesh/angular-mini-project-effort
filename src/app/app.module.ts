@@ -35,6 +35,7 @@ import { TeacherComponent } from './components/teacher/teacher.component';
 import { StudentComponent } from './components/student/student.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,7 @@ import { StudentComponent } from './components/student/student.component';
     AddressComponent,
     TemplatedrivenformComponent,
     TeacherComponent,
-    StudentComponent
+    StudentComponent,
   ],
   imports: [
     BrowserModule,

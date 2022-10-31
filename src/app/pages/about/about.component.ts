@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-about',
@@ -7,6 +8,27 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
+  msgOnChildCompInit: string;
+  msgOnButtonClick: string;
+  msgComponent: string;
+
+  parentChildMsgs = 'Quis ex incididunt qui esse dolore est enim sint.'
+
+  receiveAutoMsgHandler(p) {
+    this.msgOnChildCompInit = p
+  }
+
+  receivedMsg(p) {
+    this.msgComponent = p
+  }
+
+  receivedMessageHandler(p) {
+    this.msgOnButtonClick = p
+  }
+
+  multiple = true;
+
+  public users: any;
 
   hasError: boolean = false;
   styleArray = ['errorClass', 'boldClass']
@@ -310,11 +332,15 @@ export class AboutComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private api: ApiService) { }
 
 
   ngOnInit() {
     this.generateForm();
+    this.api.get('users?page=2').subscribe(res => {
+      this.users = res;
+      console.log('data response', this.users);
+    })
   }
 
   // Create reactive form

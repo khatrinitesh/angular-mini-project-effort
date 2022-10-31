@@ -1,4 +1,42 @@
-<div [ngStyle]="{'color':'orange','fontWeight':'bold','fontSize.px':'40'}">Deserunt et amet ex qui cillum ea.</div>
+<app-apple (clickHandlerTwo)="receivedMsg($event)" (onInitEvent)="receiveAutoMsgHandler($event)"
+    (childButtonEvent)="receivedMessageHandler($event)" [description]="description" [childMsg]="parentChildMsgs">
+</app-apple>
+
+<label><u>In the below box, message will load automatically from child when it is initialized.</u></label>
+<br />
+{{msgOnChildCompInit}}
+<hr />
+In the below box, message will appear when user click on the button from the child component.
+<br />
+{{msgOnButtonClick}}
+{{msgComponent}}
+<!-- <form [formGroup]="form">
+    single select
+    <select>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+    <br><br>
+    static multiple
+    <select multiple>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+
+    <br><br>
+    Dynamic
+    <button (click)="multiple = !multiple">Toggle</button>
+    <select [multiple]="multiple" formControlName="dynamic">
+        <ng-container *ngTemplateOutlet="options"></ng-container>
+    </select>
+    <ng-template #options>
+        <option *ngFor="let opion of [1,2,3]" [value]="option">{{option}}</option>
+    </ng-template>
+</form> -->
+
+<!-- <div [ngStyle]="{'color':'orange','fontWeight':'bold','fontSize.px':'40'}">Deserunt et amet ex qui cillum ea.</div>
 
 <div [ngStyle]="{'color':'blue'}">Nostrud Lorem in aliquip est laborum elit sit do ut laboris occaecat pariatur.</div>
 
@@ -130,7 +168,7 @@
 <div *ngIf=" showNew">
     <h2>Heading title 1</h2>
     <h2>Heading title 2</h2>
-</div>
+</div> -->
 
 <!-- <app-hero (nameEvent)="nameEventHander($event)" (phoneEvent)="phoneEventHander($event)"></app-hero>
 <app-address (nameEvent)="nameEventHander($event)" (phoneEvent)="phoneEventHander($event)"></app-address> -->
