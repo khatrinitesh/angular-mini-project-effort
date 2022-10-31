@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import Hero from '../hero/hero.component';
 
 @Component({
   selector: 'app-heroform',

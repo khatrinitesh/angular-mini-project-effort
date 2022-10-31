@@ -1,3 +1,125 @@
+<div [ngStyle]="{'color':'orange','fontWeight':'bold','fontSize.px':'40'}">Deserunt et amet ex qui cillum ea.</div>
+
+<div [ngStyle]="{'color':'blue'}">Nostrud Lorem in aliquip est laborum elit sit do ut laboris occaecat pariatur.</div>
+
+<div [ngClass]="hasError ? 'errorClass' : 'greenClass'">If hasError is true, the text will be red, else green</div>
+
+<div [ngClass]="styleObject">hello style object</div>
+
+<div [ngClass]="styleArray">Hello World. Array Applied.</div>
+
+<div [ngClass]="'greenClass italicsClass'">Hello World. greenClass and Italics Class Applied</div>
+
+<div [ngClass]="getGreenClass()">hello world nitesh</div>
+
+<button (click)="isActive = !isActive" [style.background]="isActive ? '#4CAF50' : '#f44336'"
+    [style.font-size.em]="isActive ? '1.2' : '1'">
+    {{isActive ? 't1' : 't2'}}</button>
+
+<p [class.paragraph]="flag">This is paragraph 1.</p>
+<p [style.border]="'5px solid red'">This is paragraph 2.</p>
+
+<p [ngClass]="{'paragraph':applyClassP}">This is paragraph 3.</p>
+<button (click)="applyClassP = !applyClassP">Click Me</button>
+
+<p [ngStyle]="{'font-weight':applyClassPOne ? 'bold' : 'normal'}">This is paragraph 3.</p>
+<button (click)="applyClassPOne = !applyClassPOne">Click Me</button>
+
+<p [ngClass]="getClass()">This is Paragraph.</p>
+<button (click)="setClassFlag = !setClassFlag">Click Me</button>
+
+<hr />
+
+<div [class.myExampleStyle]="applyStyle">Nitesh 1</div>
+<div [style.color]="applyStyle ? 'cyan' : 'green'">Nitesh 2 </div>
+<div [style.fontSize]="applyStyle ? '20px' : '10px'">Nitesh 3</div>
+
+<hr />
+<div [class.myclass]="applyClass">Apply class</div>
+<div [style.color]="applyClass ? 'blue' : 'orange'">style binding</div>
+<hr />
+
+<ng-container *ngIf="sameet">
+    <p>Sameet ng-template</p>
+</ng-container>
+<ng-template [ngIf]="sameet">
+    <p>sameet ng-template</p>
+</ng-template>
+<ng-container *ngIf="nitesh">
+    <p>nitesh ng-template</p>
+</ng-container>
+<ng-template [ngIf]="nitesh">
+    <p>nitesh ng-template</p>
+</ng-template>
+
+<hr />
+
+<ng-container *ngIf="condition1">
+    <p>container 1</p>
+</ng-container>
+<br>
+<ng-template [ngIf]="condition1">
+    <p>template 1</p>
+</ng-template>
+
+<ng-container *ngIf="condition2">
+    <p>container2</p>
+</ng-container>
+<br>
+<ng-template [ngIf]="condition2">
+    <p>template2</p>
+</ng-template>
+
+<hr />
+
+<p [style.display]="'block'">
+    Expression sets display to "block".
+    This paragraph is visible.
+</p>
+<p [style.display]="'none'">
+    Expression sets display to "none".
+    This paragraph is hidden but still in the DOM.
+</p>
+
+<h1 [style.display]="'block'"></h1>
+
+<ng-container *ngIf="todos">
+    <div *ngFor="let todo of todos">
+        {{todo.content}}
+    </div>
+</ng-container>
+<div>
+    <ng-container *ngIf="error">Oops:</ng-container> {{ message }}
+</div>
+
+<section *ngIf="isYes else isNo">
+    Yes section
+</section>
+<ng-template #isNo>
+    <section>
+        No Section
+    </section>
+</ng-template>
+
+<section *ngIf="isAllowed else otherSection">
+    Nitesh Section
+</section>
+<ng-template #isAllowed>
+    <section>
+        Other Section
+    </section>
+</ng-template>
+
+<ul *ngIf="isVisible">
+    <li *ngFor="let item of friendslist">
+        {{item.name}} is {{item.age}} years old
+    </li>
+</ul>
+
+<button (click)="hideList()">
+    Click to {{showhideText}} List
+</button>
+
 <h2>Two-way Binding Example</h2>
 <input [(ngModel)]="fullName" /> <br /><br />
 <p> {{fullName}} </p>

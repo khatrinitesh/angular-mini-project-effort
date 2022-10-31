@@ -1,3 +1,41 @@
+.greenClass{
+    color:green;
+}
+
+.italicsClass{
+    font-style: italic;
+}
+
+.boldClass{
+    font-weight: bold;
+}
+
+.errorClass{
+    color:red;
+}
+
+
+.paragraph{
+    color: red;
+    font-size: 25px;
+}
+
+.anotherParagraph {
+  background-color: red;
+  color: white;
+  padding: 3px;
+}
+
+.myExampleStyle{
+    color:darkblue;
+    font-weight: bold;
+}
+
+.myclass{
+    color:red;
+}
+
+
 .myBox{
     display: flex;
     align-items: center;

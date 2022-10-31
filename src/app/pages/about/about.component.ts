@@ -1,7 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
-
 
 @Component({
   selector: 'app-about',
@@ -9,6 +7,19 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
+
+  hasError: boolean = false;
+  styleArray = ['errorClass', 'boldClass']
+  styleObject = {
+    'errorClass': true,
+    'boldClass': true,
+    'italicsClass': true,
+    'greenClass': false,
+  }
+
+  getGreenClass() {
+    return 'greenClass';
+  }
 
   public showNew: boolean = false
   public fullName: string = 'hello assurekit'
@@ -33,6 +44,94 @@ export class AboutComponent implements OnInit {
   public subject: string;
   public txtChange: boolean = false;
   public classToggled: boolean = false;
+  public isVisible: boolean = false;
+  public showhideText: any = 'show';
+  public loginText = 'Login';
+  public signUpText = 'Sign Up';
+  public condition1: boolean = true;
+  public condition2: boolean = false;
+  public sameet: boolean = true;
+  public nitesh: boolean = false;
+  public applyClass: boolean = true;
+  public applyStyle: boolean = true;
+  public applyClassP: boolean = false;
+  public applyClassPOne: boolean = false;
+  public setClassFlag: boolean = false;
+  public flag: boolean = true;
+  public isActive: boolean = true;
+  lessons = ['Lesson 1', 'Lesson 2']
+
+  getClass() {
+    return {
+      'paragraph anotherParagraph': this.setClassFlag
+    }
+  }
+
+
+
+  login(): void {
+    console.log('Login')
+  }
+  signUp() {
+    console.log('Sign Up')
+  }
+
+  hideList() {
+    this.isVisible = !this.isVisible
+    if (this.isVisible) {
+      this.showhideText = 'hide'
+    }
+    else {
+      this.showhideText = 'show'
+    }
+  }
+
+  public todos = [
+    {
+      content: 'Todo Content 1',
+    },
+    {
+      content: 'Todo Content 2',
+    },
+    {
+      content: 'Todo Content 3',
+    },
+  ]
+
+  public friendslist = [
+    {
+      name: 'Nishant',
+      age: 25
+    },
+    {
+      name: 'Shailesh',
+      age: 45
+    },
+    {
+      name: 'Abhishek',
+      age: 36
+    },
+    {
+      name: 'Akshay',
+      age: 65
+    },
+    {
+      name: 'Ashish',
+      age: 12
+    },
+    {
+      name: 'Uday',
+      age: 31
+    },
+    {
+      name: 'Mayank',
+      age: 45
+    },
+    {
+      name: 'Raju',
+      age: 74
+    },
+  ]
 
   showToggle() {
     this.showNew = !this.showNew
@@ -208,6 +307,8 @@ export class AboutComponent implements OnInit {
       "country": 'USA'
     }
   ];
+
+
 
   constructor() { }
 
