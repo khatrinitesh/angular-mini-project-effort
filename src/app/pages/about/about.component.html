@@ -1,5 +1,11 @@
-<app-apple (clickHandlerTwo)="receivedMsg($event)" (onInitEvent)="receiveAutoMsgHandler($event)"
-    (childButtonEvent)="receivedMessageHandler($event)" [description]="description" [childMsg]="parentChildMsgs">
+<button (click)="add()">add</button>
+<p *ngFor="let num of numbers;let i=index;">
+    <button (click)="remove(index)">Remove</button>
+    - value {{num}}, index {{index}}
+</p>
+
+<app-apple (onInitEvent)="receiveAutoMsgHandler($event)" (childButtonEvent)="receivedMessageHandler($event)"
+    [description]="description" [childMsg]="parentChildMsgs" (childBtnEventTxt)="receivedMsg($event)">
 </app-apple>
 
 <label><u>In the below box, message will load automatically from child when it is initialized.</u></label>
@@ -9,7 +15,8 @@
 In the below box, message will appear when user click on the button from the child component.
 <br />
 {{msgOnButtonClick}}
-{{msgComponent}}
+<hr />
+{{msgComponentTxt}}
 <!-- <form [formGroup]="form">
     single select
     <select>

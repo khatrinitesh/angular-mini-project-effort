@@ -8,22 +8,34 @@ import { ApiService } from '../../services/api.service';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
-  msgOnChildCompInit: string;
-  msgOnButtonClick: string;
-  msgComponent: string;
+  msgOnChildCompInit: string; // 1
+  msgOnButtonClick: string; // 2
+  msgComponentTxt: string; // 3
 
   parentChildMsgs = 'Quis ex incididunt qui esse dolore est enim sint.'
+
+  public numbers = [
+    10, 22, 345, 45, 55, 650
+  ]
+
+  add() {
+    this.numbers.push(Math.floor(Math.random() * 1000))
+  }
+
+  remove(i) {
+    this.numbers.splice(i, 1)
+  }
 
   receiveAutoMsgHandler(p) {
     this.msgOnChildCompInit = p
   }
 
-  receivedMsg(p) {
-    this.msgComponent = p
-  }
-
   receivedMessageHandler(p) {
     this.msgOnButtonClick = p
+  }
+
+  receivedMsg(p) {
+    this.msgComponentTxt = p
   }
 
   multiple = true;

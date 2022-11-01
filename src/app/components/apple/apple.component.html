@@ -1,7 +1,7 @@
 <p>apple works!</p>
 <h3>{{ description || 'Nothing has been typed yet...' }}</h3>
 Say: {{childMsg}}
+{{msgComponent}}
 <button (click)="clickHandler()">Send message to parent component</button>
-
 <br />
-<button (click)="clickHandlerTwo">Send message to parent component</button>
+<button (click)="clickHandlerTwo()">Send message to parent component</button>

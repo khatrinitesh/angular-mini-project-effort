@@ -8,15 +8,16 @@ import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 export class AppleComponent implements OnInit {
   @Input() description: string;
   @Input() childMsg: string;
+  @Input() msgComponent: string;
 
   @Output() childButtonEvent = new EventEmitter();
   @Output() onInitEvent = new EventEmitter();
-  @Output() childBtnEvent = new EventEmitter();
+  @Output() childBtnEventTxt = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
-    this.onInitEvent.emit('This meesage is appeared automatically as the child component will intialized. This message is defined in the child component ngOninit method');
+    this.onInitEvent.emit('This message is appeared automatically as the child component will intialized. This message is defined in the child component ngOninit method');
   }
 
   clickHandler() {
@@ -24,7 +25,7 @@ export class AppleComponent implements OnInit {
   }
 
   clickHandlerTwo() {
-    this.childBtnEvent.emit('nitesh khatri')
+    this.childBtnEventTxt.emit('nitesh khatri');
   }
 
 
