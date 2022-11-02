@@ -55,6 +55,13 @@ export class AboutComponent implements OnInit {
     return 'greenClass';
   }
 
+  public showImage: boolean = true;
+
+  btnToggleImg() {
+    this.showImage = !this.showImage
+  }
+
+
   public showNew: boolean = false
   public fullName: string = 'hello assurekit'
   public myFormGrp!: FormGroup;

@@ -1,3 +1,14 @@
+<div *ngIf="condition; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>
+    Content to render when condition is true.
+</ng-template>
+<ng-template #elseBlock>
+    Content to render when condition is false.
+</ng-template>
+
+<img *ngIf="showImage" width="300" alt="Angular Logo" src="https://www.fillmurray.com/640/360" />
+<button (click)="btnToggleImg()">Click Toggle Image</button>
+
 <button (click)="add()">add</button>
 <p *ngFor="let num of numbers;let i=index;">
     <button (click)="remove(index)">Remove</button>
