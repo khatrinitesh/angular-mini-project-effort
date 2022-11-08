@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators,FormBuilder } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 
 @Component({
@@ -11,6 +11,12 @@ export class AboutComponent implements OnInit {
   msgOnChildCompInit: string; // 1
   msgOnButtonClick: string; // 2
   msgComponentTxt: string; // 3
+
+  showMe:boolean=true;
+
+  condition:boolean=true;
+
+  isValid:boolean=false;
 
   parentChildMsgs = 'Quis ex incididunt qui esse dolore est enim sint.'
 
@@ -351,10 +357,11 @@ export class AboutComponent implements OnInit {
 
 
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService,private formBuilder:FormBuilder) { }
 
 
   ngOnInit() {
+
     this.generateForm();
     this.api.get('users?page=2').subscribe(res => {
       this.users = res;

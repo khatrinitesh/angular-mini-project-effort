@@ -1,3 +1,39 @@
+<div class="row">
+    Show <input type="checkbox" [(ngModel)]="showMe" />
+  </div>
+
+  <p *ngIf="!showMe">
+    ShowMe is unchecked
+  </p>
+
+  <hr/>
+
+
+
+<div *ngIf="condition; then thenBlock1 else elseBlock1"> 
+    This content is not shown
+</div>
+ 
+<ng-template #thenBlock1>
+    content to render when the condition is true.
+</ng-template>
+ 
+<ng-template #elseBlock1>
+    content to render when condition is false.
+</ng-template>
+
+<hr/>
+
+
+<div *ngIf="isValid;else other_content">
+    content here ...
+</div>
+<ng-template #other_content>other content here template...</ng-template>
+
+<div *ngIf="!isValid">
+    other content here...
+   </div>
+
 <div *ngIf="condition; then thenBlock else elseBlock"></div>
 <ng-template #thenBlock>
     Content to render when condition is true.
