@@ -4,9 +4,7 @@
     {{product.id}}
     {{product.name}}
     {{product.price}}
-    <!-- <button (click)="btnProductRemove()">Remove</button> -->
     <button (click)="btnRemove('products')">Remove</button>
-
 </p>
 
 <hr/>
@@ -15,9 +13,7 @@
     {{friend.id}}
     {{friend.name}}
     {{friend.price}}
-    <!-- <button (click)="btnFriendRemove()">Remove</button> -->
     <button (click)="btnRemove( 'friends')">Remove</button>
-
 </p>
 
 <hr/>
@@ -25,9 +21,7 @@
 <p *ngFor="let fam of family" >
     {{fam.id}}
     {{fam.name}}
-    <!-- <button (click)="btnFamRemove()">Remove</button> -->
     <button (click)="btnRemove( 'family')">Remove</button>
-
 </p>
 
 <!-- <button (click)="isActive(true)" [disabled]="enabled">Enabled</button>

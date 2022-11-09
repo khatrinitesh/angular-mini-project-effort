@@ -26,32 +26,16 @@ export class ChildComponent implements OnInit {
   }
   btnRemove(obj,index){
     console.log( obj)
-    console.log(this[obj])
     if(obj == 'products'){
       this.products.splice(index,1)
     }
     else if(obj == 'friends'){
           this.friends.splice(index,1)
-
-      // this.friends= arrobj.filter(itm => itm.id !== obj.id)
     }
     else if(obj == 'family'){
           this.family.splice(index,1)
-
-      // this.family= arrobj.filter(itm => itm.id !== obj.id)
     }
   }
-
-  // btnProductRemove(index){
-  //   this.products.splice(index,1)
-  // }
-  // btnFriendRemove(index){
-  //   this.friends.splice(index,1)
-  // }
-  // btnFamRemove(index){
-  //   this.family.splice(index,1)
-  // }
-
   isActive(active:boolean){
     this.status.emit(active);
     if(active){
