@@ -1,28 +1,38 @@
 <!-- say {{childMsg}} -->
 
-<p *ngFor="let product of products" >
-    {{product.id}}
-    {{product.name}}
-    {{product.price}}
-    <button (click)="btnRemove('products')">Remove</button>
-</p>
+<div class="box_row">
+    <div class="box_content">
+        <div class="row">
+            <div class="col-4 card p-2 mb-3" *ngFor="let foo of foods">
+                {{foo.id}}
+                {{foo.name}}
+                {{foo.price}}
+                <button (click)="btnRemove('foods')">Remove</button>
+            </div>
+        </div>
+    </div>
+    <div class="box_content">
+        <div class="row">
+            <div class="col-4 card p-2 mb-3" *ngFor="let friend of friends">
+                {{friend.id}}
+                {{friend.name}}
+                {{friend.price}}
+                <button (click)="btnRemove( 'friends')">Remove</button>
+            </div>
+        </div>
+    </div>
+    <div class="box_content">
+        <div class="row">
+            <div class="col-4 card p-2 mb-3" *ngFor="let fam of family" >
+                {{fam.id}}
+                {{fam.name}}
+                <button (click)="btnRemove( 'family')">Remove</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-<hr/>
 
-<p *ngFor="let friend of friends" >
-    {{friend.id}}
-    {{friend.name}}
-    {{friend.price}}
-    <button (click)="btnRemove( 'friends')">Remove</button>
-</p>
-
-<hr/>
-
-<p *ngFor="let fam of family" >
-    {{fam.id}}
-    {{fam.name}}
-    <button (click)="btnRemove( 'family')">Remove</button>
-</p>
 
 <!-- <button (click)="isActive(true)" [disabled]="enabled">Enabled</button>
 <button (click)="isActive(false)" [disabled]="disabled">Disabled</button> -->

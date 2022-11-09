@@ -43,6 +43,12 @@ export class AboutComponent implements OnInit {
     { id: 25, name: 'u' }
   ];
 
+  public foodItem = [
+    {id:26,name:'dosa'},
+    {id:27,name:'medu vada'},
+    {id:28,name:'thali'},
+  ]
+
   productStatus:string;
 
   onStatus(active:boolean){

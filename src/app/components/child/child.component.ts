@@ -12,6 +12,7 @@ export class ChildComponent implements OnInit {
   @Input() products;
   @Input() friends;
   @Input() family;
+  @Input() foods;
 
   // OUTPUT
   @Output() btnToggle=new EventEmitter();
@@ -24,6 +25,7 @@ export class ChildComponent implements OnInit {
 
   ngOnInit() {
   }
+  
   btnRemove(obj,index){
     console.log( obj)
     if(obj == 'products'){
@@ -34,6 +36,9 @@ export class ChildComponent implements OnInit {
     }
     else if(obj == 'family'){
           this.family.splice(index,1)
+    }
+    else if(obj == 'foods'){
+      this.foods.splice(index,1)
     }
   }
   isActive(active:boolean){

@@ -1,0 +1,5 @@
+.box_content:not(:last-child){
+    border-bottom: 2px solid red;
+    margin:0 0 20px;
+    padding:0 0 20px;
+}
