@@ -19,8 +19,22 @@ export class AboutComponent implements OnInit {
   cols:number=4;
   height:string='100%';
   title:'States';
+  public testing:any;
+  public  results:any;
+  dateToday: string;
+  nametwo:string
 
-  results:any;
+  showDataTwo(){
+    this.testing = HeroData;
+  }
+
+  noShowData(){
+    this.testing = emptyHeroData
+  }
+  btnResetData(){
+    this.testing = [{}];
+  }
+
 
 
   showData(){
@@ -455,11 +469,10 @@ export class AboutComponent implements OnInit {
   ];
 
 
-
-  
-
-
   ngOnInit() {
+
+    this.dateToday = new Date().toDateString();
+    this.name = 'Simplilearn'
 
     this.generateForm();
     this.api.get('users?page=2').subscribe(res => {
@@ -561,18 +574,42 @@ export class AboutComponent implements OnInit {
     });
   }
 
+  
 }
 
+// START => HERO TESTING
+export interface HeroTesting {
+  id:number;
+  name:string;
+}
+const emptyHeroData:HeroTesting[]= []
+const HeroData: HeroTesting[] =[
+  {
+    id:1,name:'n',
+  },
+  {
+    id:2,name:'s',
+  },
+  {
+    id:3,name:'m',
+  },
+  {
+    id:4,name:'a',
+  },
+  {
+    id:5,name:'u',
+  },
+]
+// END => HERO TESTING
 
+// START => HERO
 export interface Hero {
   id: number;
   name: string;
   icon:boolean;
   dob:string
 }
-
 const emptyHeros:Hero[] = []
-
 const Heros : Hero[] = [
   { id: 11, name: 'Dr Nice',icon:true,dob:'17061989'},
   { id: 12, name: 'Narco' ,icon:false,dob:'17061989'},
@@ -585,3 +622,4 @@ const Heros : Hero[] = [
   { id: 19, name: 'Magma' ,icon:true,dob:'17061989'},
   { id: 20, name: 'Tornado' ,icon:true,dob:'17061989'}
 ]
+// END => HERO

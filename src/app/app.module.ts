@@ -33,6 +33,7 @@ import { AddressComponent } from './components/address/address.component';
 import { TemplatedrivenformComponent } from './components/templatedrivenform/templatedrivenform.component';
 import { TeacherComponent } from './components/teacher/teacher.component';
 import { StudentComponent } from './components/student/student.component';
+import { ShortnamePipe } from './shortname.pipe';
 
 
 
@@ -55,6 +56,7 @@ import { StudentComponent } from './components/student/student.component';
     TemplatedrivenformComponent,
     TeacherComponent,
     StudentComponent,
+    ShortnamePipe,
   ],
   imports: [
     BrowserModule,

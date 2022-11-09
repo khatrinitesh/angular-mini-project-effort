@@ -1,5 +1,26 @@
+<h2>{{'nitesh khatri' | shortname}}</h2>
 
+<h1>
+    Date: {{dateToday}}
+    <br/>
 
+    Date Pipe: {{ dateToday | date | uppercase}}<br>
+    <br/>
+    Date Pipe: {{ dateToday | date: 'short' | lowercase}} <br>
+    <br/>
+    Name: {{ name | uppercase}} <br>
+
+    <br/>
+    Name: {{ name | slice:6}}
+</h1>
+
+<button (click)="showDataTwo()">Show Data</button>
+<button (click)="noShowData()">Show Empty Data</button>
+<button (click)="btnResetData()">Reset Data</button>
+<div *ngFor="let item of testing">
+    {{item.name}}
+</div>
+<div *ngIf="(testing)?.length === 0">no testing</div>
 <hr/>
 
 <button (click)="showData()">Show Data</button>
@@ -7,7 +28,7 @@
 <button (click)="btnReset()">Reset</button>
 
 <div *ngFor="let item of results">
-    {{item.name}} | {{item.icon}} | {{item.dob}}
+    {{item.name}}  {{item.icon}}  {{item.dob}}
 </div>
 <div *ngIf="(results)?.length === 0">no results</div>
 
