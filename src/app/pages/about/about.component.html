@@ -1,8 +1,111 @@
+
+
+<hr/>
+
+<button (click)="showData()">Show Data</button>
+<button (click)="showEmptyData()">Show Empty Data</button>
+<button (click)="btnReset()">Reset</button>
+
+<div *ngFor="let item of results">
+    {{item.name}} | {{item.icon}} | {{item.dob}}
+</div>
+<div *ngIf="(results)?.length === 0">no results</div>
+
+<hr/>
+
+<ul class="list_item">
+    <li *ngFor="let item of state" (click)="toggleActive($event)">
+        {{item}}
+        <button (click)="btnRemove()">Remove</button>
+    </li>
+</ul>
+
+<ul>
+    <li *ngFor="let item of family">
+        <ng-container *ngTemplateOutlet="listTemplate;context:{showIcon:false,showImageTwo:true,listItem:item}"></ng-container>
+    </li>
+</ul>
+
+<ul>
+    <li *ngFor="let item of collegefriends">
+        <ng-container *ngTemplateOutlet="listTemplate;context:{showIcon:true,showImageTwo:false,listItem:item}"></ng-container>
+    </li>
+</ul>
+
+<p>nitesh khatri</p>
+<input type="color" (change)="handleColorChange($event.target.value)"/>
+
+<ul>
+    <li *ngFor="let item of friends">
+        <ng-container *ngTemplateOutlet="listTemplate;context:{showIcon:true,showImageTwo:false,listItem:item}"></ng-container>
+    </li>
+</ul>
+<hr/>
+<ul>
+    <li *ngFor="let item of colleague">
+        <ng-container *ngTemplateOutlet="listTemplate;context:{showIcon:false,showImageTwo:true,listItem:item}"></ng-container>
+        <button>Click</button>
+    </li>
+</ul>
+
+<ul>
+    <li *ngFor="let item of harryList">
+        <ng-container *ngTemplateOutlet="listTemplate;context:{showIcon:false,showImageTwo:false,listItem:item}"></ng-container>
+        <button>Click</button>
+    </li>
+</ul>
+<hr/>
+<ul>
+    <li *ngFor="let item of samList">
+        <ng-container *ngTemplateOutlet="listTemplate;context:{showIcon:false,showImageTwo:false,listItem:item}"></ng-container>
+        <button>Click</button>
+    </li>
+</ul>
+
+
+<ng-template let-showIcon="showIcon" let-listItem="listItem"  let-showImageTwo="showImageTwo" #listTemplate>
+    <span *ngIf="showIcon">+</span> 
+    {{listItem}}
+    <span *ngIf="showImageTwo">image</span>
+</ng-template>
+
+<ul>
+    <li *ngFor="let mark of marks">
+        <div [ngClass]="getClassTwo(mark)">{{mark}}</div>
+    </li>
+</ul>
+
+<div [class.danger]="conditionexample">Deserunt excepteur cillum cupidatat tempor deserunt ex culpa dolore Lorem id pariatur. Commodo nisi laboris pariatur do adipisicing quis tempor pariatur incididunt proident. Et dolore exercitation sint sit.
+
+Ullamco sit non fugiat fugiat dolore. Cillum nostrud eu labore nulla tempor aute non labore tempor eu officia sint ullamco nisi. Anim elit proident et ad labore cillum laboris ullamco occaecat. Ullamco nulla exercitation nulla reprehenderit sint nostrud consectetur aliqua cupidatat ipsum dolore. Ea ullamco amet ea culpa in est dolore enim cillum anim enim.</div>
+<button (click)="flagTwo = !flagTwo">Change</button>
+<div [ngClass]="flagTwo ? 'primary' : 'secondary'">Some text</div>
+
+<button [ngStyle]="{backgroundColor:'gray'}">Button</button>
+
+<div [ngClass]="{'class1':!condition,'class2':condition}">class 1 and 2</div>
+
+<div [ngClass]="{'first second': true}">12 conditioanl</div>
+<div [ngClass]="'first second'">12</div>
+<div [ngClass]="{first:true,second:true,third:false}">123</div>
+
+
+<button [ngClass]="[checkedClass ? 'btn-primary' : 'btn-secondary']">Toggle greeting 3</button>
+<button [ngClass]="checkedClass ? 'btn-primary' : 'btn-secondary'">Toggle greeting 2</button>
+<button class="{{toggleOnTxt ? 'btn-primary' : 'btn-secondary'}}" (click)="btnToggleOnOff()">Toggle Greetings</button>
+<div *ngIf="!toggleOnTxt">
+    <h2>Hello</h2>
+    <p>Good morning to you</p>
+    </div>
+    <hr>
+    <p>Today is Friday and this is a dummy text element to make you feel better</p>
+    <p>Understanding the ngIf directive with the else clause</p>
+
 <div class="row">
     Show <input type="checkbox" [(ngModel)]="showMe" />
   </div>
 
-  <p *ngIf="!showMe">
+  <p *ngIf="showMe">
     ShowMe is unchecked
   </p>
 

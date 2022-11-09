@@ -1,6 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
+import { Component, ElementRef,OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
 import { FormGroup, FormControl, Validators,FormBuilder } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
+
+
+
 
 @Component({
   selector: 'app-about',
@@ -12,9 +15,103 @@ export class AboutComponent implements OnInit {
   msgOnButtonClick: string; // 2
   msgComponentTxt: string; // 3
 
-  showMe:boolean=true;
+  rows:number=5;
+  cols:number=4;
+  height:string='100%';
+  title:'States';
+
+  results:any;
+
+
+  showData(){
+    this.results = Heros;
+  }
+
+  showEmptyData(){
+    this.results = emptyHeros;
+  }
+
+  btnReset(){
+    this.results = [{}];
+  }
+
+  
+  public state :any[]= [
+    'Alabama',
+    'Alaska',
+    'Arizona',
+    'Arkansas',
+    'California',
+    'Colorado',
+    'Connecticut',
+    'Delaware',
+    'Florida',
+    'Georgia',
+    'Hawaii',
+    'Idaho',
+    'Illinois',
+    'Indiana',
+    'Iowa',
+    'Kansas'];
+
+    btnRemove(index){
+      this.state.splice(index,1)
+    }
+
+  public harryList = ['Buy Apples', 'Buy Shoes', 'Buy Chicken'];
+  public samList = ['Buy Oranges', 'Buy Socks', 'Buy Pork'];
+  public friends :any = ['pranay','tejas','vishal']
+  public family : any = ['mom','daddy','brother','sisterinlaw']
+  public collegefriends :any =['abdulla','siddarath','punit']
+  public colleague :any = ['gokul','abhijeet','siddhesh']
+  
+
+  constructor(private el:ElementRef,private api: ApiService,private formBuilder:FormBuilder) { 
+    this.setStyle('--rows',this.rows)
+    this.setStyle('--cols',this.cols)
+    // this.setStyle('--height',this.height)
+    
+  }
+
+  setStyle(s,v){
+    document.documentElement.style.setProperty(s,v)
+  }
+  toggleActive(e){
+    e.target.value.classList.toggle('active');
+  }
+
+  handleColorChange(color){
+    (this.el.nativeElement as HTMLElement).style.setProperty('--main-color',color)
+  }
+
+  public toggleOnTxt:boolean=false;
+  public flagTwo:boolean=false;
+  public showMe:boolean=false;
+  public conditionexample:boolean=true;
+
+  public marks :any = [
+    10, 20, 30, 40 , 50 , 60 , 70 , 80, 90, 100, 110, 120
+  ];
+
+  getClassTwo(mark){
+    if(mark <= 30)
+    return 'beginner';
+    else if(mark <= 75)
+    return 'intermediate'
+    else if(mark <= 100)
+    return 'expert'
+    else 'other'
+  }
+
+
+
+
+  btnToggleOnOff(){
+    this.toggleOnTxt = !this.toggleOnTxt
+  }
 
   condition:boolean=true;
+  condition2:boolean=true;
 
   isValid:boolean=false;
 
@@ -60,6 +157,8 @@ export class AboutComponent implements OnInit {
   getGreenClass() {
     return 'greenClass';
   }
+
+  
 
   public showImage: boolean = true;
 
@@ -357,7 +456,7 @@ export class AboutComponent implements OnInit {
 
 
 
-  constructor(private api: ApiService,private formBuilder:FormBuilder) { }
+  
 
 
   ngOnInit() {
@@ -463,3 +562,26 @@ export class AboutComponent implements OnInit {
   }
 
 }
+
+
+export interface Hero {
+  id: number;
+  name: string;
+  icon:boolean;
+  dob:string
+}
+
+const emptyHeros:Hero[] = []
+
+const Heros : Hero[] = [
+  { id: 11, name: 'Dr Nice',icon:true,dob:'17061989'},
+  { id: 12, name: 'Narco' ,icon:false,dob:'17061989'},
+  { id: 13, name: 'Bombasto',icon:true,dob:'17061989' },
+  { id: 14, name: 'Celeritas' ,icon:true,dob:'17061989'},
+  { id: 15, name: 'Magneta' ,icon:true,dob:'17061989'},
+  { id: 16, name: 'RubberMan' ,icon:true,dob:'17061989'},
+  { id: 17, name: 'Dynama' ,icon:true,dob:'17061989'},
+  { id: 18, name: 'Dr IQ' ,icon:true,dob:'17061989'},
+  { id: 19, name: 'Magma' ,icon:true,dob:'17061989'},
+  { id: 20, name: 'Tornado' ,icon:true,dob:'17061989'}
+]
