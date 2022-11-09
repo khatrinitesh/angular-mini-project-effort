@@ -15,6 +15,47 @@ export class AboutComponent implements OnInit {
   msgOnButtonClick: string; // 2
   msgComponentTxt: string; // 3
 
+  public parentMsg  = 'nitesh khatri is parentmsg'
+  buttonTitle:string = "Show";
+  visible:boolean = true;
+
+  public friendsTwo = [
+    { id: 11, name: 'Watch', price: '5000.00' },
+    { id: 12, name: 'T-Shirt', price: '2000.00' },
+    { id: 13, name: 'Bag', price: '1000.00' },
+    { id: 14, name: 'Laptop', price: '40000.00' },
+    { id: 15, name: 'LED TV', price: '25000.00' }
+  ]
+
+  public products = [
+    { id: 1, name: 'Watch', price: '5000.00' },
+    { id: 2, name: 'T-Shirt', price: '2000.00' },
+    { id: 3, name: 'Bag', price: '1000.00' },
+    { id: 4, name: 'Laptop', price: '40000.00' },
+    { id: 5, name: 'LED TV', price: '25000.00' }
+  ];
+
+  public familyText = [
+    { id:21, name: 'n'},
+    { id: 22, name: 'm'},
+    { id: 23, name: 's'},
+    { id: 24, name: 'a'},
+    { id: 25, name: 'u' }
+  ];
+
+  productStatus:string;
+
+  onStatus(active:boolean){
+    active ? this.productStatus = 'Enabled' : this.productStatus = 'Disabled';
+  }
+
+  
+
+  showhideUtility(){
+    this.visible = this.visible ? false : true
+    this.buttonTitle = this.visible ? "Show":"Hide";
+  }
+
   rows:number=5;
   cols:number=4;
   height:string='100%';
@@ -209,7 +250,7 @@ export class AboutComponent implements OnInit {
   public loginText = 'Login';
   public signUpText = 'Sign Up';
   public condition1: boolean = true;
-  public condition2: boolean = false;
+  // public condition2: boolean = false;
   public sameet: boolean = true;
   public nitesh: boolean = false;
   public applyClass: boolean = true;

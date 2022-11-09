@@ -1,3 +1,19 @@
+<p>Product status <strong>{{productStatus}}</strong></p>
+
+<!-- <app-child *ngFor="let product of products" [friend]="friend" [product]="product" (status)="onStatus($event)"></app-child> -->
+
+<!-- // child component  -->
+<app-child  [friends]="friendsTwo" [products]="products" [family]="familyText"></app-child>
+
+<!-- <button type="button" class="{{visible : 'btn-primary' : 'btn-success'}}" (click)="showhideUtility()">{{buttonTitle}}</button>
+<app-child *ngIf="!visible" [childMsg]="parentMsg" ></app-child> -->
+
+<!-- // One parameter -->
+<p>{{ "Arun" | userfullname :"kumar"}}</p>    
+
+<!-- // two parameter -->
+<p>{{ "Arun" | userfullname : "kumar" : "gudelli" }}</p>    
+
 <h2>{{'nitesh khatri' | shortname}}</h2>
 
 <h1>

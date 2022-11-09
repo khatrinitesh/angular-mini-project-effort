@@ -34,6 +34,9 @@ import { TemplatedrivenformComponent } from './components/templatedrivenform/tem
 import { TeacherComponent } from './components/teacher/teacher.component';
 import { StudentComponent } from './components/student/student.component';
 import { ShortnamePipe } from './shortname.pipe';
+import { UserfullnamePipe } from './userfullname.pipe';
+import { ParentsComponent } from './components/parents/parents.component';
+import { ChildComponent } from './components/child/child.component';
 
 
 
@@ -57,6 +60,9 @@ import { ShortnamePipe } from './shortname.pipe';
     TeacherComponent,
     StudentComponent,
     ShortnamePipe,
+    UserfullnamePipe,
+    ParentsComponent,
+    ChildComponent,
   ],
   imports: [
     BrowserModule,

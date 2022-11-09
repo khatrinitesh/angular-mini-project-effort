@@ -1,0 +1,34 @@
+<!-- say {{childMsg}} -->
+
+<p *ngFor="let product of products" >
+    {{product.id}}
+    {{product.name}}
+    {{product.price}}
+    <!-- <button (click)="btnProductRemove()">Remove</button> -->
+    <button (click)="btnRemove('products')">Remove</button>
+
+</p>
+
+<hr/>
+
+<p *ngFor="let friend of friends" >
+    {{friend.id}}
+    {{friend.name}}
+    {{friend.price}}
+    <!-- <button (click)="btnFriendRemove()">Remove</button> -->
+    <button (click)="btnRemove( 'friends')">Remove</button>
+
+</p>
+
+<hr/>
+
+<p *ngFor="let fam of family" >
+    {{fam.id}}
+    {{fam.name}}
+    <!-- <button (click)="btnFamRemove()">Remove</button> -->
+    <button (click)="btnRemove( 'family')">Remove</button>
+
+</p>
+
+<!-- <button (click)="isActive(true)" [disabled]="enabled">Enabled</button>
+<button (click)="isActive(false)" [disabled]="disabled">Disabled</button> -->
