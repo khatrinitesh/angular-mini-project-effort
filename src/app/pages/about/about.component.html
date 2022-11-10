@@ -1,9 +1,59 @@
+<ul *ngFor="let data of httpdata">
+    <li>
+        <h3>Name: {{data.name}}
+        </h3> 
+        <p>{{data.address.city}}</p>
+        <button (click)="btnRemoveJSON(data)">Remove</button>
+
+    </li>
+</ul>
+
+{{todaydate}}
+
+<h1>Custom Pipe</h1>
+<b>Square root of 25 is: {{25 | sqrt}}</b>
+<br/>
+<b>Square root of 729 is: {{729 | sqrt}}</b>
+
+<div style = "width:100%;clear:both;">  
+    <div style = "border:solid 1px black;">  
+      <h1>Uppercase Pipe</h1>  
+      <b>{{title | uppercase}}</b><br/>  
+
+      <h1>Lowercase Pipe</h1>  
+      <b>{{title | lowercase}}</b>  
+
+      <h1>Currency Pipe</h1>  
+      <b>{{6589.23 | currency:"INR"}}</b><br/>  
+      <b>{{6589.23 | currency:"INR":true}}</b>   
+
+
+      <h1>Date pipe</h1>  
+      <b>{{todaydate | date:'dd/M/yyy'}}</b><br/>  
+      <b>{{todaydate | date:'shortTime'}}</b>  
+
+
+      <h1>Decimal Pipe</h1>  
+      <b>{{ 454.78787814 | number: '3.4-4' }}</b> 
+    </div>  
+    <div style = "border:solid 1px black;">  
+      <h1>Json Pipe</h1>  
+      <b>{{ jsonval | json }}</b>  
+
+      <h1>Percent Pipe</h1>  
+      <b>{{00.54565 | percent}}</b>  
+
+      <h1>Slice Pipe</h1>  
+      <b>{{months | slice:2:6}}</b>  
+    </div>  
+  </div>   
+<br/>
 <p>Product status <strong>{{productStatus}}</strong></p>
 
 <!-- <app-child *ngFor="let product of products" [friend]="friend" [product]="product" (status)="onStatus($event)"></app-child> -->
 
 <!-- // child component  -->
-<app-child  [friends]="friendsTwo" [products]="products" [family]="familyText" [foods]="foodItem"></app-child>
+<app-child  [cricket]="cricketData" [friends]="friendsTwo" [products]="products" [family]="familyText" [foods]="foodItem"></app-child>
 
 <!-- <button type="button" class="{{visible : 'btn-primary' : 'btn-success'}}" (click)="showhideUtility()">{{buttonTitle}}</button>
 <app-child *ngIf="!visible" [childMsg]="parentMsg" ></app-child> -->

@@ -37,6 +37,7 @@ import { ShortnamePipe } from './shortname.pipe';
 import { UserfullnamePipe } from './userfullname.pipe';
 import { ParentsComponent } from './components/parents/parents.component';
 import { ChildComponent } from './components/child/child.component';
+import { SqrtPipe } from './sqrt.pipe';
 
 
 
@@ -63,6 +64,7 @@ import { ChildComponent } from './components/child/child.component';
     UserfullnamePipe,
     ParentsComponent,
     ChildComponent,
+    SqrtPipe,
   ],
   imports: [
     BrowserModule,

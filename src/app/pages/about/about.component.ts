@@ -1,7 +1,9 @@
 import { Component, ElementRef,OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
 import { FormGroup, FormControl, Validators,FormBuilder } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
-
+import {MyserviceService} from '../../service/myservice.service';
+import { HttpClient } from  '@angular/common/http';
+import { map } from 'rxjs/operators';  
 
 
 
@@ -14,10 +16,21 @@ export class AboutComponent implements OnInit {
   msgOnChildCompInit: string; // 1
   msgOnButtonClick: string; // 2
   msgComponentTxt: string; // 3
+  title = 'my-first-app';  
+  todaydate = new Date();  
+  jsonval = {name: 'Alex', age: '25', address:{a1: 'Paris', a2: 'France'}};  
+  months = ['Jan', 'Feb', 'Mar', 'April', 'May', 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];  
 
   public parentMsg  = 'nitesh khatri is parentmsg'
   buttonTitle:string = "Show";
   visible:boolean = true;
+  editdata:any;
+  public cricketData = [
+    {id:55,name:'sachin'},
+    {id:56,name:'rahul'},
+    {id:57,name:'ajay'},
+    {id:58,name:'dhoni'}
+  ]
 
   public friendsTwo = [
     { id: 11, name: 'Watch', price: '5000.00' },
@@ -127,7 +140,7 @@ export class AboutComponent implements OnInit {
   public colleague :any = ['gokul','abhijeet','siddhesh']
   
 
-  constructor(private el:ElementRef,private api: ApiService,private formBuilder:FormBuilder) { 
+  constructor(private el:ElementRef,private api: ApiService,private formBuilder:FormBuilder,private myservice:MyserviceService,private http:HttpClient) { 
     this.setStyle('--rows',this.rows)
     this.setStyle('--cols',this.cols)
     // this.setStyle('--height',this.height)
@@ -227,7 +240,7 @@ export class AboutComponent implements OnInit {
     this.showImage = !this.showImage
   }
 
-
+  public httpdata:any;
   public showNew: boolean = false
   public fullName: string = 'hello assurekit'
   public myFormGrp!: FormGroup;
@@ -515,8 +528,26 @@ export class AboutComponent implements OnInit {
     }
   ];
 
+  btnRemoveJSON(data:any){
+    this.httpdata=this.httpdata.filter(obj=>obj.id != data.id)
+  }
+  btnEditJSON(data:any){
+    this.editdata[data] = true;
+    console.log(this.httpdata);
+  }
+  editedvalue(){
+    console.log(this.httpdata);
+  }
 
   ngOnInit() {
+
+    this.http.get("http://jsonplaceholder.typicode.com/users").subscribe((data) => { 
+      console.log(data);
+      this.httpdata= data
+    })
+
+
+    this.todaydate = this.myservice.showTodayDate();
 
     this.dateToday = new Date().toDateString();
     this.name = 'Simplilearn'

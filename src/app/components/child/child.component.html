@@ -3,6 +3,16 @@
 <div class="box_row">
     <div class="box_content">
         <div class="row">
+            <div class="col-4 card p-2 mb-3" *ngFor="let cri of cricket">
+                {{cri.id}}
+                {{cri.name}}
+                {{cri.price}}
+                <button (click)="btnRemove('cricket')">Remove</button>
+            </div>
+        </div>
+    </div>
+    <div class="box_content">
+        <div class="row">
             <div class="col-4 card p-2 mb-3" *ngFor="let foo of foods">
                 {{foo.id}}
                 {{foo.name}}

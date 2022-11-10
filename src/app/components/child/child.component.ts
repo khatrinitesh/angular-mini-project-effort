@@ -13,6 +13,7 @@ export class ChildComponent implements OnInit {
   @Input() friends;
   @Input() family;
   @Input() foods;
+  @Input() cricket;
 
   // OUTPUT
   @Output() btnToggle=new EventEmitter();
@@ -39,6 +40,9 @@ export class ChildComponent implements OnInit {
     }
     else if(obj == 'foods'){
       this.foods.splice(index,1)
+    }
+    else if(obj == 'cricket'){
+      this.cricket.splice(index,1)
     }
   }
   isActive(active:boolean){
