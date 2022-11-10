@@ -1,9 +1,68 @@
+
+<div class="heading">
+    <ng-container *ngTemplateOutlet="headerTemplate ? headerTemplate : defaultHeader"></ng-container>
+</div>
+<div class="body">
+    <ng-container *ngTemplateOutlet="bodyTemplate ? bodyTemplate : defaultBody"></ng-container>
+</div>
+<div class="footer">
+    <ng-container *ngTemplateOutlet="footerTemplate ? footerTemplate : defaultFooter"></ng-container>
+</div>
+
+<ng-template #headerTemplate>Some header...</ng-template>
+<ng-template #bodyTemplate>Some body...</ng-template>
+<ng-template #footerTemplate>Some footer...</ng-template>
+
+<!-- <input type="text" [(ngModel)]="color"/>
+<div [ngSwitch]="color">
+    <div *ngSwitchCase="red">red</div>
+    <div *ngSwitchCase="blue">blue</div>
+    <div *ngSwitchCase="orange">orange</div>
+    <div *ngSwitchCase="pink">pink</div>
+    <div *ngSwitchCase="cyan">cyan</div>
+    <div *ngSwitchDefault>This is a default</div>
+</div> -->
+
+<input type="text" [(ngModel)]="num"/>
+<div [ngSwitch]="num">
+    <div *ngSwitchCase="1">One</div>
+    <div *ngSwitchCase="2">Two</div>
+    <div *ngSwitchCase="3">Three</div>
+    <div *ngSwitchCase="4">Four</div>
+</div>
+
+<label>
+    <input [(ngModel)]='selected' type='checkbox'/>
+    Me
+</label>
+
+<div *ngIf="selected">
+    nitesh khatri is checked
+</div>
+
+<ng-container
+  *ngIf="isLoggedIn; then loggedIn; else loggedOut">
+</ng-container>
+
+<ng-template #loggedIn>
+  <div>
+    Welcome back, friend.
+  </div>
+</ng-template>
+<ng-template #loggedOut>
+  <div>
+    Please friend, login.
+  </div>
+</ng-template>
+
+
+
 <ul *ngFor="let data of httpdata">
     <li>
         <h3>Name: {{data.name}}
         </h3> 
         <p>{{data.address.city}}</p>
-        <button (click)="btnRemoveJSON(data)">Remove</button>
+        <button (click)="btnRemoveJSON(data.id)">Remove</button>
 
     </li>
 </ul>

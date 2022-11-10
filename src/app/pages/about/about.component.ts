@@ -4,6 +4,7 @@ import { ApiService } from '../../services/api.service';
 import {MyserviceService} from '../../service/myservice.service';
 import { HttpClient } from  '@angular/common/http';
 import { map } from 'rxjs/operators';  
+import { Observable } from 'rxjs';
 
 
 
@@ -13,6 +14,8 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
+
+  public FrGrp:any;
   msgOnChildCompInit: string; // 1
   msgOnButtonClick: string; // 2
   msgComponentTxt: string; // 3
@@ -25,12 +28,15 @@ export class AboutComponent implements OnInit {
   buttonTitle:string = "Show";
   visible:boolean = true;
   editdata:any;
+  public hasSearched:boolean=false;
+  lukeData:Observable<PeopleData>
   public cricketData = [
     {id:55,name:'sachin'},
     {id:56,name:'rahul'},
     {id:57,name:'ajay'},
     {id:58,name:'dhoni'}
   ]
+  
 
   public friendsTwo = [
     { id: 11, name: 'Watch', price: '5000.00' },
@@ -177,9 +183,6 @@ export class AboutComponent implements OnInit {
     else 'other'
   }
 
-
-
-
   btnToggleOnOff(){
     this.toggleOnTxt = !this.toggleOnTxt
   }
@@ -240,13 +243,16 @@ export class AboutComponent implements OnInit {
     this.showImage = !this.showImage
   }
 
+
+  public selected:boolean=false;
   public httpdata:any;
+  public httpdataTwo:any;
   public showNew: boolean = false
   public fullName: string = 'hello assurekit'
   public myFormGrp!: FormGroup;
   public receivedChildMessage: string;
   public receivedChildMessage2: string;
-  public isLoggedIn: boolean = false
+  public isLoggedIn: boolean = true
   public isNewUser: boolean = true
   public isDone: boolean = false;
   public isDoneNew: boolean = true;
@@ -529,22 +535,22 @@ export class AboutComponent implements OnInit {
   ];
 
   btnRemoveJSON(data:any){
-    this.httpdata=this.httpdata.filter(obj=>obj.id != data.id)
+    this.httpdata = this.httpdata.filter(obj=>obj.id != data.id)
   }
-  btnEditJSON(data:any){
-    this.editdata[data] = true;
-    console.log(this.httpdata);
-  }
-  editedvalue(){
-    console.log(this.httpdata);
-  }
+  // btnEditJSON(data:any){
+  //   this.editdata[data] = true;
+  //   console.log(this.httpdata);
+  // }
+  // editedvalue(){
+  //   console.log(this.httpdata);
+  // }
 
   ngOnInit() {
 
     this.http.get("http://jsonplaceholder.typicode.com/users").subscribe((data) => { 
       console.log(data);
       this.httpdata= data
-    })
+    });
 
 
     this.todaydate = this.myservice.showTodayDate();
@@ -654,6 +660,34 @@ export class AboutComponent implements OnInit {
 
   
 }
+
+
+//START => FRIENDSGROUP TESTING
+export interface FriendsGroup  {
+  id:number;
+  name:string; 
+}
+
+const FrGrp : FriendsGroup[] = [
+  {
+    id:1,
+    name:'abc'
+  },
+  {
+    id:2,
+    name:'def'
+  },
+
+  {
+    id:3,
+    name:'ghi'
+  },
+  {
+    id:4,
+    name:'jkl'
+  },
+]
+
 
 // START => HERO TESTING
 export interface HeroTesting {
