@@ -1,3 +1,61 @@
+<table class="table"  *ngIf="employeedata">
+    <thead>
+        <tr >
+            <th scope="col">Employee Id</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">City</th>
+            <th scope="col">Experience</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Married</th>
+            <th scope="col">Info</th>
+            <th scope="col">Role</th>
+            <th scope="col">Else</th>
+            <th scope="col">Then</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of employeedata">
+ 
+            <td>{{data.empid}}</td>
+            <td>{{data.fullname}}</td>
+            <td>{{data.city}}</td>
+            <td>{{data.experience}}</td>
+            <td>{{data.salary}}</td>
+            <td>{{data.married}}</td>
+            <td>
+                <p *ngIf="data.married == true && data.salary > 600000"></p>
+            </td>
+            <td>{{data.role}}</td>
+            <td>
+                <button *ngIf="data.role == 'admin';else view" class="btn btn-primary">Edit</button>
+                <ng-template #view>
+                    <button class="btn btn-primary">View</button>
+                </ng-template>
+            </td>
+            <td>
+                <ng-container *ngIf="data.role == 'public';then public;else user"></ng-container>
+                <ng-template #user>
+                    <p>authenticated</p>
+                </ng-template>
+                <ng-template #public>
+                    <p>public</p>
+                </ng-template>
+            </td>
+        </tr>
+ 
+    </tbody>
+</table>
+
+<!-- Using Then statement in angular *ngIf:   -->
+<!-- <ng-container *ngIf="data.role =='public';then  public; else user">
+</ng-container>
+
+<ng-template #user>
+   <p>authenticated</p>
+</ng-template>
+<ng-template #public>
+  <p>public</p>
+</ng-template> -->
 
 <div class="heading">
     <ng-container *ngTemplateOutlet="headerTemplate ? headerTemplate : defaultHeader"></ng-container>

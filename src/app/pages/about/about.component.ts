@@ -29,12 +29,45 @@ export class AboutComponent implements OnInit {
   visible:boolean = true;
   editdata:any;
   public hasSearched:boolean=false;
-  lukeData:Observable<PeopleData>
-  public cricketData = [
-    {id:55,name:'sachin'},
-    {id:56,name:'rahul'},
-    {id:57,name:'ajay'},
-    {id:58,name:'dhoni'}
+  
+
+  public employeedata = [
+    {
+      empid: 5623,
+      fullname: "Stephen",
+      city: "Newyork",
+      experience: "5 years",
+      salary: 500000,
+      married: false,
+      role: 'admin'
+    },
+    {
+      empid: 6523,
+      fullname: "Michel",
+      city: "london",
+      experience: "7 years",
+      salary: 700000,
+      married: true,
+      role: 'user'
+    },
+    {
+      empid: 6523,
+      fullname: "peeter",
+      city: "Dubai",
+      experience: "8 years",
+     // salary: null,
+      married: true,
+      role: 'public'
+    },
+    {
+      empid: 7458,
+      fullname: "stella",
+      city: "Paris",
+      experience: "4 years",
+      salary: 400000,
+      married: false,
+      role: 'user'
+    }
   ]
   
 
@@ -84,7 +117,7 @@ export class AboutComponent implements OnInit {
   rows:number=5;
   cols:number=4;
   height:string='100%';
-  title:'States';
+  // title:'States';
   public testing:any;
   public  results:any;
   dateToday: string;
@@ -546,6 +579,8 @@ export class AboutComponent implements OnInit {
   // }
 
   ngOnInit() {
+
+    console.log(this.employeedata);
 
     this.http.get("http://jsonplaceholder.typicode.com/users").subscribe((data) => { 
       console.log(data);
