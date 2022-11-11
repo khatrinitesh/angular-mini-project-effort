@@ -1,3 +1,208 @@
+<div class="form" [formGroup]="form">
+    <label for="email">Email</label>
+    <input name="email" type="text" formControlName="email">
+    <div class="errors">
+      <span *ngIf="form.get('email').hasError('required')">Email is Required</span> 
+      <span *ngIf="form.get('email').hasError('email')">Email is mailformed</span> 
+    </div>
+    <label for="password">Password</label>
+    <input name="password" type="password" formControlName="password">
+    <div class="errors">
+      <span *ngIf="form.get('password').hasError('required')">Password is Required</span>
+      <span *ngIf="form.get('password').hasError('password-previously-used')">Password was previously used</span>
+    </div>
+    <label for="confirmation">Password Confirmation</label>
+    <input name="confirmation" type="password" formControlName="confirmation">
+    <div class="errors">
+      <span *ngIf="form.get('confirmation').hasError('required')">Password confirmation is Required</span> 
+      <span *ngIf="form.get('confirmation').hasError('password-previously-used')">Password was previously used</span>
+    </div>
+    <div class="form-errors-summary"> 
+      <div *ngIf="form.hasError('password-confirmation-mismatch')">Password confirmation does not match the password</div>
+      <div *ngIf="form.hasError('password-previously-used')">Password was used already. Please select a different password.</div>
+    </div>
+    <button [disabled]="!form.valid" type="submit">SUBMIT</button>
+    <div *ngIf="(form.statusChanges | async) === 'PENDING'" class="progress">VALIDATION IS IN PROGRESS</div>
+  </div>
+
+  <hr/>
+  <hr/>
+
+<div *ngIf="isValid; else templateName">
+    If isValid is true
+</div>
+
+<ng-template #isValid>
+    If isValid is false
+</ng-template>
+
+
+<p>
+    The condition is currently
+    <span [ngClass]="{ 'a': !condition, 'b': condition, 'unless': true }">{{condition}}</span>.
+    <button
+      type="button"
+      (click)="condition = !condition"
+      [ngClass] = "{ 'a': condition, 'b': !condition }" >
+      Toggle condition to {{condition ? 'false' : 'true'}}
+    </button>
+  </p>
+
+<table style="width:100%;border:1px solid red;" *ngIf="abced">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Role</th>
+        <th>Score</th>
+        <th>Status</th>
+        <th>Status Score</th>
+    </tr>
+    <tbody>
+        <ng-container *ngFor="let abc of abced;let even=even;let odd=odd;">
+            <tr class="even" *ngIf="even == true;else oddNumber">
+                <td>{{abc.id}}</td>
+                <td>{{abc.name}}</td>
+                <td>{{abc.age}}</td>
+                <td>{{abc.role}}</td>
+                <td>{{abc.score}}</td>
+                <td>
+                    <button *ngIf="abc.role == 'admin';else View" class="btn btn-primary"> Edit</button>
+                    <ng-template #View>
+                        <button class="btn btn-primary">View</button>
+                    </ng-template>
+                </td>
+                <td>
+                    <p *ngIf="abc.score > 80">Grade A</p>
+                    <p *ngIf="abc.score > 50 && abc.score <=80 ">Grade B</p>
+                    <p *ngIf="abc.score >= 35 && abc.score <=50">Grade C</p>
+                </td>
+            </tr>
+            <ng-template #oddNumber>
+                <tr class="odd">
+                    <td>{{abc.id}}</td>
+                    <td>{{abc.name}}</td>
+                    <td>{{abc.age}}</td>
+                    <td>{{abc.role}}</td>
+                    <td>{{abc.score}}</td>
+                    <td>
+                        <button *ngIf="abc.role == 'admin';else View" class="btn btn-primary"> Edit</button>
+                        <ng-template #View>
+                            <button class="btn btn-primary">View</button>
+                        </ng-template>
+                    </td>
+                    <td>
+                        <p *ngIf="abc.score > 80">Grade A</p>
+                        <p *ngIf="abc.score > 50 && abc.score <=80 ">Grade B</p>
+                        <p *ngIf="abc.score >= 35 && abc.score <=50">Grade C</p>
+                    </td>
+                </tr>
+            </ng-template>
+        </ng-container>
+    </tbody>
+</table>
+
+<hr/>
+
+<div>
+    <div *ngIf="false ;else showNgTemplateContent">
+        Shouldn't be displayed 
+    </div>
+</div>
+<ng-template #showNgTemplateContent>
+    nitesh khatri is ng template
+</ng-template>
+
+
+
+<ng-template #customHeader>
+    <div class="custom-class">Some content...</div>
+</ng-template>
+<ng-template #customBody>
+    <div class="custom-class">Some content...</div>
+</ng-template>
+<ng-template #customFooter>
+    <div class="custom-class">Some content...</div>
+</ng-template>
+<app-projectcontent [headerTemplate]="customHeader" [bodyTemplate]="customBody" [footerTemplate]="customFooter"></app-projectcontent>
+
+<hr/>
+
+<div class="heading">
+    <ng-container *ngTemplateOutlet="headerTemplate ? headerTemplate :
+      defaultHeader"></ng-container>
+   </div>
+   <div class="body">
+    <ng-container *ngTemplateOutlet="bodyTemplate  ? bodyTemplate : defaultBody" >
+      </ng-container>
+   </div>
+   <div class="footer">
+    <ng-container *ngTemplateOutlet="footerTemplate ? footerTemplate :
+      defaultFooter"></ng-container>
+  </div>
+   <ng-template #defaultHeader>Some header...</ng-template>
+   <ng-template #defaultBody>Some body...</ng-template>
+  <ng-template #defaultFooter>Some footer...</ng-template>
+  
+
+
+
+  <!-- <form (ngSubmit)="onSubmit()">
+    <ng-container *ngTemplateOutlet="companyLogoTemplate"></ng-container>
+     <h1>User info</h1>
+    <label>Name:</label> <input type="text" [(ngModel))="userName" />
+    <label>Account ID:</label> <input type="text" [(ngModel))= "accountId" />
+    <button>Submit</button>
+  </form>
+  <div class="footer">
+    <ng-container *ngTemplateOutlet="companyLogoTemplate"></ng-container>
+  </div>
+
+  <ng-template #companyLogoTemplate>
+     <div class="companyLogo">
+      <img [src]='LogoSourceUrl'>
+      <label>The ACME company, {{employeeCount}} people working for you!</label>
+    </div>
+  </ng-template> -->
+
+
+
+<div *ngFor="let item of items">
+    <div *ngIf="item.id">{{item.name}}</div>
+</div>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Employee ID</th>
+            <th>Full Name</th>
+            <th>City</th>
+            <th>Experience</th>
+        </tr>
+    </thead>
+    <tbody>
+            <ng-container *ngFor="let data of employeeTwoData;let even = even; let odd = odd">
+              <tr class="evencls" *ngIf="even == true; else oddtemplate">
+                  <td >{{data.empid}}</td>
+                  <td >{{data.fullname}}</td>
+                  <td>{{data.city}}</td>
+                  <td>{{data.experience}}</td>
+              </tr>
+              <ng-template #oddtemplate>
+                  <tr class="oddcls">
+                          <td >{{data.empid}} </td>
+                          <td >{{data.fullname}}</td>
+                          <td>{{data.city}}</td>
+                          <td>{{data.experience}}</td>
+                      </tr>
+                </ng-template>
+          </ng-container>
+    </tbody>
+</table>
+
+<hr/>
+
 <table class="table"  *ngIf="employeedata">
     <thead>
         <tr >
@@ -23,11 +228,12 @@
             <td>{{data.salary}}</td>
             <td>{{data.married}}</td>
             <td>
-                <p *ngIf="data.married == true && data.salary > 600000"></p>
+                <p *ngIf="data.married == true && data.salary > 600000">married and greater than salary 60000 </p>
+                <p *ngIf="data.role == 'admin' || data.experience == '8 years'">admin or 8 years</p>
+                <p *ngIf="data.city != 'London'">not residing in london</p>
             </td>
             <td>{{data.role}}</td>
-            <td>
-                <button *ngIf="data.role == 'admin';else view" class="btn btn-primary">Edit</button>
+            <td><button *ngIf="data.role == 'admin';else view" class="btn btn-primary">Edit</button>
                 <ng-template #view>
                     <button class="btn btn-primary">View</button>
                 </ng-template>
@@ -45,17 +251,6 @@
  
     </tbody>
 </table>
-
-<!-- Using Then statement in angular *ngIf:   -->
-<!-- <ng-container *ngIf="data.role =='public';then  public; else user">
-</ng-container>
-
-<ng-template #user>
-   <p>authenticated</p>
-</ng-template>
-<ng-template #public>
-  <p>public</p>
-</ng-template> -->
 
 <div class="heading">
     <ng-container *ngTemplateOutlet="headerTemplate ? headerTemplate : defaultHeader"></ng-container>

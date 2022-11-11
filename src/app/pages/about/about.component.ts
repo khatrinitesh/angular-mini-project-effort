@@ -1,4 +1,4 @@
-import { Component, ElementRef,OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
+import { Component, ElementRef,OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef ,NgForm} from '@angular/core';
 import { FormGroup, FormControl, Validators,FormBuilder } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import {MyserviceService} from '../../service/myservice.service';
@@ -29,7 +29,58 @@ export class AboutComponent implements OnInit {
   visible:boolean = true;
   editdata:any;
   public hasSearched:boolean=false;
+  public LogoSourceUrl:string = 'https://via.placeholder.com/350x150'
+  userName:boolean=true
+  accountId:boolean=true
+  public abced = [
+    {
+
+      id:11,name:'a',age:33,role:'admin',score:44
+    },
+    {
+      id:12,name:'u',age:43,role:'user',score:44
+    },
+    {
+      id:13,name:'s',age:40,role:'public',score:44
+    },
+    {
+      id:14,name:'n',age:67,role:'admin',score:54
+    },
+    {
+
+      id:11,name:'a',age:64,role:'user',score:100
+    },
+    {
+      id:12,name:'u',age:40,role:'admin',score:35
+    },
+  ]
+  public items = [
+    {
+      id:11,name:'a',
+    },
+    {
+      id:12,name:'u',
+    },
+    {
+      id:13,name:'s',
+    },
+    {
+      id:14,name:'n',
+    },
+  ]
   
+
+  public employeeTwoData = [
+    {
+      empid: 5623,fullname: "Stephen",city: "Newyork",experience: "5 years"  
+    },
+    { empid: 6523,fullname: "Michel",city: "london",experience: "7 years"
+    },
+    { empid: 6523,fullname: "peeter",city: "Dubai",experience: "8 years"
+    },
+    { empid: 7458,fullname: "stella",city: "Paris",experience: "4 years"
+    }
+  ]
 
   public employeedata = [
     {
@@ -148,6 +199,8 @@ export class AboutComponent implements OnInit {
     this.results = [{}];
   }
 
+  angForm:FormGroup
+
   
   public state :any[]= [
     'Alabama',
@@ -177,12 +230,19 @@ export class AboutComponent implements OnInit {
   public family : any = ['mom','daddy','brother','sisterinlaw']
   public collegefriends :any =['abdulla','siddarath','punit']
   public colleague :any = ['gokul','abhijeet','siddhesh']
+  public readonly form:FormGroup;
   
 
   constructor(private el:ElementRef,private api: ApiService,private formBuilder:FormBuilder,private myservice:MyserviceService,private http:HttpClient) { 
     this.setStyle('--rows',this.rows)
     this.setStyle('--cols',this.cols)
     // this.setStyle('--height',this.height)
+
+    this.form = new FormGroup({
+      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'password': new FormControl(null, [Validators.required]),
+      'confirmation': new FormControl(null, [Validators.required])
+    });
     
   }
 
@@ -770,3 +830,14 @@ const Heros : Hero[] = [
   { id: 20, name: 'Tornado' ,icon:true,dob:'17061989'}
 ]
 // END => HERO
+
+
+function passwordConfirmationMissmatch(control: FormGroup): ValidationErrors | null {
+  const password = control.get('password');
+  const confirmation = control.get('confirmation');
+  if (!password || !confirmation || password.value === confirmation.value) {
+    return null;
+  }
+  
+  return { 'password-confirmation-mismatch': true };
+}

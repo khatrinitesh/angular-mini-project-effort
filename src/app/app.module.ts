@@ -38,6 +38,7 @@ import { UserfullnamePipe } from './userfullname.pipe';
 import { ParentsComponent } from './components/parents/parents.component';
 import { ChildComponent } from './components/child/child.component';
 import { SqrtPipe } from './sqrt.pipe';
+import { ProjectcontentComponent } from './components/projectcontent/projectcontent.component';
 
 
 
@@ -65,6 +66,7 @@ import { SqrtPipe } from './sqrt.pipe';
     ParentsComponent,
     ChildComponent,
     SqrtPipe,
+    ProjectcontentComponent,
   ],
   imports: [
     BrowserModule,
