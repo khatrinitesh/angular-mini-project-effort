@@ -39,6 +39,8 @@ import { ParentsComponent } from './components/parents/parents.component';
 import { ChildComponent } from './components/child/child.component';
 import { SqrtPipe } from './sqrt.pipe';
 import { ProjectcontentComponent } from './components/projectcontent/projectcontent.component';
+import { UsernameCheckerFormComponent } from './components/username-checker-form/username-checker-form.component';
+import { ScrollbacktopComponent } from './components/scrollbacktop/scrollbacktop.component';
 
 
 
@@ -67,6 +69,8 @@ import { ProjectcontentComponent } from './components/projectcontent/projectcont
     ChildComponent,
     SqrtPipe,
     ProjectcontentComponent,
+    UsernameCheckerFormComponent,
+    ScrollbacktopComponent,
   ],
   imports: [
     BrowserModule,

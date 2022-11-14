@@ -1,4 +1,4 @@
-import { Component, ElementRef,OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef ,NgForm} from '@angular/core';
+import { Component, ElementRef,OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
 import { FormGroup, FormControl, Validators,FormBuilder } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import {MyserviceService} from '../../service/myservice.service';
@@ -15,6 +15,38 @@ import { Observable } from 'rxjs';
 })
 export class AboutComponent implements OnInit {
 
+
+  public exampleForm:FormGroup;
+  public all  = [
+    {
+      id:1,
+      name:'d1',
+      checked: false
+    },
+    {
+      id:2,
+      name:'d2',
+      checked: false
+    },
+    {
+      id:3,
+      name:'d3',
+      checked: false
+    },
+    {
+      id:4,
+      name:'d4',  
+      checked: false
+    },
+    {
+      id:5,
+      name:'d5',
+      checked: false
+    },
+  ];
+
+  public selected = [];
+  
   public FrGrp:any;
   msgOnChildCompInit: string; // 1
   msgOnButtonClick: string; // 2
@@ -30,8 +62,27 @@ export class AboutComponent implements OnInit {
   editdata:any;
   public hasSearched:boolean=false;
   public LogoSourceUrl:string = 'https://via.placeholder.com/350x150'
-  userName:boolean=true
+  // userName:boolean=true
   accountId:boolean=true
+  emailAddress:string='';
+
+  // INPUT
+  @Input() imageName: string;
+  @Input() locationName: string;
+
+  // PLAYLISTS 
+  public noPlaylists:boolean=false 
+  public renamingPlaylists:boolean=true;
+
+  public playlists:any = [
+    {"name": "Rock", "numberOfSongs": 5, "rating": 5},
+    {"name": "Contemporary", "numberOfSongs": 9, "rating": 1},
+    {"name": "Popular", "numberOfSongs": 14, "rating": 5},
+    {"name": "Acoustic", "numberOfSongs": 3, "rating": 4},
+    {"name": "Wedding Songs", "numberOfSongs": 25, "rating": 5},
+    {"name": "Metal", "numberOfSongs": 0, "rating": 0},
+  ]
+
   public abced = [
     {
 
@@ -158,7 +209,9 @@ export class AboutComponent implements OnInit {
     active ? this.productStatus = 'Enabled' : this.productStatus = 'Disabled';
   }
 
-  
+  oninputchange(){
+    console.log(this.exampleForm)
+  }
 
   showhideUtility(){
     this.visible = this.visible ? false : true
@@ -234,16 +287,25 @@ export class AboutComponent implements OnInit {
   
 
   constructor(private el:ElementRef,private api: ApiService,private formBuilder:FormBuilder,private myservice:MyserviceService,private http:HttpClient) { 
+    this.createForm()
     this.setStyle('--rows',this.rows)
     this.setStyle('--cols',this.cols)
     // this.setStyle('--height',this.height)
 
-    this.form = new FormGroup({
-      'email': new FormControl(null, [Validators.required, Validators.email]),
-      'password': new FormControl(null, [Validators.required]),
-      'confirmation': new FormControl(null, [Validators.required])
-    });
+    // this.form = new FormGroup({
+    //   'email': new FormControl(null, [Validators.required, Validators.email]),
+    //   'password': new FormControl(null, [Validators.required]),
+    //   'confirmation': new FormControl(null, [Validators.required])
+    // });
     
+  }
+
+  createForm(){
+    this.exampleForm = this.formBuilder.group({
+      name:['',Validators.required],
+      address: ['', Validators.required ]
+    })
+    console.log(this.exampleForm)
   }
 
   setStyle(s,v){
@@ -260,7 +322,7 @@ export class AboutComponent implements OnInit {
   public toggleOnTxt:boolean=false;
   public flagTwo:boolean=false;
   public showMe:boolean=false;
-  public conditionexample:boolean=true;
+  public conditionexample:boolean=false;
 
   public marks :any = [
     10, 20, 30, 40 , 50 , 60 , 70 , 80, 90, 100, 110, 120
@@ -280,7 +342,7 @@ export class AboutComponent implements OnInit {
     this.toggleOnTxt = !this.toggleOnTxt
   }
 
-  condition:boolean=true;
+  condition:boolean=false;
   condition2:boolean=true;
 
   isValid:boolean=false;
@@ -639,6 +701,16 @@ export class AboutComponent implements OnInit {
   // }
 
   ngOnInit() {
+    // if(this.imageName){
+    //   this.imageName = 'https://image.shutterstock.com/image-illustration/triangle-solid-black-golden-illustration-260nw-1862937556.jpg'
+    // }
+    // else{
+    //   this.imageName = 'https://helmpaint.com/wp-content/uploads/2020/01/3-D-wallpaper.jpg'
+    // }
+
+    if(this.playlists.length === 0) {
+      this.noPlaylists = true;
+    }
 
     console.log(this.employeedata);
 

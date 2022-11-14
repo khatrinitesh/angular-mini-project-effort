@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { PostService } from "../../services/post.service";
+import { HttpClient } from '@angular/common/http'; 
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-service',
@@ -14,13 +16,21 @@ export class ServiceComponent implements OnInit {
   public txtSendChild: string = 'nitesh khatri is child service'
   @Output() BtnExampleO = new EventEmitter();
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService,
+    private http: HttpClient) {
+      this.getJSON().subscribe(data => {
+          console.log(data);
+      })}
 
   ngOnInit() {
     this.postService.getPosts().subscribe(response => {
       this.httpData = response
     })
   }
+
+  public getJSON(): Observable<any> {
+    return this.http.get("./assets/mydata.json");
+}
 
   btnSendExample(msg: string) {
     this.BtnExampleO.emit(msg)

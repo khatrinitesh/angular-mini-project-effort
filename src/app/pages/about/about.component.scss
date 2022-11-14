@@ -1,3 +1,22 @@
+.card_box{
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+}
+
+.item{
+  margin: 0 0 10px;
+  padding: 10px;
+}
+
+.songs {
+  background-color: #F7F5F2;
+}
+.nosongs {
+  background-color: #FFA8A8;
+  color:#fff;
+}
+
 .list_item {
     display:grid;
     grid-template-rows: repeat(var(--rows), var(--height));

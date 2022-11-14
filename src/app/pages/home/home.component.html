@@ -1,3 +1,96 @@
+<div style="color:red">
+	<p *ngFor="let d of all">
+	  <input type="checkbox" [checked]="d.checked" (change)="d.checked = !d.checked">  {{ d.name }}
+	</p>
+  </div>
+  <button (click)="add()"  class="btn btn-primary">success</button>
+  
+  <div style="color:blue">
+	<p *ngFor="let d of selected">
+	  {{ d.name }}
+	</p>
+  </div>
+  <hr/>
+  
+
+<!-- START NAMRATHA -->
+<select (change)="selectedobj($event.target.value)">
+	<option *ngFor="let fru of fruit">
+		{{fru.name}}
+	</option>
+</select>
+{{selectedfruit}}
+<!-- END NAMRATHA -->
+
+<!-- 
+<div class="jumbotron">
+	<h1 class="display-4">Hello,Geek!</h1>
+	<p class="lead">
+		GeeksForGeeks is a website which
+		is a one stop destination for all
+		the computer science related
+		doubts.
+	</p>
+
+	<hr class="my-4">
+
+	<p>
+		Click on the below button
+		to starting learning.
+	</p>
+
+	<p class="lead">
+		<a class="btn btn-primary btn-lg"
+			href="#" role="button">
+			Explore
+		</a>
+	</p>
+</div>
+
+<div class="card">
+	<div class="card-header">
+		Featured
+	</div>
+	<div class="card-body">
+		<h5 class="card-title">
+			Front End Technologies
+		</h5>
+		<p class="card-text">
+			HTML, CSS, Javascript,
+			Angular, React.js
+		</p>
+
+		<a href="#" class="btn btn-primary">
+			Start Learning
+		</a>
+	</div>
+</div>
+<br>
+
+<div class="card">
+	<div class="card-header">
+		Featured
+	</div>
+	<div class="card-body">
+		<h5 class="card-title">
+			Backend Technologies
+		</h5>
+		<p class="card-text">
+			Node.js, Django,Express
+		</p>
+
+		<a href="#" class="btn btn-primary">
+			Start Learning
+		</a>
+	</div>
+</div> -->
+
+
+<!-- <app-about [locationName]="'A'" [imageName]="'https://image.shutterstock.com/image-illustration/triangle-solid-black-golden-illustration-260nw-1862937556.jpg'"></app-about> -->
+
+
+<!-- 
+
 <div class="row example-wrapper">
     <div class="col-xs-12 col-md-6 example-col">
         <p>Infinite Calendar</p>
@@ -32,4 +125,10 @@
 <hr />
 
 {{receivedTestChild}}
-<app-service [ExampleTextParent]="myExampleTest" (BtnExampleO)="buttonExample($event)"></app-service>
+<app-service [ExampleTextParent]="myExampleTest" (BtnExampleO)="buttonExample($event)"></app-service> -->
+
+<!-- <app-scrollbacktop></app-scrollbacktop> -->
+<!-- <app-about [locationName]="'b'" [imageName]="'https://image.shutterstock.com/image-illustration/triangle-solid-black-golden-illustration-260nw-1862937556.jpg'"> </app-about>
+<app-about [locationName]="'C'" [imageName]="'https://image.shutterstock.com/image-illustration/triangle-solid-black-golden-illustration-260nw-1862937556.jpg'"></app-about>
+
+<app-scrollbacktop></app-scrollbacktop> -->

@@ -1,0 +1,10 @@
+{
+    "fruit":[
+        { "name": "MangoPineapple", "price": "100", "quantity": "2", "selected":false },
+        { "name": "Grapes", "price": "900", "quantity": "5", "selected":false },
+        { "name": "Melons", "price": "220", "quantity": "3", "selected":false },
+        { "name": "Dekopon", "price": "1400", "quantity": "4", "selected":false },
+        { "name": "Abhijeet", "price": "800", "quantity": "6", "selected":false }
+    ]
+    
+}

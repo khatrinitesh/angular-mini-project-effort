@@ -1,4 +1,94 @@
-<div class="form" [formGroup]="form">
+<div style="color:blue">
+	<p *ngFor="let d of selected">
+	  {{ d.name }}
+	</p>
+  </div>
+
+<!-- <form [formGroup]="exampleForm" novalidate >
+    <div class="form-group">
+        <label>Name: </label>
+        <input class="form-control"  (change)="oninputchange()" formControlName="name"/>
+    </div>
+    <div *ngIf="exampleForm.controls['name'].invalid && (exampleForm.controls['name'].dirty || exampleForm.controls['name'].touched)" class="alert alert-danger">
+        <div *ngIf="exampleForm.controls['name'].errors.required">
+            Name is required.
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Address:</label>
+        <input class="form-control" formControlName="address" (change)="oninputchange()"  type="text">
+    </div>
+    <div *ngIf="exampleForm.controls['address'].invalid && (exampleForm.controls['address'].dirty || exampleForm.controls['address'].touched)" class="alert alert-danger">
+        <div *ngIf="exampleForm.controls['address'].errors.required">
+          address is required.
+        </div>
+    </div>
+    <button type="submit"
+        [disabled]="exampleForm.pristine || exampleForm.invalid" class="btn btn-success">
+        Save
+    </button>
+</form> -->
+<!-- <p>Form value: {{ exampleForm.value | json }}</p>
+<p>Form status: {{ exampleForm.status | json }}</p> -->
+
+
+
+<!-- <div class="card_box">
+<h2>{{locationName ?  locationName : 'blue mountains'}}</h2>
+<img src="{{imageName}}"/>
+</div> -->
+
+<hr/>
+
+<!-- <app-username-checker-form></app-username-checker-form> -->
+
+<hr/>
+
+
+<!-- <div *ngIf="noPlaylists;else playlistsExist" class="center">
+    <span class="errorMessage">There are no playlists available.</span>
+</div>
+<ng-template #playlistsExist>
+    <div class="center">
+        <span class="successMessage">Playlists found.</span>
+        <div *ngFor="let playlist of playlists" class="item" [ngClass]="playlist.numberOfSongs > 0 ? 'songs' : 'nosongs'">
+            <div class="flex d-flex justify-content-between">
+                <span>{{playlist.name}}</span>
+                <span>{{playlist.numberOfSongs}} songs</span>
+            </div>
+            <div [ngSwitch]="playlist.rating" style="text-align-last: right;">
+                <div *ngSwitchCase="'1'">★</div>
+                <div *ngSwitchCase="'2'">★★</div>
+                <div *ngSwitchCase="'3'">★★★</div>
+                <div *ngSwitchCase="'4'">★★★★</div>
+                <div *ngSwitchCase="'5'">★★★★★</div>
+                <div *ngSwitchDefault>No ratings</div>
+            </div>
+            <div>
+                <input type="text" *ngIf="renamingPlaylists" class="form-control input-field" id="name" required [(ngModel)]="playlist.name" />
+            </div>
+        </div>
+    </div>
+</ng-template> -->
+
+<hr/>
+
+    <!-- <div [hidden]="!check">
+        Show this only if "check" is true
+        </div>
+        
+
+<div *ngIf="condition; else elseStatement">
+	when condition is true.
+</div>
+<ng-template #elseStatement>
+	when condition is false.
+</ng-template> -->
+
+
+<hr/>
+
+<!-- <div class="form" [formGroup]="form">
     <label for="email">Email</label>
     <input name="email" type="text" formControlName="email">
     <div class="errors">
@@ -23,11 +113,12 @@
     </div>
     <button [disabled]="!form.valid" type="submit">SUBMIT</button>
     <div *ngIf="(form.statusChanges | async) === 'PENDING'" class="progress">VALIDATION IS IN PROGRESS</div>
-  </div>
+  </div> -->
 
-  <hr/>
+  <!-- <hr/>
   <hr/>
 
+  
 <div *ngIf="isValid; else templateName">
     If isValid is true
 </div>
@@ -142,7 +233,7 @@
   </div>
    <ng-template #defaultHeader>Some header...</ng-template>
    <ng-template #defaultBody>Some body...</ng-template>
-  <ng-template #defaultFooter>Some footer...</ng-template>
+  <ng-template #defaultFooter>Some footer...</ng-template> -->
   
 
 
@@ -165,7 +256,7 @@
     </div>
   </ng-template> -->
 
-
+<!-- 
 
 <div *ngFor="let item of items">
     <div *ngIf="item.id">{{item.name}}</div>
@@ -264,7 +355,7 @@
 
 <ng-template #headerTemplate>Some header...</ng-template>
 <ng-template #bodyTemplate>Some body...</ng-template>
-<ng-template #footerTemplate>Some footer...</ng-template>
+<ng-template #footerTemplate>Some footer...</ng-template> -->
 
 <!-- <input type="text" [(ngModel)]="color"/>
 <div [ngSwitch]="color">
@@ -276,7 +367,7 @@
     <div *ngSwitchDefault>This is a default</div>
 </div> -->
 
-<input type="text" [(ngModel)]="num"/>
+<!-- <input type="text" [(ngModel)]="num"/>
 <div [ngSwitch]="num">
     <div *ngSwitchCase="1">One</div>
     <div *ngSwitchCase="2">Two</div>
@@ -360,21 +451,21 @@
     </div>  
   </div>   
 <br/>
-<p>Product status <strong>{{productStatus}}</strong></p>
+<p>Product status <strong>{{productStatus}}</strong></p> -->
 
 <!-- <app-child *ngFor="let product of products" [friend]="friend" [product]="product" (status)="onStatus($event)"></app-child> -->
 
 <!-- // child component  -->
-<app-child  [cricket]="cricketData" [friends]="friendsTwo" [products]="products" [family]="familyText" [foods]="foodItem"></app-child>
+<!-- <app-child  [cricket]="cricketData" [friends]="friendsTwo" [products]="products" [family]="familyText" [foods]="foodItem"></app-child> -->
 
 <!-- <button type="button" class="{{visible : 'btn-primary' : 'btn-success'}}" (click)="showhideUtility()">{{buttonTitle}}</button>
 <app-child *ngIf="!visible" [childMsg]="parentMsg" ></app-child> -->
 
 <!-- // One parameter -->
-<p>{{ "Arun" | userfullname :"kumar"}}</p>    
+<!-- <p>{{ "Arun" | userfullname :"kumar"}}</p>     -->
 
 <!-- // two parameter -->
-<p>{{ "Arun" | userfullname : "kumar" : "gudelli" }}</p>    
+<!-- <p>{{ "Arun" | userfullname : "kumar" : "gudelli" }}</p>    
 
 <h2>{{'nitesh khatri' | shortname}}</h2>
 
@@ -565,7 +656,7 @@ In the below box, message will appear when user click on the button from the chi
 <br />
 {{msgOnButtonClick}}
 <hr />
-{{msgComponentTxt}}
+{{msgComponentTxt}} -->
 <!-- <form [formGroup]="form">
     single select
     <select>

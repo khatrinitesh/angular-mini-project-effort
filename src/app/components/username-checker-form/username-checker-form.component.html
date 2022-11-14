@@ -1,0 +1,19 @@
+
+<div class="container">
+    <div class="card">
+        <h1> Username Checker </h1>
+    
+        <form (ngSubmit)="save()">
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Please enter a username" [(ngModel)]="username"
+          />
+          <p *ngIf="username" [ngClass]="isValidUsername ? 'success' : 'error'">{{message}}</p>
+          <button class="btn"> Save </button>
+          <h2 *ngIf="username"> Username entered: {{ username }} </h2>
+        </form>
+    
+    </div>
+</div>
