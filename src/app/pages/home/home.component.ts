@@ -52,7 +52,6 @@ export class HomeComponent implements OnInit {
   ];
   public selected = [];
 
-  
 
   selectedfruit: any=""
 
