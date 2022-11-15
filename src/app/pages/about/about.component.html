@@ -1,9 +1,15 @@
-<a (click)="goBack()">back</a>
+<ul *ngFor="let emp of employees">
+    <li>
+        {{emp.employeeName}}
+    </li>
+</ul>
+
+<!-- <a (click)="goBack()">back</a>
 <div style="color:blue">
 	<p *ngFor="let d of selectedfromParent">
 	  {{ d.name }} {{d.checked}}
 	</p>
-  </div>
+  </div> -->
 
 <!-- <form [formGroup]="exampleForm" novalidate >
     <div class="form-group">
@@ -39,11 +45,11 @@
 <img src="{{imageName}}"/>
 </div> -->
 
-<hr/>
+<!-- <hr/> -->
 
 <!-- <app-username-checker-form></app-username-checker-form> -->
-
-<hr/>
+<!-- 
+<hr/> -->
 
 
 <!-- <div *ngIf="noPlaylists;else playlistsExist" class="center">
@@ -72,7 +78,7 @@
     </div>
 </ng-template> -->
 
-<hr/>
+<!-- <hr/> -->
 
     <!-- <div [hidden]="!check">
         Show this only if "check" is true
@@ -87,7 +93,7 @@
 </ng-template> -->
 
 
-<hr/>
+<!-- <hr/> -->
 
 <!-- <div class="form" [formGroup]="form">
     <label for="email">Email</label>

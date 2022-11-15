@@ -24,6 +24,7 @@ export class AboutComponent implements OnInit {
   // public selected = [];
   
   public FrGrp:any;
+  public Books:any;
   msgOnChildCompInit: string; // 1
   msgOnButtonClick: string; // 2
   msgComponentTxt: string; // 3
@@ -266,8 +267,8 @@ export class AboutComponent implements OnInit {
     this.createForm(),
     this.setStyle('--rows',this.rows)
     this.setStyle('--cols',this.cols)
-    this.selectedfromParent = this.router.getCurrentNavigation().extras.state.selected;
-    console.log(this.router.getCurrentNavigation().extras.state.selected);
+    this.selectedfromParent = this.selected;
+    // console.log(this.router.getCurrentNavigation().extras.state.selected);
     // this.setStyle('--height',this.height)
 
     // this.form = new FormGroup({
@@ -814,6 +815,30 @@ export class AboutComponent implements OnInit {
   
 }
 
+// START => BOOKS TESTING
+export interface IEmployee{  
+  employeeId : number;  
+  employeeName : string;  
+  projectId : number  
+} 
+
+const employees : IEmployee[] = [
+  {
+     "employeeId":1,
+     "employeeName" : "Tuba",
+     "projectId":100
+    },
+    {
+    "employeeId" : 2,
+   "employeeName" : "Atul",
+   "projectId":101,
+  },
+    {
+     "employeeId" : 3,
+     "employeeName" : "Theran",
+     "projectId":101
+    }
+  ]
 
 //START => FRIENDSGROUP TESTING
 export interface FriendsGroup  {

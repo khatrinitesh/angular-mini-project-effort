@@ -61,7 +61,7 @@ export class HomeComponent implements OnInit {
   }
 
   add(){
-    var t = this.all.filter(obj => obj.checked).map(obj => obj)
+    var t = this.all.filter(obj => obj.checked).map(obj => obj.id)
     this.selected = t;
     console.log(this.selected)
     this.router.navigate(['/about'],{state:{selected:this.selected}});  // define your component where you want to go
