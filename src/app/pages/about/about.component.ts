@@ -5,6 +5,8 @@ import {MyserviceService} from '../../service/myservice.service';
 import { HttpClient } from  '@angular/common/http';
 import { map } from 'rxjs/operators';  
 import { Observable } from 'rxjs';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 
@@ -17,35 +19,9 @@ export class AboutComponent implements OnInit {
 
 
   public exampleForm:FormGroup;
-  public all  = [
-    {
-      id:1,
-      name:'d1',
-      checked: false
-    },
-    {
-      id:2,
-      name:'d2',
-      checked: false
-    },
-    {
-      id:3,
-      name:'d3',
-      checked: false
-    },
-    {
-      id:4,
-      name:'d4',  
-      checked: false
-    },
-    {
-      id:5,
-      name:'d5',
-      checked: false
-    },
-  ];
+  
 
-  public selected = [];
+  // public selected = [];
   
   public FrGrp:any;
   msgOnChildCompInit: string; // 1
@@ -284,12 +260,14 @@ export class AboutComponent implements OnInit {
   public collegefriends :any =['abdulla','siddarath','punit']
   public colleague :any = ['gokul','abhijeet','siddhesh']
   public readonly form:FormGroup;
-  
+  public selectedfromParent: any;
 
-  constructor(private el:ElementRef,private api: ApiService,private formBuilder:FormBuilder,private myservice:MyserviceService,private http:HttpClient) { 
-    this.createForm()
+  constructor(private el:ElementRef,private api: ApiService,private formBuilder:FormBuilder,private myservice:MyserviceService,private http:HttpClient,private router: Router,private location:Location) { 
+    this.createForm(),
     this.setStyle('--rows',this.rows)
     this.setStyle('--cols',this.cols)
+    this.selectedfromParent = this.router.getCurrentNavigation().extras.state.selected;
+    console.log(this.router.getCurrentNavigation().extras.state.selected);
     // this.setStyle('--height',this.height)
 
     // this.form = new FormGroup({
@@ -298,6 +276,10 @@ export class AboutComponent implements OnInit {
     //   'confirmation': new FormControl(null, [Validators.required])
     // });
     
+  }
+
+  goBack(){
+    this.location.back();
   }
 
   createForm(){
@@ -399,9 +381,9 @@ export class AboutComponent implements OnInit {
   }
 
 
-  public selected:boolean=false;
-  public httpdata:any;
-  public httpdataTwo:any;
+  // public selected:boolean=false;
+  public httpd:any;
+  public httpdTwo:any;
   public showNew: boolean = false
   public fullName: string = 'hello assurekit'
   public myFormGrp!: FormGroup;
@@ -689,8 +671,10 @@ export class AboutComponent implements OnInit {
     }
   ];
 
+  
+
   btnRemoveJSON(data:any){
-    this.httpdata = this.httpdata.filter(obj=>obj.id != data.id)
+    this.httpd = this.httpd.filter(obj=>obj.id != data.id)
   }
   // btnEditJSON(data:any){
   //   this.editdata[data] = true;
@@ -699,6 +683,8 @@ export class AboutComponent implements OnInit {
   // editedvalue(){
   //   console.log(this.httpdata);
   // }
+
+  
 
   ngOnInit() {
     // if(this.imageName){
@@ -716,7 +702,7 @@ export class AboutComponent implements OnInit {
 
     this.http.get("http://jsonplaceholder.typicode.com/users").subscribe((data) => { 
       console.log(data);
-      this.httpdata= data
+      this.httpd= data
     });
 
 

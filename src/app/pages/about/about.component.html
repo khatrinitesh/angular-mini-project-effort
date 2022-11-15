@@ -1,6 +1,7 @@
+<a (click)="goBack()">back</a>
 <div style="color:blue">
-	<p *ngFor="let d of selected">
-	  {{ d.name }}
+	<p *ngFor="let d of selectedfromParent">
+	  {{ d.name }} {{d.checked}}
 	</p>
   </div>
 

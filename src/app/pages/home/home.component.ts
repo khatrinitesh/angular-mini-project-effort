@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   public myExampleTest: string = 'nitesh khatri is example'
   public receivedTestChild: string = ''
   // public FruitData=FruitData
+  
 
   public all  = [
     {
@@ -50,10 +51,10 @@ export class HomeComponent implements OnInit {
       checked: false
     },
   ];
-  public selected = [];
+  public selected:any= [];
 
 
-  selectedfruit: any=""
+  selectedfruit: any
 
   constructor(private router: Router) {
     // console.log(this.fruit);
@@ -62,14 +63,15 @@ export class HomeComponent implements OnInit {
   add(){
     var t = this.all.filter(obj => obj.checked).map(obj => obj)
     this.selected = t;
-    // this.router.navigate(['/about']);  // define your component where you want to go
+    console.log(this.selected)
+    this.router.navigate(['/about'],{state:{selected:this.selected}});  // define your component where you want to go
   }
 
   fruit: FruitData[] = FruitData.fruit;
 
   selectedobj(event){
     // console.log(event);
-    this.selectedfruit= event;
+    this.selectedfruit = event;
     this.fruit = this.fruit.map(obj=>obj.name == event ? {...obj, selected :true}: {...obj ,selected :false});
     console.log(this.fruit);
     // let selectedfruit=this.fruit.filter(obj=>obj.name == event)[0];
