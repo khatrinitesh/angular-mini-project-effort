@@ -1,6 +1,12 @@
+
+
+<!-- <input [(ngModel)]="myProperty" type="checkbox" >
+<h1>{{ myProperty }}</h1> -->
+
+
 <div style="color:red">
 	<p *ngFor="let d of all">
-	  <input type="checkbox" [checked]="d.checked" (change)="d.checked = !d.checked">  {{ d.name }}
+	  <input type="checkbox"  [checked]="d.checked" (change)="d.checked = !d.checked">  {{ d.name }}
 	</p>
   </div>
   <button (click)="add()"  class="btn btn-primary">success</button>
@@ -10,11 +16,22 @@
 	  {{ d.name }}
 	</p>
   </div>
-  <hr/>
+  <hr/> 
+
+  <select [(ngModel)]="selectedValue" (ngModelChange)="onValueChange()">
+	<option *ngFor="let item of myArray"
+			[value]="item.property1">{{item.property1}}</option>
+	</select>
+	
+	<p>selectedvalue : {{selectedValue}}</p>
+	
+	<p *ngIf="selectedObject">selected object : {{selectedObject.property1}} ; {{selectedObject.property2}}</p>
+
+  
   
 
 <!-- START NAMRATHA -->
-<select (change)="selectedobj($event.target.value)">
+<select (change)="selectedobj($event.target.value)" > 
 	<option *ngFor="let fru of fruit">
 		{{fru.name}}
 	</option>
@@ -132,3 +149,6 @@
 <app-about [locationName]="'C'" [imageName]="'https://image.shutterstock.com/image-illustration/triangle-solid-black-golden-illustration-260nw-1862937556.jpg'"></app-about>
 
 <app-scrollbacktop></app-scrollbacktop> -->
+<hr/>
+{{childData}}
+<app-service (bookTitleCreated)="onBookAdded($event)" (data)="eventHandler($event)"></app-service>

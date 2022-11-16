@@ -12,7 +12,11 @@ export class ServiceComponent implements OnInit {
 
 
   @Input() ExampleTextParent: string = ''
+  // @Input() data: string[];
+  @Output() data:EventEmitter<string[]> =  new EventEmitter<string[]>();
   httpData: any;
+  @Output() bookTitleCreated = new EventEmitter<{ title: string }>();
+  bookTitle: string;
   public txtSendChild: string = 'nitesh khatri is child service'
   @Output() BtnExampleO = new EventEmitter();
 
@@ -23,6 +27,7 @@ export class ServiceComponent implements OnInit {
       })}
 
   ngOnInit() {
+    this.data.emit(['name1', 'name2', 'name3'])
     this.postService.getPosts().subscribe(response => {
       this.httpData = response
     })
@@ -30,6 +35,10 @@ export class ServiceComponent implements OnInit {
 
   public getJSON(): Observable<any> {
     return this.http.get("./assets/mydata.json");
+}
+
+onAddTitle() {
+  this.bookTitleCreated.emit({ title: this.bookTitle });
 }
 
   btnSendExample(msg: string) {

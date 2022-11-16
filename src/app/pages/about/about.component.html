@@ -1,15 +1,20 @@
-<ul *ngFor="let emp of employees">
-    <li>
-        {{emp.employeeName}}
-    </li>
-</ul>
 
-<!-- <a (click)="goBack()">back</a>
+<a (click)="goBack()">back</a>
 <div style="color:blue">
 	<p *ngFor="let d of selectedfromParent">
 	  {{ d.name }} {{d.checked}}
 	</p>
-  </div> -->
+  </div>
+
+  <hr/>
+
+  <form [formGroup]="countryForm">
+    <select formControlName="countryControl">
+      <option [value]="country" *ngFor="let country of countries2">             
+        {{country}}
+        </option>
+    </select>
+   </form>
 
 <!-- <form [formGroup]="exampleForm" novalidate >
     <div class="form-group">

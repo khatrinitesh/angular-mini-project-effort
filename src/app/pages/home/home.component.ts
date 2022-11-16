@@ -21,9 +21,33 @@ export class HomeComponent implements OnInit {
   public clickCount: number = 0;
   public myExampleTest: string = 'nitesh khatri is example'
   public receivedTestChild: string = ''
-  // public FruitData=FruitData
+  public FruitData:any
+
   
 
+  emailFormArray: Array<any> = [];
+  categories = [ 
+    {name :"email1", id: 1},
+    {name :"email2", id: 2},
+    {name :"email3", id: 3},
+    {name :"email4", id: 4}
+  ];
+  childData: string[];
+
+  onChange(email:string, isChecked: boolean) {
+    if(isChecked) {
+      this.emailFormArray.push(email);
+    } else {
+      let index = this.emailFormArray.indexOf(email);
+      this.emailFormArray.splice(index,1);
+    }
+}
+
+// selectAll() {
+//   let checkBoxes = document.querySelectorAll('.form-check-input');
+//   checkBoxes.forEach(ele => ele.click());
+// }
+ 
   public all  = [
     {
       id:1,
@@ -52,22 +76,56 @@ export class HomeComponent implements OnInit {
     },
   ];
   public selected:any= [];
-
-
+  checked:boolean
   selectedfruit: any
 
   constructor(private router: Router) {
+    this.selected = this.router.getCurrentNavigation().extras.state? this.router.getCurrentNavigation().extras.state.selected: [];
+    console.log("all",this.all);
+    console.log("selected",this.selected); 
     // console.log(this.fruit);
   }
+  
+  // changecheckbox(event){
+  //   console.log(event);
+  // }
 
+  public myArray = [
+    {property1: "a", property2:"b"},
+    {property1: "c", property2:"d"},
+    {property1: "e", property2:"f"},
+ ]
+
+ public title = 'BindingUp';
+
+ public favBooks = [
+  { title: 'Principles' },
+  { title: 'The Story of Success' },
+  { title: 'Extreme Economies' },
+];
+
+ public selectedValue: string 
+ public selectedObject: any
+
+ onBookAdded(eventData:{title:string}){
+  this.favBooks = this.favBooks.concat({
+    title:eventData.title,
+  })
+ }
+ 
   add(){
-    var t = this.all.filter(obj => obj.checked).map(obj => obj.id)
+    // var t = this.all.filter(obj => obj.checked).map(obj => obj.id)
+    var t = this.all.filter(obj => obj.checked).map(obj => obj)
     this.selected = t;
     console.log(this.selected)
     this.router.navigate(['/about'],{state:{selected:this.selected}});  // define your component where you want to go
   }
 
-  fruit: FruitData[] = FruitData.fruit;
+  eventHandler(event:string[]){
+    this.childData = event;
+  }
+
+  fruit: FruitData = FruitData.fruit[0];
 
   selectedobj(event){
     // console.log(event);
@@ -111,6 +169,14 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
+    this.checked = true;
+    this.selectedValue = this.myArray[0].property1
+    this.onValueChange();
+  }
+
+  onValueChange() {
+    const found = this.myArray.filter( obj => obj.property1 === this.selectedValue)
+    this.selectedObject = found? found[0] : {}
   }
 }
 

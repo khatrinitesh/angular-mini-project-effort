@@ -1,4 +1,10 @@
 <h3>Service page</h3>
+
+<div>
+    <input type="text" placeholder="Write a title" [(ngModel)]="bookTitle">
+    <button (click)="onAddTitle()">Add Title</button>
+  </div>
+<hr/>
 <button (click)="btnSendExample(txtSendChild)">Send Service</button>
 {{ExampleTextParent}}
 <table class="table">

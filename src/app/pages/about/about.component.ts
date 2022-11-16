@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 })
 export class AboutComponent implements OnInit {
 
+  
 
   public exampleForm:FormGroup;
   
@@ -263,12 +264,12 @@ export class AboutComponent implements OnInit {
   public readonly form:FormGroup;
   public selectedfromParent: any;
 
-  constructor(private el:ElementRef,private api: ApiService,private formBuilder:FormBuilder,private myservice:MyserviceService,private http:HttpClient,private router: Router,private location:Location) { 
+  constructor(private el:ElementRef,private api: ApiService,private formBuilder:FormBuilder,private myservice:MyserviceService,private http:HttpClient,private router: Router,private location:Location,private fb:FormBuilder) { 
     this.createForm(),
     this.setStyle('--rows',this.rows)
     this.setStyle('--cols',this.cols)
-    this.selectedfromParent = this.selected;
-    // console.log(this.router.getCurrentNavigation().extras.state.selected);
+    this.selectedfromParent = this.router.getCurrentNavigation().extras.state.selected;
+    console.log(this.router.getCurrentNavigation().extras.state.selected);
     // this.setStyle('--height',this.height)
 
     // this.form = new FormGroup({
@@ -279,8 +280,13 @@ export class AboutComponent implements OnInit {
     
   }
 
+  countryForm:FormGroup;
+  public countries2 = ['USA', 'Canada', 'Uk']
+
   goBack(){
-    this.location.back();
+    // this.location.back();
+    this.router.navigate(['/'],{state:{selected:this.selectedfromParent}});  // define your component where you want to go
+
   }
 
   createForm(){
@@ -688,6 +694,10 @@ export class AboutComponent implements OnInit {
   
 
   ngOnInit() {
+
+    this.countryForm = this.fb.group({
+      countryControl:['Canada']
+    })
     // if(this.imageName){
     //   this.imageName = 'https://image.shutterstock.com/image-illustration/triangle-solid-black-golden-illustration-260nw-1862937556.jpg'
     // }
@@ -816,29 +826,29 @@ export class AboutComponent implements OnInit {
 }
 
 // START => BOOKS TESTING
-export interface IEmployee{  
-  employeeId : number;  
-  employeeName : string;  
-  projectId : number  
-} 
+// export interface IEmployee{  
+//   employeeId : number;  
+//   employeeName : string;  
+//   projectId : number  
+// } 
 
-const employees : IEmployee[] = [
-  {
-     "employeeId":1,
-     "employeeName" : "Tuba",
-     "projectId":100
-    },
-    {
-    "employeeId" : 2,
-   "employeeName" : "Atul",
-   "projectId":101,
-  },
-    {
-     "employeeId" : 3,
-     "employeeName" : "Theran",
-     "projectId":101
-    }
-  ]
+// const employees : IEmployee[] = [
+//   {
+//      "employeeId":1,
+//      "employeeName" : "Tuba",
+//      "projectId":100
+//     },
+//     {
+//     "employeeId" : 2,
+//    "employeeName" : "Atul",
+//    "projectId":101,
+//   },
+//     {
+//      "employeeId" : 3,
+//      "employeeName" : "Theran",
+//      "projectId":101
+//     }
+//   ]
 
 //START => FRIENDSGROUP TESTING
 export interface FriendsGroup  {
@@ -915,12 +925,12 @@ const Heros : Hero[] = [
 // END => HERO
 
 
-function passwordConfirmationMissmatch(control: FormGroup): ValidationErrors | null {
-  const password = control.get('password');
-  const confirmation = control.get('confirmation');
-  if (!password || !confirmation || password.value === confirmation.value) {
-    return null;
-  }
+// function passwordConfirmationMissmatch(control: FormGroup): ValidationErrors | null {
+//   const password = control.get('password');
+//   const confirmation = control.get('confirmation');
+//   if (!password || !confirmation || password.value === confirmation.value) {
+//     return null;
+//   }
   
-  return { 'password-confirmation-mismatch': true };
-}
+//   return { 'password-confirmation-mismatch': true };
+// }
