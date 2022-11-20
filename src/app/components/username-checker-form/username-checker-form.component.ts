@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ConsoleReporter } from 'jasmine';
 
 @Component({
   selector: 'app-username-checker-form',

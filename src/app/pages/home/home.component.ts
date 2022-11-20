@@ -125,13 +125,14 @@ export class HomeComponent implements OnInit {
     this.childData = event;
   }
 
-  fruit: FruitData = FruitData.fruit[0];
+
+  // fruit: FruitData = FruitData.fruit[0];
 
   selectedobj(event){
     // console.log(event);
-    this.selectedfruit = event;
-    this.fruit = this.fruit.map(obj=>obj.name == event ? {...obj, selected :true}: {...obj ,selected :false});
-    console.log(this.fruit);
+    // this.selectedfruit = event;
+    // this.fruit = this.fruit.map(obj=>obj.name == event ? {...obj, selected :true}: {...obj ,selected :false});
+    // console.log(this.fruit);
     // let selectedfruit=this.fruit.filter(obj=>obj.name == event)[0];
     // console.log(selectedfruit);
     // this.fruit = this.fruit.map((obj, i) => ({ ...obj, selected : false }));
