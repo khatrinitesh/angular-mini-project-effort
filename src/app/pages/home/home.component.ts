@@ -83,7 +83,15 @@ export class HomeComponent implements OnInit {
     this.selected = this.router.getCurrentNavigation().extras.state? this.router.getCurrentNavigation().extras.state.selected: [];
     console.log("all",this.all);
     console.log("selected",this.selected); 
+    console.log(this.all.map(obj=>obj.id== this.selected.map(obj=>obj.checked == true).id))
     // console.log(this.fruit);
+    for (let itm=0;itm<this.all.length;itm++){
+      var names =this.selected.map(obj=>obj.id)
+      if(names.includes(this.all[itm].id)){
+        this.all[itm].checked = true;
+     }
+    }
+    console.log(this.all);
   }
   
   // changecheckbox(event){
