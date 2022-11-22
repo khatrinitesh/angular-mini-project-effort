@@ -1,3 +1,170 @@
+<form [formGroup]="userForm">
+    <div class="mt-5 box">
+      <div class="form-row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Name</label>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <input
+                type="text"
+                formControlName="name"
+                class="form-control"
+                placeholder="name"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Address</label>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <input
+                type="text"
+                formControlName="address"
+                class="form-control"
+                placeholder="address"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Contact Number</label>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <input
+                type="text"
+                formControlName="contactNo"
+                class="form-control"
+                placeholder="contactNo"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Gender</label>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <input
+                type="text"
+                formControlName="gender"
+                class="form-control"
+                placeholder="gender"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-row mt-4">
+          <div class="col-md-6">
+            <button type="button" class="btn btn-primary" (click)="addItemTable()">
+              Add
+            </button>
+            <button type="button" class="btn btn-primary" (click)="resetForm()">
+              Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+<input type="text" placeholder="start searching name" [(ngModel)]="searchText" autocomplete="off"/>
+<br/>
+<table class="table">
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Address</th>
+		<th>Contact Number</th>
+		<th>Gender</th>
+		<th>
+			Status
+		</th>
+	</tr>
+	<tr *ngFor="let person of persons | filter:searchText">
+		<td>{{person.id}}</td>
+		<td>{{person.name}}</td>
+		<td>{{person.address}}</td>
+		<td>{{person.contactNo}}</td>
+		<td>{{person.gender}}</td>
+		<td>
+			<button (click)="btnEditTable(person.id)">Edit</button>
+			<button (click)="btnRemoveTable(person.id)">Remove</button>
+		</td>
+	</tr>
+</table>
+
+<hr/>
+
+<select [(ngModel)]="selectedObject">
+	<option *ngFor="let cat of categories" [ngValue]="cat">{{cat.name}}</option>
+</select>
+{{selectedObject | json}}
+
+<ul>
+	<li *ngFor="let item of ItemArray">
+		<ng-container *ngTemplateOutlet="myTemplate;context:{$implicit:item}"></ng-container>
+	</li>
+</ul>
+<ng-template let-item #myTemplate>
+	<h5>Name: {{item.name}}</h5>
+	<p>Id: {{item.id}}</p>
+	<button (click)="btnRemove(item.id)">Remove</button>
+</ng-template>
+
+<app-child [itemTemplate]="template" [items]="items"></app-child>
+<label for="mode">Display mode:</label>
+<select [(ngModel)]="mode">
+	<option *ngFor="let item of modeOptions" [ngValue]="item.mode" >
+		{{item.mode}}
+	</option>
+</select>
+<ng-template let-items #cardTemplate>
+	<div *ngFor="let item of items">
+		<h1>{{item.header}}</h1>
+		<p>{{item.content}}</p>
+	</div>
+</ng-template>
+<ng-template let-items #listTemplate>
+	<ul>
+		<li *ngFor="let item of items">
+			<strong>{{item.header}}</strong> {{item.content}}
+		</li>
+	</ul>
+</ng-template>
+
+<hr/>
+
+
+<div>
+	<ul>
+		<li *ngFor="let option of options2" (click)="selectOption(option)">
+			{{option}}
+		</li>
+	</ul>
+</div>
+
+<ul *ngFor="let number of numbers">
+    <ng-container [ngTemplateOutlet]='number % 2 == 0 ? even_tpl : odd_tpl' [ngTemplateOutletContext]="{number:number}"></ng-container>
+  </ul>
+
+<ng-template #even_tpl let-number="number">
+	<li>Even: {{number}}</li>
+</ng-template>
+<ng-template #odd_tpl let-number="number">
+	<li>Odd: {{number}}</li>
+</ng-template>
+
 
 
 <!-- <input [(ngModel)]="myProperty" type="checkbox" >

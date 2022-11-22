@@ -41,6 +41,7 @@ import { SqrtPipe } from './sqrt.pipe';
 import { ProjectcontentComponent } from './components/projectcontent/projectcontent.component';
 import { UsernameCheckerFormComponent } from './components/username-checker-form/username-checker-form.component';
 import { ScrollbacktopComponent } from './components/scrollbacktop/scrollbacktop.component';
+import { DescPipePipe } from './pipe/desc-pipe.pipe';
 
 
 
@@ -71,6 +72,7 @@ import { ScrollbacktopComponent } from './components/scrollbacktop/scrollbacktop
     ProjectcontentComponent,
     UsernameCheckerFormComponent,
     ScrollbacktopComponent,
+    DescPipePipe,
   ],
   imports: [
     BrowserModule,

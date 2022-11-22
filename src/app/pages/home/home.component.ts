@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output,EventEmitter,ViewChild, TemplateRef } from '@angular/core';
 import FruitData from '../../../assets/json_data/fruit_data.json';
 import { Router } from '@angular/router';
-import { isObject } from 'util';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 // interface fruit{
 //   name:string,
@@ -10,6 +11,28 @@ import { isObject } from 'util';
 //   selected:boolean
 // }
 
+
+interface persongroup{
+    id:number;
+    name: string;
+    gender: string;
+    website: string;
+    desc: string;
+}
+
+
+
+interface itemsgroup{
+  name:string;
+  id:number;
+}
+
+interface category {
+  id:number;
+  name:string;
+}//this acts like datatype/class
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,22 +40,124 @@ import { isObject } from 'util';
 })
 export class HomeComponent implements OnInit {
 
+
+
+  @ViewChild('cardTemplate',null) cardTemplate:TemplateRef<HTMLElement>;
+  @ViewChild('listTemplate',null) listTemplate:TemplateRef<HTMLElement>;
+
+  userForm: FormGroup;
+
+  public categories:category[] = [
+    {id: 1, name: 'JQuery'},
+    {id: 2, name: 'Angular'},
+    {id: 3, name: 'Vue'},
+    {id: 4, name: 'React'}
+  ]
+
+  selectedObject:category;
+
+  mode = 'card'
+
+  items = [ 
+    {
+      header: 'Angular Tutorial',
+      content: 'The Angular Tutorial for Beginners & Professionals'
+    },
+    {
+      header: 'Typescript Tutorial',
+      content: 'The Complete Guide to Typescript'
+    },
+    {
+      header: 'Entity Framework Code Tutorial',
+      content: 'Learn Everything about Entity Framework Core'
+    },
+  ]
+
+  inputTxt:string = '';
+
+  modeOptions = [
+    { mode: "card" },
+    { mode: "list" },
+  ]
+  
+
+  get template(){
+    if(this.mode == 'list') 
+    return this.listTemplate;
+    return this.cardTemplate;
+  }
+  
+
+  public ItemArray:itemsgroup[]=[
+    {
+      name: 'Lutz',
+      id: 0
+    },
+    {
+      name: 'Corey',
+      id: 1
+    },
+    {
+      name: 'Angular',
+      id: 5
+    }
+  ]
+  searchText; // filter search inside table data
+
+  addItemTable() {
+    console.log(this.userForm.value);
+    this.persons.push({"id":this.persons.length+1,...this.userForm.value});
+    // this.userForm.reset();
+  }
+
+  resetForm(){
+    this.userForm.reset();
+  }
+
+
+  // btnEditTable(pid){
+  //   console.log(pid)
+  //   this.isEditItems = !this.isEditItems;
+  // }
+  btnRemoveTable(id){
+    console.log(this.persons)
+    var delBtn = confirm(" Do you want to delete ?");
+    if(delBtn == true){
+      this.persons = this.persons.filter((data) => data.id != id)
+    }
+    
+  }
+  btnRemove(id){
+    console.log(this.ItemArray)
+    this.ItemArray = this.ItemArray.filter((data) => data.id != id)
+    
+  }
   public showLoginReg: boolean = false
   public childTitle: string = 'Child title';
   public clickCount: number = 0;
   public myExampleTest: string = 'nitesh khatri is example'
   public receivedTestChild: string = ''
   public FruitData:any
+  // @Input() options2:string[];
+  @Output() selectionChanged = new EventEmitter<string>();
 
+  selectOption(example:string){
+    this.selectionChanged.emit(example)
+  }
+
+
+  public options2 = [
+    "Great White","Great hammerhead","Angular roughshark","Pyjama"
+  ]
   
 
   emailFormArray: Array<any> = [];
-  categories = [ 
-    {name :"email1", id: 1},
-    {name :"email2", id: 2},
-    {name :"email3", id: 3},
-    {name :"email4", id: 4}
-  ];
+  // public categories:category[] = [ 
+  //   {name :"email1", id: 1},
+  //   {name :"email2", id: 2},
+  //   {name :"email3", id: 3},
+  //   {name :"email4", id: 4}
+  // ];
   childData: string[];
 
   onChange(email:string, isChecked: boolean) {
@@ -80,7 +205,9 @@ export class HomeComponent implements OnInit {
   checked:boolean
   selectedfruit: any
 
-  constructor(private router: Router) {
+  public numbers:Array<any> = [1,2,3,4,5,6,7,8,9]
+
+  constructor(private router: Router,private fb: FormBuilder) {
     this.selected = this.router.getCurrentNavigation().extras.state? this.router.getCurrentNavigation().extras.state.selected: [];
     // console.log("all",this.all);
     // console.log("selected",this.selected); 
@@ -93,6 +220,13 @@ export class HomeComponent implements OnInit {
     //  }
     // }
 
+    this.userForm = this.fb.group({
+      name: ['', Validators.required],
+      address: ['', Validators.required],
+      contactNo: ['', Validators.required],
+      gender: ['', Validators.required],
+    });
+
     for(let result=0;result<this.all.length;result++){
       var names = this.selected.map(obj => obj.name)
       if(names.includes(this.all[result].name)){
@@ -101,7 +235,32 @@ export class HomeComponent implements OnInit {
     }
     console.log(this.all);
   }
+
+  // persons:any;
   
+  public persons:persongroup[] = [
+    {
+      id: 1,
+      name: 'Hardik Savani',
+      address:'Lamingaton road',
+      contactNo:'0123456789',
+      gender: 'Male',
+    },
+    {
+      id: 2,
+      name: 'Vishal Savani 2',
+      address:'Borivali',
+      contactNo:'0123456789',
+      gender: 'Male',
+    },
+    {
+      id: 3,
+      name: 'Pranay Savani 3',
+      address:'Virar',
+      contactNo:'0123456789',
+      gender: 'Male',
+    },
+  ]
   // changecheckbox(event){
   //   console.log(event);
   // }
@@ -121,7 +280,7 @@ export class HomeComponent implements OnInit {
 ];
 
  public selectedValue: string 
- public selectedObject: any
+ 
 
  onBookAdded(eventData:{title:string}){
   this.favBooks = this.favBooks.concat({

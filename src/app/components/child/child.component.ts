@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output ,EventEmitter} from '@angular/core';
+import { Component, Input, OnInit, Output ,EventEmitter, TemplateRef} from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -14,6 +14,8 @@ export class ChildComponent implements OnInit {
   @Input() family;
   @Input() foods;
   @Input() cricket;
+  @Input() items:any[] = [];
+  @Input() itemTemplate:TemplateRef<HTMLElement>
 
   // OUTPUT
   @Output() btnToggle=new EventEmitter();
