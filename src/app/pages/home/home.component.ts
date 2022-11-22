@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import FruitData from '../../../assets/json_data/fruit_data.json';
 import { Router } from '@angular/router';
+import { isObject } from 'util';
 
 // interface fruit{
 //   name:string,
@@ -81,15 +82,22 @@ export class HomeComponent implements OnInit {
 
   constructor(private router: Router) {
     this.selected = this.router.getCurrentNavigation().extras.state? this.router.getCurrentNavigation().extras.state.selected: [];
-    console.log("all",this.all);
-    console.log("selected",this.selected); 
-    console.log(this.all.map(obj=>obj.id== this.selected.map(obj=>obj.checked == true).id))
+    // console.log("all",this.all);
+    // console.log("selected",this.selected); 
+    // console.log(this.all.map(obj=>obj.id== this.selected.map(obj=>obj.checked == true).id))
     // console.log(this.fruit);
-    for (let itm=0;itm<this.all.length;itm++){
-      var names =this.selected.map(obj=>obj.id)
-      if(names.includes(this.all[itm].id)){
-        this.all[itm].checked = true;
-     }
+    // for (let itm=0;itm<this.all.length;itm++){
+    //   var names =this.selected.map(obj=>obj.id)
+    //   if(names.includes(this.all[itm].id)){
+    //     this.all[itm].checked = true;
+    //  }
+    // }
+
+    for(let result=0;result<this.all.length;result++){
+      var names = this.selected.map(obj => obj.name)
+      if(names.includes(this.all[result].name)){
+        this.all[result].checked = true;
+      }
     }
     console.log(this.all);
   }
