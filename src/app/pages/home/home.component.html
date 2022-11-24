@@ -1,3 +1,159 @@
+<!-- START -->
+<app-name-editor></app-name-editor>
+<!-- END -->
+
+<hr/>
+
+<!-- START, DATE: 24112022, TITLE: FORM -->
+<input type="text" [(ngModel)]="favoriteColorControl"/>
+{{favoriteColorControl}}
+<!-- END, DATE: 24112022, TITLE: FORM -->
+
+<hr/>
+
+<!-- START, DATE: 24112022, TITLE: Pipes-->
+{{subtitle | uppercase}}   
+<br/>
+{{todaydate | date:'d/M/y'}}
+<br/>
+<b>{{todaydate | date:'shortDate'}}</b>  
+<br/>
+<b>{{todaydate | date:'shortTime'}}</b>  
+<br/>
+{{jsonval | json}}
+<br/>
+{{months | slice:2:6}}
+<br/>
+Square root of 625 is {{625 | sqrt}}
+<br/>
+Square root of 144 is {{144 | sqrt}}
+<br/>
+Square root of 81 is {{81 | sqrt}}
+<br/>
+Square root of 9 is {{9 | sqrt}}
+<br/>
+Square root of 25 is {{25 | sqrt}}
+<br/>
+Square root of 36 is {{36 | sqrt}}
+<br/>
+Square root of 49 is {{49 | sqrt}}
+<br/>
+Square root of 16 is {{16 | sqrt}}
+
+<!-- END, DATE: 24112022, TITLE: Pipes -->
+
+<hr/>
+
+<!-- START, DATE: 24112022, TITLE: EVENT BINDING -->
+<button (click)="onCreateServer()" [disabled]="!allowNewServer">Add Server</button>
+<br/>
+<h3 [innerText]= "allowNewServer"></h3>  
+<!-- END, DATE: 24112022, TITLE: EVENT BINDING -->
+
+<hr/>
+
+<!-- START, DATE: 24112022, TITLE: String Interpolation-disabled -->
+<button [disabled]="isDisabled" (click)="btnDisabled()">Disabled me</button>
+<!-- END, DATE: 24112022, TITLE: String Interpolation disabled-->
+
+<!-- START, DATE: 24112022, TITLE: Angular 10 Tutorial #82 - ViewChild Tutorial | Angular 10 Tutorial For Beginners-->
+<h2 #headline>This is viewchild tutorial</h2>
+<!-- END, DATE: 24112022, TITLE: Angular 10 Tutorial #82 - ViewChild Tutorial | Angular 10 Tutorial For Beginners -->
+
+<!-- START, DATE: 24112022, TITLE:Angular 10 Tutorial #80 - Ng Template vs Ng Container Tutorial | Angular 10 Tutorial For Beginners
+ -->
+ <ng-container *ngIf="ifRoleIsDefined">
+	<div *ngIf="adminRole;else notAdmin" [ngStyle]="{backgroundColor:'orange',marginBottom:'20px'}">
+		user admin role
+	</div>
+	<ng-template #notAdmin>
+		Nitesh is not admin
+	</ng-template>
+</ng-container>
+
+<ng-template >
+	this text will not be displayed or rendered 
+</ng-template>
+<!-- START, DATE: 24112022, TITLE:Angular 10 Tutorial #80 - Ng Template vs Ng Container Tutorial | Angular 10 Tutorial For Beginners
+ -->
+
+
+<!-- START, DATE: 24112022, TITLE:Style elements dynamically with ngStyle -->
+<p [ngStyle]="{backgroundColor:getColor()}">Server with ID {{serverID}} is {{serverStatus}}. </p>  
+<!-- END, DATE: 24112022, TITLE:Style elements dynamically with ngStyle -->
+
+
+<!-- START, DATE: 24112022, TITLE:Angular 13: Actual use of ng-container -->
+<!-- <div id="outercontent" *ngIf="letSomeData">
+	<div *ngFor="let data of letSomeData">
+		{{data.title}}
+	</div>
+</div>
+<ng-container id="outercontent" *ngIf="letSomeData">
+	<div *ngFor="let data of letSomeData">
+		{{data.title}}
+	</div>
+</ng-container> -->
+
+<ul>
+	<div *ngFor="let data of letSomeData">
+		<li *ngIf="data.id >= 2">
+			{{data.id}} {{data.title}} {{data.location}}
+		</li>
+	</div>
+</ul>
+<!-- END, DATE: 24112022, TITLE:Angular 13: Actual use of ng-container -->
+
+<!-- START,DATE:24112022,TITLE:Ng container in angular || Angular ng container || Ng-container in angular || Ng-container -->
+<!-- <ng-container>
+	<h1>hello 1</h1>
+	<h1>hello 2</h1>
+</ng-container>
+<select>
+	<ng-container>
+		<option>1</option>
+		<option>2</option>
+	</ng-container>
+</select> -->
+<!-- END,DATE:24112022,TITLE:Ng container in angular || Angular ng container || Ng-container in angular || Ng-container -->
+
+<!-- START, DATE:24112022, TITLE:Angular Nested loops | ngFor and ngIf together | ng-container for ngif & ngfor | Error handling -->
+<!-- <div *ngFor="let item of complexArr">
+	<div *ngIf="item.id % 2 === 0">
+		<div>{{item.id}} - {{item.name}}</div>
+	</div>
+</div> -->
+
+<!-- ng-container -->
+<ng-container *ngFor="let item of complexArr">
+	<ng-container *ngIf="item.id % 2 === 0">
+		<div>{{item.id}} - {{item.name}}</div>
+		<ng-container *ngFor="let phone of item.phoneNum">
+			{{phone}}
+		</ng-container>
+	</ng-container>
+</ng-container>
+<!-- <ng-container *ngFor="let item of complexArr" *ngIf="item.id % 2 === 0">
+	<div>{{item.id}} - {{item.name}}</div>
+</ng-container> -->
+<!-- END, DATE:24112022, TITLE:Angular Nested loops | ngFor and ngIf together | ng-container for ngif & ngfor | Error handling -->
+
+<hr/>
+
+<!-- START, DATE:24112022,TITLE:BOOTSTRAP 5 DATEPICKER -->
+<form class="form-inline">
+	<div class="form-group">
+		<div class="input-group">
+			<input type="text" class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker"/>
+			<div class="input-group-append">
+				<button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">Click</button>
+			</div>
+		</div>
+	</div>
+</form>
+<p>Model: {{model | json}}</p>
+<!-- END, DATE:24112023, TITLE:BOOTSTRAP 5 DATEPICKER -->
+
 <form [formGroup]="userForm">
     <div class="mt-5 box">
       <div class="form-row">

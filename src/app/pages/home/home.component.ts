@@ -1,7 +1,9 @@
-import { Component, Input, OnInit, Output,EventEmitter,ViewChild, TemplateRef } from '@angular/core';
+import { Component, Input, OnInit, Output,EventEmitter,ViewChild, TemplateRef, ElementRef, ViewChildren } from '@angular/core';
 import FruitData from '../../../assets/json_data/fruit_data.json';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ReturnStatement } from '@angular/compiler';
+import { ContactComponent } from '../contact/contact.component';
 
 
 // interface fruit{
@@ -19,8 +21,6 @@ interface persongroup{
     website: string;
     desc: string;
 }
-
-
 
 interface itemsgroup{
   name:string;
@@ -41,11 +41,39 @@ interface category {
 export class HomeComponent implements OnInit {
 
 
-
+  model:any;
   @ViewChild('cardTemplate',null) cardTemplate:TemplateRef<HTMLElement>;
   @ViewChild('listTemplate',null) listTemplate:TemplateRef<HTMLElement>;
+  @ViewChild('headline',null)
+  headline:ElementRef;
+
+  favoriteColorControl = 'blue'
+
+  @ViewChild('ContactComponent',null)
+  contentProject:ContactComponent
+
+  @ViewChildren('headline')
+
+  public isuserSuperAdmin:boolean;
+  public isDisabled:boolean=false;
+
+  btnDisabled(){
+    this.isDisabled = true;
+  }
+
+  allowNewServer:boolean=false;
+  serverCreationStatus = 'no server is created';
+
+  ngAfterViewInit():void{
+    this.contentProject.isuserSuperAdmin = true;
+    console.log(this.headline.nativeElement.innerHTML)
+  }
 
   userForm: FormGroup;
+
+  onCreateServer(){
+    this.allowNewServer
+  }
 
   public categories:category[] = [
     {id: 1, name: 'JQuery'},
@@ -54,9 +82,62 @@ export class HomeComponent implements OnInit {
     {id: 4, name: 'React'}
   ]
 
+
+  public subtitle :string='nitesh khatri'
+  public todaydate = new Date();
+  public jsonval = {name: 'Alex', age: '25', address:{a1: 'Paris', a2: 'France'}};
+  public months = ['Jan', 'Feb', 'Mar', 'April', 'May', 'Jun',  
+  'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];  
   selectedObject:category;
 
   mode = 'card'
+
+  enteredValue ='';
+
+  // START, DATE: 24112022, TITLE:Angular 13: Actual use of ng-container
+  public letSomeData :any[]= [
+    {
+      id:1, title:'nitesh',location:'mumbai'
+    },
+    {
+      id:2, title:'urvashi',location:'mumbai'
+    },
+    {
+      id:3, title:'arvind',location:'mumbai'
+    },
+    {
+      id:4, title:'sameet',location:'usa'
+    },
+    {
+      id:5, title:'nitesh',location:'usa'
+    },
+  ]
+  // END, DATE: 24112022, TITLE:Angular 13: Actual use of ng-container
+
+  // START, DATE:24112022, TITLE: <!-- START, DATE:24112022, TITLE:Angular Nested loops | ngFor and ngIf together | ng-container for ngif & ngfor | Error handling -->
+  public complexArr = [
+    {
+      id:1,
+      name:'sai',
+      phoneNum:['12345','12345']
+    },
+    {
+      id:2,
+      name:'rahul',
+      phoneNum:['23331','23332']
+    },
+    {
+      id:3,
+      name:'sachin',
+      phoneNum:['333','33344']
+    },
+    {
+      id:4,
+      name:'vikram',
+      phoneNum:['55511','555588522']
+    },
+  ]
+  // END, DATE:24112022, TITLE: <!-- START, DATE:24112022, TITLE:Angular Nested loops | ngFor and ngIf together | ng-container for ngif & ngfor | Error handling -->
 
   items = [ 
     {
@@ -206,8 +287,19 @@ export class HomeComponent implements OnInit {
   selectedfruit: any
 
   public numbers:Array<any> = [1,2,3,4,5,6,7,8,9]
+  public serverID:number =10;
+  public serverStatus:string ='Offline';
+  public adminRole:boolean=true;
+  public ifRoleIsDefined:boolean=true;
 
   constructor(private router: Router,private fb: FormBuilder) {
+
+    setTimeout(() => {
+      this.allowNewServer=true;
+    },5000)
+    // START DATE: 24112022, TITLE: Style elements dynamically with ngStyle
+    this.serverStatus = Math.random() > 0.5 ? 'Online' : 'Offline';
+    // END DATE: 24112022, TITLE: Style elements dynamically with ngStyle
     this.selected = this.router.getCurrentNavigation().extras.state? this.router.getCurrentNavigation().extras.state.selected: [];
     // console.log("all",this.all);
     // console.log("selected",this.selected); 
@@ -219,6 +311,8 @@ export class HomeComponent implements OnInit {
     //     this.all[itm].checked = true;
     //  }
     // }
+
+    
 
     this.userForm = this.fb.group({
       name: ['', Validators.required],
@@ -235,6 +329,15 @@ export class HomeComponent implements OnInit {
     }
     console.log(this.all);
   }
+
+  // START DATE: 24112022, TITLE: Style elements dynamically with ngStyle
+  getServerStatus(){
+    return this.serverStatus;
+  }
+  getColor(){
+    return this.serverStatus === 'Online' ? 'green' : 'red'
+  }
+  // END DATE: 24112022, TITLE: Style elements dynamically with ngStyle
 
   // persons:any;
   
@@ -352,7 +455,7 @@ export class HomeComponent implements OnInit {
 
   onValueChange() {
     const found = this.myArray.filter( obj => obj.property1 === this.selectedValue)
-    this.selectedObject = found? found[0] : {}
+    // this.selectedObject = found? found[0] : {}
   }
 }
 

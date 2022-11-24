@@ -42,6 +42,12 @@ import { ProjectcontentComponent } from './components/projectcontent/projectcont
 import { UsernameCheckerFormComponent } from './components/username-checker-form/username-checker-form.component';
 import { ScrollbacktopComponent } from './components/scrollbacktop/scrollbacktop.component';
 import { DescPipePipe } from './pipe/desc-pipe.pipe';
+import { LeadsListingComponent } from './components/leads-listing/leads-listing.component';
+import { LeadsGridComponent } from './components/leads-grid/leads-grid.component';
+import { LeadsToolsComponent } from './components/leads-tools/leads-tools.component';
+import { ListProfileComponent } from './components/list-profile/list-profile.component';
+import { NameEditorComponent } from './components/name-editor/name-editor.component';
+import { AngularFormsComponent } from './components/angular-forms/angular-forms.component';
 
 
 
@@ -73,6 +79,12 @@ import { DescPipePipe } from './pipe/desc-pipe.pipe';
     UsernameCheckerFormComponent,
     ScrollbacktopComponent,
     DescPipePipe,
+    LeadsListingComponent,
+    LeadsGridComponent,
+    LeadsToolsComponent,
+    ListProfileComponent,
+    NameEditorComponent,
+    AngularFormsComponent,
   ],
   imports: [
     BrowserModule,
