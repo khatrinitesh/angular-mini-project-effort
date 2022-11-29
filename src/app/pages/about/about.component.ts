@@ -285,7 +285,10 @@ export class AboutComponent implements OnInit {
 
   goBack(){
     // this.location.back();
-    this.router.navigate(['/'],{state:{selected:this.selectedfromParent}});  // define your component where you want to go
+    this.router.navigate(['/'],{
+      state:{
+        selected:this.selectedfromParent
+      }});  // define your component where you want to go
 
   }
 

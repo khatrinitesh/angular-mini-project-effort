@@ -1,3 +1,31 @@
+
+<div style="color:red">
+	<p *ngFor="let d of all">
+		<input type="checkbox"  [checked]="d.checked" (change)="d.checked = !d.checked"/>  {{ d.name }} 
+	</p>
+  </div>
+  <button (click)="add()"  class="btn btn-primary">success</button>
+  
+  <div style="color:blue">
+	<p *ngFor="let d of selected">
+		<span *ngIf="(d.checked)">
+			Selected
+		</span>
+	</p>
+  </div>
+  <hr/> 
+
+
+  <!-- Count: {{count}}
+  <button (click)="increment()">Increment</button> -->
+
+  <hr/> 
+
+  <p [innerText]="100*80"></p>
+  <p [innerText]="67*67+100"></p>
+  <p [innerText]="Content ? 'true' : 'false'"></p>
+  <hr/>
+
 <!-- START -->
 <app-name-editor></app-name-editor>
 <!-- END -->
@@ -327,19 +355,6 @@ Square root of 16 is {{16 | sqrt}}
 <h1>{{ myProperty }}</h1> -->
 
 
-<div style="color:red">
-	<p *ngFor="let d of all">
-	  <input type="checkbox"  [checked]="d.checked" (change)="d.checked = !d.checked">  {{ d.name }}
-	</p>
-  </div>
-  <button (click)="add()"  class="btn btn-primary">success</button>
-  
-  <div style="color:blue">
-	<p *ngFor="let d of selected">
-	  {{ d.name }}
-	</p>
-  </div>
-  <hr/> 
 
   <select [(ngModel)]="selectedValue" (ngModelChange)="onValueChange()">
 	<option *ngFor="let item of myArray"

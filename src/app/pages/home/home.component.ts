@@ -2,7 +2,6 @@ import { Component, Input, OnInit, Output,EventEmitter,ViewChild, TemplateRef, E
 import FruitData from '../../../assets/json_data/fruit_data.json';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ReturnStatement } from '@angular/compiler';
 import { ContactComponent } from '../contact/contact.component';
 
 
@@ -17,9 +16,11 @@ import { ContactComponent } from '../contact/contact.component';
 interface persongroup{
     id:number;
     name: string;
+    address:string;
+    contactNo:string;
     gender: string;
-    website: string;
-    desc: string;
+    // website: string;
+    // desc: string;
 }
 
 interface itemsgroup{
@@ -291,16 +292,28 @@ export class HomeComponent implements OnInit {
   public serverStatus:string ='Offline';
   public adminRole:boolean=true;
   public ifRoleIsDefined:boolean=true;
+  public Content:boolean = false;
+
+  @Input() count: number = 0;
+  @Output() countChange: EventEmitter<number> = new EventEmitter<number>();
+
+  increment() {
+    this.count++;
+    this.countChange.emit(this.count)
+  }
 
   constructor(private router: Router,private fb: FormBuilder) {
+    this.selected = this.router.getCurrentNavigation().extras.state ? this.router.getCurrentNavigation().extras.state.selected: [];
+    //  .log(this.router.getCurrentNavigation().extras.state.selected); // should log out 'bar'
+    
 
-    setTimeout(() => {
-      this.allowNewServer=true;
-    },5000)
+    // setTimeout(() => {
+    //   this.allowNewServer=true;
+    // },5000);
     // START DATE: 24112022, TITLE: Style elements dynamically with ngStyle
     this.serverStatus = Math.random() > 0.5 ? 'Online' : 'Offline';
     // END DATE: 24112022, TITLE: Style elements dynamically with ngStyle
-    this.selected = this.router.getCurrentNavigation().extras.state? this.router.getCurrentNavigation().extras.state.selected: [];
+    
     // console.log("all",this.all);
     // console.log("selected",this.selected); 
     // console.log(this.all.map(obj=>obj.id== this.selected.map(obj=>obj.checked == true).id))
@@ -310,10 +323,9 @@ export class HomeComponent implements OnInit {
     //   if(names.includes(this.all[itm].id)){
     //     this.all[itm].checked = true;
     //  }
-    // }
-
     
 
+    
     this.userForm = this.fb.group({
       name: ['', Validators.required],
       address: ['', Validators.required],
@@ -321,13 +333,6 @@ export class HomeComponent implements OnInit {
       gender: ['', Validators.required],
     });
 
-    for(let result=0;result<this.all.length;result++){
-      var names = this.selected.map(obj => obj.name)
-      if(names.includes(this.all[result].name)){
-        this.all[result].checked = true;
-      }
-    }
-    console.log(this.all);
   }
 
   // START DATE: 24112022, TITLE: Style elements dynamically with ngStyle
@@ -396,7 +401,9 @@ export class HomeComponent implements OnInit {
     var t = this.all.filter(obj => obj.checked).map(obj => obj)
     this.selected = t;
     console.log(this.selected)
-    this.router.navigate(['/about'],{state:{selected:this.selected}});  // define your component where you want to go
+    this.router.navigate(['/about'],{state:{
+      selected:this.selected
+    }});  // define your component where you want to go
   }
 
   eventHandler(event:string[]){
@@ -451,6 +458,35 @@ export class HomeComponent implements OnInit {
     this.checked = true;
     this.selectedValue = this.myArray[0].property1
     this.onValueChange();
+
+    
+    
+    if (this.selected.length){
+      for(let result=0;result<this.all.length;result++){
+        var names = this.selected.map(obj => obj.name) //we are creating array of names form this.selected
+        if(names.includes(this.all[result].name)){
+          this.all[result].checked = true;
+        }
+        else{
+          this.all[result].name = 'nonchecked '+this.all[result].name
+        }
+      }
+    }
+    console.log(this.all);
+  }
+  ngChange(){
+    this.selected = this.router.getCurrentNavigation().extras.state? this.router.getCurrentNavigation().extras.state.selected: [];
+    console.log(this.router.getCurrentNavigation().extras.state.selected); // should log out 'bar'
+    for(let result=0;result<this.all.length;result++){
+      var names = this.selected.map(obj => obj.name) //we are creating array of names form this.selected
+      if(names.includes(this.all[result].name)){
+        this.all[result].checked = true;
+      }
+      else{
+        this.all[result].name = 'nonchecked '+this.all[result].name
+      }
+    }
+    console.log(this.all);
   }
 
   onValueChange() {
