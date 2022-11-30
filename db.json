@@ -1,0 +1,23 @@
+{
+  "properties": [
+    {
+      "id": 1,
+      "ptitle": "Nitesh Properties",
+      "pprice": "98522",
+      "plocation":"mumbai",
+      "pdetails":"Plot available for 2 room set"
+    }
+  ],
+  "signup": [
+    { 
+      "id": 1,
+      "body": "nitesh khatri",
+      "email": "nitesh.khatri88@gmail.com",
+      "mobile":"+91-9920767524",
+      "password":"nitesh@12345"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

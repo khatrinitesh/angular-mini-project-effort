@@ -12,6 +12,11 @@ import { ContactComponent } from '../contact/contact.component';
 //   selected:boolean
 // }
 
+interface Transport {
+  name:string;
+  val:number;
+}
+
 
 interface persongroup{
     id:number;
@@ -40,6 +45,57 @@ interface category {
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+  public selectedValueOne = 'One'
+  activeidx:number;
+  i='https://via.placeholder.com/150'
+
+  addStyle(i){
+    this.activeidx=i;
+  }
+
+  btnSave($event){
+    console.log('this message is good',$event)
+  }
+
+
+
+  public trans:Transport[] = [
+    {
+      name:'nitesh',
+      val:0
+    },
+    {
+      name:'sameet',
+      val:1
+    },
+    {
+      name:'urvashi',
+      val:2
+    },
+    {
+      name:'arvind',
+      val:3
+    },
+  ]
+
+  public items1:any[]=[
+    {
+      name:'nitesh'
+    },
+    {
+      name:'nitesh2'
+    },
+    {
+      name:'nitesh3'
+    },
+    {
+      name:'nitesh4'
+    },
+    {
+      name:'nitesh5'
+    },
+  ]
 
 
   model:any;

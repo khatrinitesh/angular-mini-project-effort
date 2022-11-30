@@ -1,3 +1,58 @@
+<button (click)="btnSave($event)">Click Event</button>
+<hr/>
+
+<div class="item" *ngFor="let i of img;let i=index;">
+	<img class="product_i2" [src]='i' [class.active]='i === activeidx' (click)='addStyle(i)'/>
+</div>
+
+<hr/>
+
+<ul class="list_item">
+	<li [class.active]="selectedValueOne == 'One'">
+		<a (click)="selectedValueOne = 'One'">One</a>
+	</li>
+	<li [class.active]="selectedValueOne == 'Two'">
+		<a (click)="selectedValueOne = 'Two'">Two</a>
+	</li>
+</ul>
+<div [ngSwitch]="selectedValueOne">
+	<div *ngSwitchCase="'One'">Map View Content</div>
+	<div *ngSwitchCase="'Two'">List View Content</div>
+	<div *ngSwitchDefault>Otherwise</div>
+</div>
+
+<hr/>
+
+<!-- <select [(ngModel)]="selectedValueOne">
+	<option *ngFor="let item of trans" [value]="item.name">
+		{{item.name}}
+	</option>
+</select>
+<div class="row" [ngSwitch]="selectedValueOne">
+	<div *ngSwitchCase="'One'">One is pressed</div>
+	<div *ngSwitchCase="'Two'">Two is pressed</div>
+	<div *ngSwitchDefault>No result</div>
+</div>
+{{selectedValueOne}} -->
+
+<hr/>
+
+<div [ngSwitch]="value">
+	<span *ngSwitchCase="0">Text one</span>
+	<span *ngSwitchCase="1">Text two</span>
+	<span *ngSwitchDefault>no result</span>
+</div>
+
+<hr/>
+
+<ul>
+	<div *ngIf="items1">
+	  <li *ngFor="let item of items1;">
+		{{item.name}}
+	  </li>
+	</div>
+   </ul>
+
 
 <div style="color:red">
 	<p *ngFor="let d of all">

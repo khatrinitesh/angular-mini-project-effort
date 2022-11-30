@@ -48,6 +48,9 @@ import { LeadsToolsComponent } from './components/leads-tools/leads-tools.compon
 import { ListProfileComponent } from './components/list-profile/list-profile.component';
 import { NameEditorComponent } from './components/name-editor/name-editor.component';
 import { AngularFormsComponent } from './components/angular-forms/angular-forms.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { PropertiesComponent } from './components/properties/properties.component';
 
 
 
@@ -85,6 +88,9 @@ import { AngularFormsComponent } from './components/angular-forms/angular-forms.
     ListProfileComponent,
     NameEditorComponent,
     AngularFormsComponent,
+    LoginComponent,
+    SignupComponent,
+    PropertiesComponent,
   ],
   imports: [
     BrowserModule,
