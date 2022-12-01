@@ -3,6 +3,14 @@ import FruitData from '../../../assets/json_data/fruit_data.json';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ContactComponent } from '../contact/contact.component';
+import { throwToolbarMixedModesError } from '@angular/material';
+import { timeStamp } from 'console';
+
+
+interface Movie {
+  title:string;
+  director:string;
+}
 
 
 // interface fruit{
@@ -46,16 +54,86 @@ interface category {
 })
 export class HomeComponent implements OnInit {
 
+ 
+  getData(){
+    return 'nitesh khatri is pass value from TS to HTML'
+  }  
+
+  YTname=''
+  number1 = 1;
+  number2 = 2;
+  sum=0;
+
+  calc(num1:any,num2:any){
+    this.sum = parseFloat(num1)+ parseFloat(num2)
+  }
+
+  getValue(val:any){
+    this.YTname = val;
+    console.warn(val)
+  }
+
+  public foo = {
+    regionList: [
+      {
+        id: 1,
+        country: 'England',
+        value: 'England',
+        isClosed: 'false',
+        checked: false,
+        Activities: [
+          {
+            id: 12,
+            value: 'Soccer',
+            checked: false,
+          },
+          {
+            id: 267,
+            value: 'baseball',
+            checked: false,
+          },
+        ],
+      },
+      {
+        id: 2,
+        country: 'Aus',
+        value: 'Aus',
+        isClosed: 'false',
+        checked: false,
+        Activities: [
+          {
+            id: 48,
+            value: 'Cricket',
+            checked: false,
+          },
+          {
+            id: 251,
+            value: 'volleyball',
+            checked: false,
+          },
+          {
+            id: 207,
+            value: 'Golf',
+            checked: false,
+          },
+        ],
+      },
+    ],
+  };
+
+  public exampleIf:boolean=true;
+
   public selectedValueOne = 'One'
   activeidx:number;
   i='https://via.placeholder.com/150'
+  regionList: any;
 
   addStyle(i){
     this.activeidx=i;
   }
 
   btnSave($event){
-    console.log('this message is good',$event)
+  console.log('this message is good',$event)
   }
 
 
@@ -265,11 +343,24 @@ export class HomeComponent implements OnInit {
     }
     
   }
+
+  btnRemoveArray(id){
+    // this.regionList.splice(i,1)
+    // this.foo.regionList[i].Activities.splice(,1)
+    // this.foo.regionList.splice(i,1)
+    this.foo.regionList.filter((rl, index) => rl !== id);
+  }
   btnRemove(id){
     console.log(this.ItemArray)
     this.ItemArray = this.ItemArray.filter((data) => data.id != id)
     
   }
+
+  public x = 50
+  public y = 10
+
+  
+  currentURL = window.location.href;
   public showLoginReg: boolean = false
   public childTitle: string = 'Child title';
   public clickCount: number = 0;
@@ -509,11 +600,108 @@ export class HomeComponent implements OnInit {
     this.showLoginReg = false
   }
 
+  description = 'nitesh'
+
+  mtitle:string='';
+  mdirector:string='';
+
+  movies=[];
+
+  btnRemoveList(i){
+    this.movies.splice(i,1);
+  }
+
+  addMovie(){
+    this.movies.push({
+      title:this.mtitle,director:this.mdirector
+    }),
+    this.mtitle = ""
+    this.mdirector = ""
+  }
+
+ refresh(){
+  console.log('refresh')
+  this.movies = [
+    {
+      title:'a',director:'nitesh'
+    },
+    {
+      title:'b',director:'sameet'
+    },
+    {
+      title:'c',director:'arvind'
+    },
+    {
+      title:'d',director:'urvashi'
+    },
+  ]
+ }
+
+ public exampleList:any[]=[
+  {
+    name:'nitesh'
+  },
+  {
+    name:'namratha'
+  },
+ ]
+
+  btnRemove(i){
+    this.emps.splice(i,1);
+  }
+
+  public emps:any[] =[
+    {
+      name:'nitesh emp',
+      skills:[
+        {
+          skill:'html',
+          experience:'2 years'
+        },
+      ]
+    },
+    {
+      name:'sameet emp',
+      skills:[
+        {
+          skill:'field service engieering',
+          experience:'7 years'
+        },
+      ]
+    },
+    {
+      name:'arvind emp',
+      skills:[
+        {
+          skill:'ladies tailoring',
+          experience:'20 years'
+        },
+      ]
+    },
+    {
+      name:'urvashi emp',
+      skills:[
+        {
+          skill:'housewife',
+          experience:'39 years'
+        },
+      ]
+    },
+  ]
+
+  public descItems:any[]=[
+    {name:'nitesh'},
+    {name:'sameet'},
+    {name:'arvind'},
+    {name:'urvashi'},
+  ]
+
 
   ngOnInit() {
     this.checked = true;
     this.selectedValue = this.myArray[0].property1
     this.onValueChange();
+
 
     
     
@@ -522,13 +710,14 @@ export class HomeComponent implements OnInit {
         var names = this.selected.map(obj => obj.name) //we are creating array of names form this.selected
         if(names.includes(this.all[result].name)){
           this.all[result].checked = true;
+          this.exampleIf = false;
         }
         else{
-          this.all[result].name = 'nonchecked '+this.all[result].name
+          this.all[result].name = 'nonchecked '+  this.all[result].name
         }
       }
     }
-    console.log(this.all);
+    // console.log(this.all);
   }
   ngChange(){
     this.selected = this.router.getCurrentNavigation().extras.state? this.router.getCurrentNavigation().extras.state.selected: [];
@@ -537,9 +726,10 @@ export class HomeComponent implements OnInit {
       var names = this.selected.map(obj => obj.name) //we are creating array of names form this.selected
       if(names.includes(this.all[result].name)){
         this.all[result].checked = true;
+        this.exampleList
       }
       else{
-        this.all[result].name = 'nonchecked '+this.all[result].name
+        this.all[result].name = 'nonchecked '+ this.all[result].name
       }
     }
     console.log(this.all);

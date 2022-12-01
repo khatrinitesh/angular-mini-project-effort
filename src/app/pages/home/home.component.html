@@ -1,4 +1,128 @@
+<div style="color:red">
+	<p *ngFor="let d of all">
+		<input type="checkbox"  [checked]="d.checked" (change)="d.checked = !d.checked"/>  {{ d.name }} 
+	</p>
+  </div>
+  <button (click)="add()"  class="btn btn-primary">success</button>
+  
+  <div *ngIf="!exampleIf" style="color:blue">
+	<div *ngFor="let d of selected">
+		<ul *ngIf="(d.checked)">
+			<li>Selected</li>
+		</ul>
+	</div>
+		<ul *ngFor="let e of exampleList">
+			<li>
+				{{e.name}}
+			</li>
+		</ul>
+
+  </div>
+
+  <hr/>
+
+<input type="text" #txt (blur)="eventhandling(txt.value)">
+<br/>
+<button (click)="eventhandling('event handling')">Click here</button>
+
+  <hr/> 
+
+  <input type="text" (keyup)="getValue($any($event.target.value))"/>
+  {{YTname}}
+
+  <hr/>
+
+  value1: <input type="text" #num1 name="num1" [value]="number1">
+  <br/>
+  value2: <input type="text" #num2 name="num2" [value]="number2">
+  <button (click)="calc(num1.value,num2.value)">Sum</button>
+  <br/>
+  <h4>{{sum}}</h4>
+
+  <hr/>
+
+  <h2>{{currentURL}}</h2>
+
+  <hr/>
+
+  <h2>{{x * y}}</h2>
+  
+
+  <hr/>
+
+  <h2>{{getData()}}</h2>
+
+  <hr/>
+
+  <div *ngFor="let f of foo.regionList">
+	{{f.value}} {{f.isClosed}} 
+	<div *ngFor="let s of f.Activities">
+		{{s.value}}
+	</div>
+	<button (click)="btnRemoveArray(id)">Remove</button>
+	<hr/>
+  </div>
+  <hr/> 
+
+  <h1>{{title}}</h1>
+  <ul>
+	<li *ngFor="let movie of movies;let i=index;trackBy:trackByFri">
+		{{i}} - {{movie.title}} - {{movie.director}}
+		<button (click)="btnRemoveList()">Remove</button>
+	</li>
+  </ul>
+  <br/>
+  <button (click)="refresh()">Refresh</button>
+<br/>
+  Title: <input type="text" [(ngModel)]="mtitle"/>
+  Director: <input type="text" [(ngModel)]="mdirector"/>
+  <button (click)="addMovie()">Add</button>
+
+  <hr/>
+
+  <table>
+	<tr *ngFor="let emp of emps;let i=index;let first=first;let last=last;let even=even;let odd=odd" [ngClass]="{first:first,last:last,odd:odd,even:even}" [ngStyle]="{fontSize:'20px',color:'red'}">	
+		<td>
+			{{i}} -{{emp.name}} 
+			
+		</td>
+		<td>
+			<div *ngFor="let s of emp.skills" >
+				{{s.skill}} - {{s.experience}} 
+				
+			</div>
+		</td>
+		<td>
+			<button (click)="btnRemove(i)">Remove</button>
+		</td>
+	</tr>
+	
+	
+  </table>
+
+  <hr/>
+
+  <select [(ngModel)]="description">
+	<option *ngFor="let desc of descItems">
+		{{desc.name}}
+	</option>
+  </select>
+  <div [ngSwitch]="description">
+	<div *ngSwitchCase="'nitesh'">Text 1</div>
+	<div *ngSwitchCase="'sameet'">Text 2</div>
+	<div *ngSwitchDefault>No result</div>
+  </div>
+
+  <div [ngStyle]="{color:'red',fontSize:'20px',padding:'20px'}">Nitesh khatri is color</div>
+
+  <hr/>
+
+<div [ngClass]="{one:true,two:true,three:false}">Nitesh khatri is one to three</div>
+  <hr/>
+
+
 <button (click)="btnSave($event)">Click Event</button>
+
 <hr/>
 
 <div class="item" *ngFor="let i of img;let i=index;">
@@ -54,21 +178,7 @@
    </ul>
 
 
-<div style="color:red">
-	<p *ngFor="let d of all">
-		<input type="checkbox"  [checked]="d.checked" (change)="d.checked = !d.checked"/>  {{ d.name }} 
-	</p>
-  </div>
-  <button (click)="add()"  class="btn btn-primary">success</button>
-  
-  <div style="color:blue">
-	<p *ngFor="let d of selected">
-		<span *ngIf="(d.checked)">
-			Selected
-		</span>
-	</p>
-  </div>
-  <hr/> 
+
 
 
   <!-- Count: {{count}}
