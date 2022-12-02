@@ -7,7 +7,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
-  isuserSuperAdmin: boolean;
+  // isuserSuperAdmin: boolean;
 
 
 

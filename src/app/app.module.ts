@@ -51,6 +51,7 @@ import { AngularFormsComponent } from './components/angular-forms/angular-forms.
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { PropertiesComponent } from './components/properties/properties.component';
+import { ProductsComponent } from './components/products/products.component';
 
 
 
@@ -91,6 +92,7 @@ import { PropertiesComponent } from './components/properties/properties.componen
     LoginComponent,
     SignupComponent,
     PropertiesComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,

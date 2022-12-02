@@ -3,8 +3,6 @@ import FruitData from '../../../assets/json_data/fruit_data.json';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ContactComponent } from '../contact/contact.component';
-import { throwToolbarMixedModesError } from '@angular/material';
-import { timeStamp } from 'console';
 
 
 interface Movie {
@@ -54,6 +52,61 @@ interface category {
 })
 export class HomeComponent implements OnInit {
 
+  
+num=-1
+  isRed(num) {
+    if (num > 10) {
+        return false;
+    } else {
+        return true;
+    }
+      }
+
+      users = [
+        {
+          id:1,
+          name:'a',
+          age:33,
+        },
+        {
+          id:2,
+          name:'b',
+          age:40,
+        },
+        {
+          id:3,
+          name:'c',
+          age:43,
+        },
+      ]
+
+      delBtnList(id){
+        this.users.splice(id,1)
+      }
+
+
+      public name = ['nitesh','vishal','mayur','sonal']
+
+  multiSelection = {
+    color:'blue',
+    textDecoration:'underline'
+  }
+
+  color='red'
+  
+
+  public ApplyBoldClass: boolean = true;
+  success ='success';
+  error ='danger';
+  underLine = 'underline';
+  bold='bold';
+  hasError = false;
+  multiclass:string = 'success underline bold'
+  conditionMultiClass = {
+    'success':!this.hasError,
+    'error':this.hasError
+  }
+
  
   getData(){
     return 'nitesh khatri is pass value from TS to HTML'
@@ -67,6 +120,12 @@ export class HomeComponent implements OnInit {
   calc(num1:any,num2:any){
     this.sum = parseFloat(num1)+ parseFloat(num2)
   }
+
+  valueParent = 'this is parent data';
+  // datatwo = {
+  //   name:'ashish',
+  //   channel:"ashish vlogs"
+  // }
 
   getValue(val:any){
     this.YTname = val;
@@ -189,7 +248,7 @@ export class HomeComponent implements OnInit {
 
   @ViewChildren('headline')
 
-  public isuserSuperAdmin:boolean;
+  // public isuserSuperAdmin:boolean;
   public isDisabled:boolean=false;
 
   btnDisabled(){
@@ -200,7 +259,7 @@ export class HomeComponent implements OnInit {
   serverCreationStatus = 'no server is created';
 
   ngAfterViewInit():void{
-    this.contentProject.isuserSuperAdmin = true;
+    // this.contentProject.isuserSuperAdmin = true;
     console.log(this.headline.nativeElement.innerHTML)
   }
 
@@ -350,11 +409,11 @@ export class HomeComponent implements OnInit {
     // this.foo.regionList.splice(i,1)
     this.foo.regionList.filter((rl, index) => rl !== id);
   }
-  btnRemove(id){
-    console.log(this.ItemArray)
-    this.ItemArray = this.ItemArray.filter((data) => data.id != id)
+  // btnRemove(id){
+  //   console.log(this.ItemArray)
+  //   this.ItemArray = this.ItemArray.filter((data) => data.id != id)
     
-  }
+  // }
 
   public x = 50
   public y = 10
@@ -555,6 +614,10 @@ export class HomeComponent implements OnInit {
 
   eventHandler(event:string[]){
     this.childData = event;
+  }
+
+  eventhandling(val:any){
+    console.warn(val)
   }
 
 
