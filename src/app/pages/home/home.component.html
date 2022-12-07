@@ -18,6 +18,12 @@
 		</ul>
   </div>
 
+  <app-musicdetails [musicianName]="txtname" (newMusicianEvent)="addArtists($event)"></app-musicdetails>
+  <ul *ngFor="let musician of musicians">
+	{{musician}}
+	<button (click)="btnMusic(id)">&times;</button>
+  </ul>
+
   <hr/>
 
   <app-products></app-products>

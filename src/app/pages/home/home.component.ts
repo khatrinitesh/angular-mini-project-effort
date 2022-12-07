@@ -52,6 +52,19 @@ interface category {
 })
 export class HomeComponent implements OnInit {
 
+  public txtname = 'Edward Christopher Sheeran';
+  
+  public musicians = ['Ed Sheeran', 'Prince Indah', 'Emma Jalamo']
+  public name:string | undefined;
+
+  addArtists(newMusician:any){
+    this.name = newMusician;
+    this.musicians.push(newMusician);
+  }
+
+  btnMusic(id){
+    this.musicians.splice(id,1)
+  }
   
 num=-1
   isRed(num) {

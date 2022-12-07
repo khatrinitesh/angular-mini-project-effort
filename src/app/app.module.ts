@@ -52,6 +52,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { PropertiesComponent } from './components/properties/properties.component';
 import { ProductsComponent } from './components/products/products.component';
+import { MusicdetailsComponent } from './components/musicdetails/musicdetails.component';
 
 
 
@@ -93,6 +94,7 @@ import { ProductsComponent } from './components/products/products.component';
     SignupComponent,
     PropertiesComponent,
     ProductsComponent,
+    MusicdetailsComponent,
   ],
   imports: [
     BrowserModule,
