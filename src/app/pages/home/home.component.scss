@@ -3,11 +3,16 @@ background-color: red;
 color:#fff;
 }
 
-.success{
+.success,.green{
     color:green;
 }
 
-.danger{
+
+.size20{
+    font-size: 20px;
+}
+
+.danger,.red{
     color:red;
 }
 
@@ -23,3 +28,12 @@ color:#fff;
     color:red;
     font-size: 20px;
 }
+
+.toggled{
+    background-color: red;
+}
+
+.yellow{
+    background-color: yellow;
+}
+

@@ -1,8 +1,15 @@
-import { Component, Input, OnInit, Output,EventEmitter,ViewChild, TemplateRef, ElementRef, ViewChildren } from '@angular/core';
+import { Component, Input, OnInit, Output,EventEmitter,ViewChild, TemplateRef, ElementRef, ViewChildren, HostBinding } from '@angular/core';
 import FruitData from '../../../assets/json_data/fruit_data.json';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ContactComponent } from '../contact/contact.component';
+import { ClassField } from '@angular/compiler';
+
+
+class CssClass {
+  red:boolean=true;
+  size20:boolean=true;
+}
 
 
 interface Movie {
@@ -52,18 +59,178 @@ interface category {
 })
 export class HomeComponent implements OnInit {
 
+  count: number = 0;
+  buttonDisabled: boolean = false;
+  @Input() icon: string;
+  @Output() value = new EventEmitter<string>();
+
   public txtname = 'Edward Christopher Sheeran';
   
   public musicians = ['Ed Sheeran', 'Prince Indah', 'Emma Jalamo']
-  public name:string | undefined;
+  public cycle = ['cycle 1', 'cycle 2', 'cycle 3']
+
+  public datatextarray:boolean=true;
+  public nameone:string | undefined;
+  public classToggled :boolean=false;
+  public toggleText:string = 'removeClass';
+  public paragraphtwo :string = 'nitesh khatri';
+  public showPara:boolean=false;
+  public btnParagraphText:string = 'show text';
+  public setup: string;
+  public punchline: string;
+  public currentUser:string='text text';
+  public q:string =''
+  public itemImageUrl = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'
+
+  public CssClass:CssClass =  new CssClass(); 
+  public cssStringVar: string= 'red size20';
+
+  
+  inputFocus = false;
+
+  get classes() {
+    const cssClasses = {
+      fa: true
+    };
+    cssClasses['fa-' + this.icon] = true;
+    return cssClasses;
+  }
+
+  @HostBinding('class.focus')
+  get focus() {
+    console.log(this.inputFocus);
+    return this.inputFocus;
+  }
+
+  selectedMovieToWatch(data:string){
+    debugger;
+    alert(data)
+  }
+
+
+  userComment() {
+    return this.currentUser + ' Kinda hates Miki';
+  }
+
+  public courses = [
+    {
+    'name': 'Introduction to Web Development',
+    'level': 'Beginner'
+  },
+  {
+    'name': 'Understanding APIs',
+    'level': 'Intermediate'
+  },
+  {
+    'name': 'Introduction to Docker Containers',
+    'level': 'Advanced'
+  },
+  {
+      'name': 'Understanding Time complexities',
+      'level': 'Advanced'
+  },
+  {
+      'name': 'Algorithms and Data Structures',
+      'level': 'Advanced'
+  },
+  {
+    'name': 'My first HTML page',
+    'level': 'Beginner'
+  },
+  {
+    'name': 'Ways to use CSS in your web page',
+    'level': 'Beginner'
+  },
+  {
+    'name': 'Introduction to Unit testing',
+    'level': 'Intermediate'
+  },
+  {
+    'name': 'What are PWAs',
+    'level': 'Intermediate'
+  }
+  ];
+
+  public  companies = [
+    {
+      name: 'Microsoft',
+      isTechnical: true,
+    },
+  
+    {
+      name: 'GeeksforGeeks',
+      isTechnical: true,
+    },
+  
+    {
+      name: 'Netflix',
+      isTechnical: false,
+    },
+    {
+      name: 'TCS',
+      isTechnical: true,
+    },
+  ];
+  jokes:{
+    splice(id: any, arg1: number): unknown;
+    id:number;
+    setup:string;
+    punchline:string;
+  }
+
+  btnRemmoveJokes(id){
+    this.jokes.splice(id,1)
+  }
+
+  btnComp(id){
+    this.companies.splice(id,1)
+  }
+
+  btnparagraph(){
+    this.showPara = !this.showPara;
+    if(this.btnParagraphText === 'show text'){
+      this.btnParagraphText = 'hide text'
+    }
+    else{
+      this.btnParagraphText = 'show text'
+    }
+  }
+
+  toggleField(){
+    this.classToggled = !this.classToggled;
+    if(this.toggleText === 'removeClass'){
+      this.toggleText = 'addClass'
+    }
+    else{
+      this.toggleText = 'removeClass'
+    }
+  }
+
 
   addArtists(newMusician:any){
-    this.name = newMusician;
+    console.log(newMusician);
+    this.nameone = newMusician;
     this.musicians.push(newMusician);
   }
 
+  addCycle(newCycle:any){
+    console.log(newCycle);
+    this.nameone = newCycle;
+    this.cycle.push(newCycle);
+  }
+
+  tbs = [
+    {name:'nk',subject:'english',status:true},
+    {name:'ak',subject:'hindi',status:true},
+    {name:'uk',subject:'gujarati',status:true},
+  ]
+
   btnMusic(id){
     this.musicians.splice(id,1)
+  }
+
+  btnCycle(id){
+    this.cycle.splice(id,1)
   }
   
 num=-1
@@ -263,7 +430,9 @@ num=-1
 
   // public isuserSuperAdmin:boolean;
   public isDisabled:boolean=false;
+  public isDisabledTwo:boolean=false;
 
+  
   btnDisabled(){
     this.isDisabled = true;
   }
@@ -522,6 +691,22 @@ num=-1
   }
 
   constructor(private router: Router,private fb: FormBuilder) {
+    this.jokes = [
+      {
+        setup: "What did the cheese say when it looked in the mirror?",
+        punchline: "Hello-Me (Halloumi)"
+      },
+      {
+        setup: "What kind of cheese do you use to disguise a small horse?",
+        punchline: "Mask-a-pony (Mascarpone)"
+      },
+      {
+        setup: "A kid threw a lump of cheddar at me",
+        punchline: "I thought ‘That’s not very mature’"
+      },
+    ];
+    this.setup = 'What did the cheese say when it looked in the mirror?';
+    this.punchline = 'Halloumi (Hello Me)'
     this.selected = this.router.getCurrentNavigation().extras.state ? this.router.getCurrentNavigation().extras.state.selected: [];
     //  .log(this.router.getCurrentNavigation().extras.state.selected); // should log out 'bar'
     

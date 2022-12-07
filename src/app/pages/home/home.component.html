@@ -1,4 +1,4 @@
-<div style="color:red">
+<!-- <div style="color:red">
 	<p *ngFor="let d of all">
 		<input type="checkbox"  [checked]="d.checked" (change)="d.checked = !d.checked"/>  {{ d.name }} 
 	</p>
@@ -16,12 +16,117 @@
 				{{e.name}}
 			</li>
 		</ul>
+  </div> -->
+
+  <hr/>
+
+  <input (focus)="inputFocus = true" (blur)="inputFocus = false"
+           (keyup)="value.emit(input.value)" #input>
+
+		   <hr/>
+
+  <div [ngClass]="cssStringVar">CSs syyles</div>
+  <div [ngClass]="{'red':true,'size20':false}">css styles is two</div>
+  <div [ngClass]="cssClass">css Class</div>
+
+  <input type="text" [(ngModel)]="q"/>
+  {{q}}
+
+  <br/>
+  <div><img alt="item" [src]="itemImageUrl"></div>
+
+<h2 >Lenth: {{ currentUser.length }}</h2>
+<h2>Lenth: {{ currentUser.toUpperCase() }}</h2>
+<h1>{{(userComment())}}</h1>
+
+<hr/>
+
+  <h2>How about {{2+2}} {{1+1}} {{0+0}}</h2>
+  <hr/>
+
+  <div class="card" *ngFor="let joke of jokes">
+	<h4 class="card-title">{{joke.setup}}</h4>
+	<p class="card-text">{{joke.punchline}}</p>
+	<button (click)="btnRemmoveJokes(id)">&times;</button>
   </div>
 
-  <app-musicdetails [musicianName]="txtname" (newMusicianEvent)="addArtists($event)"></app-musicdetails>
+  <hr/>
+
+  <h1>{{setup}}</h1>
+  <p>{{punchline}}</p>
+
+  <ul>
+	<li *ngFor="let course of courses" 
+	[ngClass]="{'green' : course.level === 'Beginner','yellow':course.level==='Intermediate','red':course.level==='Advanced'}">
+	  {{ course.name }}
+	  </li>
+  </ul>
+  <hr/>
+
+  <ul>
+	<li *ngFor="let company of companies">
+		<span *ngIf="company.isTechnical">
+			{{company.name}}
+		</span>
+		<button (click)="btnComp(id)">&times;</button>
+	</li>
+  </ul>
+
+  <hr/>
+
+  <button class="{{btnParagraphText ? 'active ' : 'inactive'}}" (click)="btnparagraph()">{{btnParagraphText}}</button>
+  <div *ngIf="!showPara">{{paragraphtwo}}</div>
+
+  <br/>
+  <br/>
+
+  <button (click)="toggleField()">{{toggleText}}</button>
+  <ul class="sidebar" [class.toggled]="classToggled">
+	<li>This is an List item</li>
+  </ul>
+
+  <hr/>
+
+  <button disabled="disabled">
+	I've been clicked {{count}} times.
+	</button>
+
+  <h3 [ngStyle]="{color:'red',fontSize:'20px'}">nitesh khatri</h3>
+
+  <hr/>
+
+  <table class="table">
+	<tr>
+		<th>
+			name
+		</th>
+
+		<th>
+			subject
+		</th>
+
+		<th>
+			status
+		</th>
+	</tr>
+	<tr *ngFor="let tb of tbs">
+		<td>{{tb.name}}</td>
+		<td>{{tb.subject}}</td>
+		<td>{{tb.status}}</td>
+	</tr>
+  </table>
+
+  <hr/>
+
+  <app-musicdetails [musicianName]="txtname" (newMusicianEvent)="addArtists($event)" (newCycleEvent)="addCycle($event)"></app-musicdetails >
   <ul *ngFor="let musician of musicians">
 	{{musician}}
 	<button (click)="btnMusic(id)">&times;</button>
+  </ul>
+
+  <ul *ngFor="let cyc of cycle">
+	{{cyc}}
+	<button (click)="btnCycle(id)">&times;</button>
   </ul>
 
   <hr/>
