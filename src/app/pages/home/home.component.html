@@ -1,3 +1,17 @@
+<!-- <app-customchild [childMessage]="parentMessage" (messageEvent)="receiveMessage($event)"></app-customchild> -->
+
+<ul *ngIf="listBullet" class="list_bullet">
+	<li *ngFor="let add of addressout;let even=even;let odd=odd;">
+		<span>{{add.name}} - {{add.mobile}} - {{add.email}}</span>
+		<button (click)="btnadd(id)">&times;</button>
+	</li>
+</ul>
+
+
+ <div class="s-name">
+	{{'SAMEET KHATRI' | shortname}}
+</div>
+
 <!-- <div style="color:red">
 	<p *ngFor="let d of all">
 		<input type="checkbox"  [checked]="d.checked" (change)="d.checked = !d.checked"/>  {{ d.name }} 
@@ -28,6 +42,7 @@
   <div [ngClass]="cssStringVar">CSs syyles</div>
   <div [ngClass]="{'red':true,'size20':false}">css styles is two</div>
   <div [ngClass]="cssClass">css Class</div>
+
 
   <input type="text" [(ngModel)]="q"/>
   {{q}}

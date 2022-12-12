@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ContactComponent } from '../contact/contact.component';
 import { ClassField } from '@angular/compiler';
+import { CustomchildComponent } from 'src/app/components/customchild/customchild.component';
 
 
 class CssClass {
@@ -39,6 +40,13 @@ interface persongroup{
     gender: string;
     // website: string;
     // desc: string;
+}
+
+interface addressList{
+  id:number;
+  name:string;
+  mobile:number;
+  email:string;
 }
 
 interface itemsgroup{
@@ -418,8 +426,16 @@ num=-1
   model:any;
   @ViewChild('cardTemplate',null) cardTemplate:TemplateRef<HTMLElement>;
   @ViewChild('listTemplate',null) listTemplate:TemplateRef<HTMLElement>;
-  @ViewChild('headline',null)
+  @ViewChild('CustomchildComponent',null) child;
   headline:ElementRef;
+
+  
+
+  message:string;
+
+  receiveMessage($event){
+    this.message = $event;
+  }
 
   favoriteColorControl = 'blue'
 
@@ -440,9 +456,12 @@ num=-1
   allowNewServer:boolean=false;
   serverCreationStatus = 'no server is created';
 
+  
+
   ngAfterViewInit():void{
     // this.contentProject.isuserSuperAdmin = true;
     console.log(this.headline.nativeElement.innerHTML)
+    this.message = this.child.message;
   }
 
   userForm: FormGroup;
@@ -543,6 +562,10 @@ num=-1
     return this.listTemplate;
     return this.cardTemplate;
   }
+
+  btnadd(id){
+    this.addressout.splice(id,1);
+  }
   
 
   public ItemArray:itemsgroup[]=[
@@ -559,7 +582,26 @@ num=-1
       id: 5
     }
   ]
+
+  public parentMessage = 'message from parent';
   searchText; // filter search inside table data
+
+  public listBullet:boolean=true;
+
+  public addressout:addressList[] = [
+    {
+      id:1,name:'n',mobile:9920767524,email:'nitesh.khatri88@gmail.com'
+    },
+    {
+      id:2,name:'s',mobile:9833841501,email:'sameet210000@gmail.com'
+    },
+    {
+      id:3,name:'m',mobile:9769708101,email:'urvashi.khatri58@gmail.com'
+    },
+    {
+      id:4,name:'d',mobile:9920767524,email:'arvind.khatri55@gmail.com'
+    },
+  ]
 
   addItemTable() {
     console.log(this.userForm.value);
@@ -690,7 +732,10 @@ num=-1
     this.countChange.emit(this.count)
   }
 
+  id=28;
+
   constructor(private router: Router,private fb: FormBuilder) {
+    // this.router.navigate(['/list'],{queryParams:{id:this.id}})
     this.jokes = [
       {
         setup: "What did the cheese say when it looked in the mirror?",

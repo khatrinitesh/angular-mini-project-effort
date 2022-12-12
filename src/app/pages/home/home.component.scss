@@ -1,3 +1,17 @@
+.list_bullet{
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    li{
+        &:before{
+            content:"\2713";
+            color:red;
+            padding:0 10px 0 0;
+        }
+    }
+}
+
+
 .list_item li.active a{
 background-color: red;
 color:#fff;

@@ -53,6 +53,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { PropertiesComponent } from './components/properties/properties.component';
 import { ProductsComponent } from './components/products/products.component';
 import { MusicdetailsComponent } from './components/musicdetails/musicdetails.component';
+import { CustomchildComponent } from './components/customchild/customchild.component';
+import { ApplistComponent } from './components/applist/applist.component';
 
 
 
@@ -95,6 +97,8 @@ import { MusicdetailsComponent } from './components/musicdetails/musicdetails.co
     PropertiesComponent,
     ProductsComponent,
     MusicdetailsComponent,
+    CustomchildComponent,
+    ApplistComponent,
   ],
   imports: [
     BrowserModule,
