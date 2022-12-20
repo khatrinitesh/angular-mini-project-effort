@@ -1,7 +1,16 @@
-<h1>
+<input type="text" [value]="newUserName" onChange="setNewUserName($event.target.value)"/>
+<button (click)="addUser()">add user</button>
+<div *ngFor="let user of users">
+    <span>{{user.name}} is {{user.age}} years old</span>
+    <span (click)="removeUser.emit(user.id)">&times;</span>
+</div>
+
+<!-- <h1>
     <span style="color: red;font-size:larger">
         I am Teacher Component behaving as parent :)
     </span>
 
-</h1>
-<h2>{{principle}} controls {{teachers.length}} teachers</h2>
+</h1> -->
+<!-- <h2>{{principle}} controls {{teachers.length}} teachers</h2> -->
+
+<h3>{{userName}}</h3>

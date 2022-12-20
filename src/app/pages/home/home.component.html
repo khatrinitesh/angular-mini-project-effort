@@ -1,3 +1,18 @@
+
+
+<hr/>
+
+<ul>
+	<ng-container *ngFor="let bulletgrp of bulletsgroup">
+	<li>
+		{{bulletgrp.id}} - {{bulletgrp.name}} - {{bulletgrp.desc}}
+		<button (click)="btnbulletremove()">&times;</button>
+	</li>
+	</ng-container>
+</ul>
+
+<app-teacher [users]="users" (removeUser)="removeUserTwo($event)" (addUserEvent)="addUser($event)" [userName]="example"></app-teacher>
+
 <app-fruit></app-fruit>
 <!-- <app-customchild [childMessage]="parentMessage" (messageEvent)="receiveMessage($event)"></app-customchild> -->
 

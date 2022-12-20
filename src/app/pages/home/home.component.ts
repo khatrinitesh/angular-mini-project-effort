@@ -3,8 +3,12 @@ import FruitData from '../../../assets/json_data/fruit_data.json';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ContactComponent } from '../contact/contact.component';
-import { ClassField } from '@angular/compiler';
+import { ClassField, ThrowStmt } from '@angular/compiler';
 import { CustomchildComponent } from 'src/app/components/customchild/customchild.component';
+import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
+
+
+
 
 
 class CssClass {
@@ -29,6 +33,12 @@ interface Movie {
 interface Transport {
   name:string;
   val:number;
+}
+
+interface BulletGroup {
+  id:number;
+  name:string;
+  desc:string;
 }
 
 
@@ -67,10 +77,31 @@ interface category {
 })
 export class HomeComponent implements OnInit {
 
+  public users = [
+    {
+      id: '1',
+      name: 'Jack',
+      age: 21
+    },
+    {
+      id: '2',
+      name: 'John',
+      age: 25
+    },
+
+    {
+      id: '3',
+      name: 'Sam',
+      age: 29
+    }
+  ]
+
   count: number = 0;
   buttonDisabled: boolean = false;
   @Input() icon: string;
   @Output() value = new EventEmitter<string>();
+ 
+
 
   public txtname = 'Edward Christopher Sheeran';
   
@@ -92,6 +123,40 @@ export class HomeComponent implements OnInit {
 
   public CssClass:CssClass =  new CssClass(); 
   public cssStringVar: string= 'red size20';
+
+  public userstwo = [
+    {
+      id: '1',
+      name: 'Jack',
+      age: 21
+    },
+    {
+      id: '2',
+      name: 'John',
+      age: 25
+    },
+
+    {
+      id: '3',
+      name: 'Sam',
+      age: 29
+    }
+  ]
+
+  removeUserTwo(id){
+    this.userstwo.splice(id,1)
+    console.log(this.userstwo.splice(id,1))
+  }
+
+  addUser(name:string){
+    const uniqueId = Math.random().toString(16)
+    const newUser = {
+      id:uniqueId,
+      name,
+      age:30
+    }
+    this.users.push(newUser)
+  }
 
   
   inputFocus = false;
@@ -119,7 +184,19 @@ export class HomeComponent implements OnInit {
   userComment() {
     return this.currentUser + ' Kinda hates Miki';
   }
-
+  
+  public bulletsgroup:BulletGroup[]=[
+    {
+      'id':1,
+      'name':'a',
+      'desc':'lorem ipsum'
+    },
+    {
+      'id':2,
+      'name':'b',
+      'desc':'lorem ipsum'
+    },
+  ]
   public courses = [
     {
     'name': 'Introduction to Web Development',
@@ -724,7 +801,7 @@ num=-1
   public ifRoleIsDefined:boolean=true;
   public Content:boolean = false;
 
-  @Input() count: number = 0;
+  // @Input() count: number = 0;
   @Output() countChange: EventEmitter<number> = new EventEmitter<number>();
 
   increment() {
@@ -735,21 +812,22 @@ num=-1
   id=28;
 
   constructor(private router: Router,private fb: FormBuilder) {
+    
     // this.router.navigate(['/list'],{queryParams:{id:this.id}})
-    this.jokes = [
-      {
-        setup: "What did the cheese say when it looked in the mirror?",
-        punchline: "Hello-Me (Halloumi)"
-      },
-      {
-        setup: "What kind of cheese do you use to disguise a small horse?",
-        punchline: "Mask-a-pony (Mascarpone)"
-      },
-      {
-        setup: "A kid threw a lump of cheddar at me",
-        punchline: "I thought ‘That’s not very mature’"
-      },
-    ];
+    // this.jokes = [
+    //   {
+    //     setup: "What did the cheese say when it looked in the mirror?",
+    //     punchline: "Hello-Me (Halloumi)"
+    //   },
+    //   {
+    //     setup: "What kind of cheese do you use to disguise a small horse?",
+    //     punchline: "Mask-a-pony (Mascarpone)"
+    //   },
+    //   {
+    //     setup: "A kid threw a lump of cheddar at me",
+    //     punchline: "I thought ‘That’s not very mature’"
+    //   },
+    // ];
     this.setup = 'What did the cheese say when it looked in the mirror?';
     this.punchline = 'Halloumi (Hello Me)'
     this.selected = this.router.getCurrentNavigation().extras.state ? this.router.getCurrentNavigation().extras.state.selected: [];
@@ -773,6 +851,7 @@ num=-1
     //     this.all[itm].checked = true;
     //  }
     
+    
 
     
     this.userForm = this.fb.group({
@@ -792,6 +871,11 @@ num=-1
     return this.serverStatus === 'Online' ? 'green' : 'red'
   }
   // END DATE: 24112022, TITLE: Style elements dynamically with ngStyle
+
+  btnbulletremove(){
+    this.bulletsgroup.splice(0,1);
+  }
+  
 
   // persons:any;
   
@@ -995,6 +1079,10 @@ num=-1
     },
   ]
 
+  public example:string
+
+  
+
   public descItems:any[]=[
     {name:'nitesh'},
     {name:'sameet'},
@@ -1007,6 +1095,7 @@ num=-1
     this.checked = true;
     this.selectedValue = this.myArray[0].property1
     this.onValueChange();
+    this.example = 'nitesh khatri'
 
 
     
