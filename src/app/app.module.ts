@@ -17,7 +17,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ServiceComponent } from './pages/service/service.component';
 import { ContactComponent } from './pages/contact/contact.component';
@@ -32,7 +31,7 @@ import { HeroformComponent } from './components/heroform/heroform.component';
 import { AddressComponent } from './components/address/address.component';
 import { TemplatedrivenformComponent } from './components/templatedrivenform/templatedrivenform.component';
 import { TeacherComponent } from './components/teacher/teacher.component';
-import { StudentComponent } from './components/student/student.component';
+
 import { ShortnamePipe } from './shortname.pipe';
 import { UserfullnamePipe } from './userfullname.pipe';
 import { ParentsComponent } from './components/parents/parents.component';
@@ -55,6 +54,10 @@ import { ProductsComponent } from './components/products/products.component';
 import { MusicdetailsComponent } from './components/musicdetails/musicdetails.component';
 import { CustomchildComponent } from './components/customchild/customchild.component';
 import { ApplistComponent } from './components/applist/applist.component';
+
+// project1 with components and pages
+import {HomeComponent} from './project1/pages/home/home.component';
+import { StudentComponent } from './project1/components/student/student.component';
 
 
 
