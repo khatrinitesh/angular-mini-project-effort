@@ -1,5 +1,6 @@
 <section>
     <h3>Fruits</h3>
+    <p>{{listfriend.age}}</p>
     <ul>
         <li *ngFor="let fruit of fruits">
             <img [src]="fruit.image" />
@@ -7,4 +8,13 @@
             <button (click)="onSelect()">Select</button>
         </li>
     </ul>
+    <button (click)="btnToggleFruit()">Click toggle fruit items</button>
+    <ul class="listFruit" *ngIf="fruitItem">
+
+        <ng-container *ngFor="let wok of workers">
+         <li>{{ wok }}</li>
+        </ng-container>
+    
+    </ul>
+   
 </section>

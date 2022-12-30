@@ -1,0 +1,14 @@
+<app-student></app-student>
+<p [innerHTML]="htmlStr"></p>
+<h3 [ngStyle]="{backgroundColor:getOnlineStatusColor()}" [ngClass]="{onOnlineClass:onlineStatusReport==='Online'}">Server Online Status is: {{onlineStatusReport}} </h3><br>     
+<h3 [ngClass]="{onOfflineClass:offlineStatusReport==='Offline'}" [ngStyle]="{backgroundColor:getOfflineStatusColor()}">Server Offline Status is: {{offlineStatusReport}} </h3>    
+<br/>
+{{numberA + numberB}}
+<br/>
+<input type="text" [(ngModel)]="example"/>
+{{example}}
+<br/>
+10+20-5*15/3= Total {{10+20-5*15/3}}  
+<br/>
+<h1>Full Name:{{firstName}} - {{lastName ? lastName:'Last Name Not Available'}}</h1>
+<button [ngClass]="condition ? 'active' :'nonactive'" [style.color]="condition ? 'red' : 'blue'" (click)="btnToggle()">{{condition ? 'active' : 'nonactive'}}</button>

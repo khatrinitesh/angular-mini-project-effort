@@ -1,0 +1,22 @@
+export const LIST_FRIENDS = [
+    {
+        "name":"nk",
+        "age":33,
+    },
+    {
+        "name":"sk",
+        "age":40,
+    },
+    {
+        "name":"uk",
+        "age":64,
+    },
+    {
+        "name":"ak",
+        "age":67,
+    },
+    {
+        "name":"mk",
+        "age":43,
+    },
+]

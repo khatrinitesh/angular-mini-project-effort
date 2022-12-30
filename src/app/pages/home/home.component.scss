@@ -1,0 +1,53 @@
+.list_bullet{
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    li{
+        &:before{
+            content:"\2713";
+            color:red;
+            padding:0 10px 0 0;
+        }
+    }
+}
+
+
+.list_item li.active a{
+background-color: red;
+color:#fff;
+}
+
+.success,.green{
+    color:green;
+}
+
+
+.size20{
+    font-size: 20px;
+}
+
+.danger,.red{
+    color:red;
+}
+
+.underline{
+    text-decoration: underline;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.customCSS{
+    color:red;
+    font-size: 20px;
+}
+
+.toggled{
+    background-color: red;
+}
+
+.yellow{
+    background-color: yellow;
+}
+

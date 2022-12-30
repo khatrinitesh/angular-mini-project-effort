@@ -1,22 +1,725 @@
 
 
-<!-- <input [(ngModel)]="myProperty" type="checkbox" >
-<h1>{{ myProperty }}</h1> -->
+<hr/>
+
+<ul>
+	<ng-container *ngFor="let bulletgrp of bulletsgroup">
+	<li>
+		{{bulletgrp.id}} - {{bulletgrp.name}} - {{bulletgrp.desc}}
+		<button (click)="btnbulletremove()">&times;</button>
+	</li>
+	</ng-container>
+</ul>
+
+<app-teacher [users]="users" (removeUser)="removeUserTwo($event)" (addUserEvent)="addUser($event)" [userName]="example"></app-teacher>
+
+<app-fruit></app-fruit>
+<!-- <app-customchild [childMessage]="parentMessage" (messageEvent)="receiveMessage($event)"></app-customchild> -->
+
+<ul *ngIf="listBullet" class="list_bullet">
+	<li *ngFor="let add of addressout;let even=even;let odd=odd;">
+		<span>{{add.name}} - {{add.mobile}} - {{add.email}}</span>
+		<button (click)="btnadd(id)">&times;</button>
+	</li>
+</ul>
 
 
-<div style="color:red">
+ <div class="s-name">
+	{{'SAMEET KHATRI' | shortname}}
+</div>
+
+<!-- <div style="color:red">
 	<p *ngFor="let d of all">
-	  <input type="checkbox"  [checked]="d.checked" (change)="d.checked = !d.checked">  {{ d.name }}
+		<input type="checkbox"  [checked]="d.checked" (change)="d.checked = !d.checked"/>  {{ d.name }} 
 	</p>
   </div>
   <button (click)="add()"  class="btn btn-primary">success</button>
   
-  <div style="color:blue">
-	<p *ngFor="let d of selected">
-	  {{ d.name }}
-	</p>
+  <div *ngIf="!exampleIf" style="color:blue">
+	<div *ngFor="let d of selected">
+		<ul *ngIf="(d.checked)">
+			<li>Selected</li>
+		</ul>
+	</div>
+		<ul *ngFor="let e of exampleList">
+			<li>
+				{{e.name}}
+			</li>
+		</ul>
+  </div> -->
+
+  <hr/>
+
+  <input (focus)="inputFocus = true" (blur)="inputFocus = false"
+           (keyup)="value.emit(input.value)" #input>
+
+		   <hr/>
+
+  <div [ngClass]="cssStringVar">CSs syyles</div>
+  <div [ngClass]="{'red':true,'size20':false}">css styles is two</div>
+  <div [ngClass]="cssClass">css Class</div>
+
+
+  <input type="text" [(ngModel)]="q"/>
+  {{q}}
+
+  <br/>
+  <div><img alt="item" [src]="itemImageUrl"></div>
+
+<h2 >Lenth: {{ currentUser.length }}</h2>
+<h2>Lenth: {{ currentUser.toUpperCase() }}</h2>
+<h1>{{(userComment())}}</h1>
+
+<hr/>
+
+  <h2>How about {{2+2}} {{1+1}} {{0+0}}</h2>
+  <hr/>
+
+  <div class="card" *ngFor="let joke of jokes">
+	<h4 class="card-title">{{joke.setup}}</h4>
+	<p class="card-text">{{joke.punchline}}</p>
+	<button (click)="btnRemmoveJokes(id)">&times;</button>
+  </div>
+
+  <hr/>
+
+  <h1>{{setup}}</h1>
+  <p>{{punchline}}</p>
+
+  <ul>
+	<li *ngFor="let course of courses" 
+	[ngClass]="{'green' : course.level === 'Beginner','yellow':course.level==='Intermediate','red':course.level==='Advanced'}">
+	  {{ course.name }}
+	  </li>
+  </ul>
+  <hr/>
+
+  <ul>
+	<li *ngFor="let company of companies">
+		<span *ngIf="company.isTechnical">
+			{{company.name}}
+		</span>
+		<button (click)="btnComp(id)">&times;</button>
+	</li>
+  </ul>
+
+  <hr/>
+
+  <button class="{{btnParagraphText ? 'active ' : 'inactive'}}" (click)="btnparagraph()">{{btnParagraphText}}</button>
+  <div *ngIf="!showPara">{{paragraphtwo}}</div>
+
+  <br/>
+  <br/>
+
+  <button (click)="toggleField()">{{toggleText}}</button>
+  <ul class="sidebar" [class.toggled]="classToggled">
+	<li>This is an List item</li>
+  </ul>
+
+  <hr/>
+
+  <button disabled="disabled">
+	I've been clicked {{count}} times.
+	</button>
+
+  <h3 [ngStyle]="{color:'red',fontSize:'20px'}">nitesh khatri</h3>
+
+  <hr/>
+
+  <table class="table">
+	<tr>
+		<th>
+			name
+		</th>
+
+		<th>
+			subject
+		</th>
+
+		<th>
+			status
+		</th>
+	</tr>
+	<tr *ngFor="let tb of tbs">
+		<td>{{tb.name}}</td>
+		<td>{{tb.subject}}</td>
+		<td>{{tb.status}}</td>
+	</tr>
+  </table>
+
+  <hr/>
+
+  <app-musicdetails [musicianName]="txtname" (newMusicianEvent)="addArtists($event)" (newCycleEvent)="addCycle($event)"></app-musicdetails >
+  <ul *ngFor="let musician of musicians">
+	{{musician}}
+	<button (click)="btnMusic(id)">&times;</button>
+  </ul>
+
+  <ul *ngFor="let cyc of cycle">
+	{{cyc}}
+	<button (click)="btnCycle(id)">&times;</button>
+  </ul>
+
+  <hr/>
+
+  <app-products></app-products>
+
+
+  <ul>
+	<li *ngFor="let data of users">
+		{{data.name}} - {{data.age}}
+		<button (click)="delBtnList(id)">&times;</button>
+	</li>
+  </ul>
+  <hr/>
+
+  {{name}}
+
+  <hr/>
+
+  <div [ngSwitch]="color">
+	<h1 style="color:'red'" *ngSwitchCase="'red'">red color</h1>
+	<h1 style="color:'blue'" *ngSwitchCase="'blue'">blue color</h1>
+	<h1 style="color:'green'" *ngSwitchCase="'green'">green color</h1>
+	<h1 style="color:'yellow'" *ngSwitchCase="'yellow'">yellow color</h1>
+	<h1 *ngSwitchDefault>Default color</h1>
+  </div>
+  <hr/>
+
+
+  <button [style.color]="isRed(8) ? 'red' : 'orange'">Buttton Click</button>
+  <hr/>
+  
+
+  <p [style.color]="'red'">Occaecat duis ipsum amet officia et. Do ex irure occaecat voluptate cillum deserunt deserunt labore duis occaecat. Cillum excepteur veniam id commodo aliqua nisi dolor pariatur culpa irure sit aliquip reprehenderit fugiat. Nostrud ex amet consectetur anim pariatur fugiat deserunt adipisicing irure occaecat nisi dolor. Minim aliquip tempor cupidatat commodo. Veniam irure in non id ut incididunt culpa officia voluptate non.
+
+Enim consequat voluptate ex nisi laboris aliquip esse cupidatat duis duis eu veniam cillum est. Proident velit culpa exercitation pariatur id dolor minim culpa. Quis aliqua non reprehenderit officia laborum consequat exercitation eiusmod pariatur dolor exercitation laborum.</p>
+
+<div *ngIf="age<=17;else elseBlock">This is example condition statement </div>
+
+<ng-template #elseBlock>
+	sameet khatri
+</ng-template>
+
+<hr/>
+
+<hr/>
+
+<p [ngStyle]="multiSelection">Nitesh khatri is multi selection</p>
+
+  <p [class.customCSS]="ApplyBoldClass">Custom CSS styling</p>
+
+  <hr/>
+
+  <p [class]="success">this is success message</p>
+  <p [class]="error">this is error message</p>
+  <p [class]="underLine">this is underline message</p>
+  <p [class]="bold">this is bold message</p>
+  <p [class]="multiclass">this is multi class message</p>
+  <p [style.color]="hasError  ? 'red' : 'green'">Error message</p>
+
+  <hr/>
+
+<input type="text" #txt (keyup.enter)="eventhandling(txt.value)">
+<!-- <span (mouseover)="eventhandling('Mouse over handling')" style="background-color: red;">this is span element</span> -->
+<br/>
+<button (click)="eventhandling('event handling')">Click here</button>
+
+  <hr/> 
+
+  <input type="text" (keyup)="getValue($any($event.target.value))"/>
+  {{YTname}}
+
+  <hr/>
+
+  value1: <input type="text" #num1 name="num1" [value]="number1">
+  <br/>
+  value2: <input type="text" #num2 name="num2" [value]="number2">
+  <button (click)="calc(num1.value,num2.value)">Sum</button>
+  <br/>
+  <h4>{{sum}}</h4>
+
+  <hr/>
+
+  <h2>{{currentURL}}</h2>
+
+  <hr/>
+
+  <h2>{{x * y}}</h2>
+  
+
+  <hr/>
+
+  <h2>{{getData()}}</h2>
+
+  <hr/>
+
+  <div *ngFor="let f of foo.regionList">
+	{{f.value}} {{f.isClosed}} 
+	<div *ngFor="let s of f.Activities">
+		{{s.value}}
+	</div>
+	<button (click)="btnRemoveArray(id)">Remove</button>
+	<hr/>
   </div>
   <hr/> 
+
+  <h1>{{title}}</h1>
+  <ul>
+	<li *ngFor="let movie of movies;let i=index;trackBy:trackByFri">
+		{{i}} - {{movie.title}} - {{movie.director}}
+		<button (click)="btnRemoveList()">Remove</button>
+	</li>
+  </ul>
+  <br/>
+  <button (click)="refresh()">Refresh</button>
+<br/>
+  Title: <input type="text" [(ngModel)]="mtitle"/>
+  Director: <input type="text" [(ngModel)]="mdirector"/>
+  <button (click)="addMovie()">Add</button>
+
+  <hr/>
+
+  <table>
+	<tr *ngFor="let emp of emps;let i=index;let first=first;let last=last;let even=even;let odd=odd" [ngClass]="{first:first,last:last,odd:odd,even:even}" [ngStyle]="{fontSize:'20px',color:'red'}">	
+		<td>
+			{{i}} -{{emp.name}} 
+			
+		</td>
+		<td>
+			<div *ngFor="let s of emp.skills" >
+				{{s.skill}} - {{s.experience}} 
+				
+			</div>
+		</td>
+		<td>
+			<button (click)="btnRemove(i)">Remove</button>
+		</td>
+	</tr>
+	
+	
+  </table>
+
+  <hr/>
+
+  <select [(ngModel)]="description">
+	<option *ngFor="let desc of descItems">
+		{{desc.name}}
+	</option>
+  </select>
+  <div [ngSwitch]="description">
+	<div *ngSwitchCase="'nitesh'">Text 1</div>
+	<div *ngSwitchCase="'sameet'">Text 2</div>
+	<div *ngSwitchDefault>No result</div>
+  </div>
+
+  <div [ngStyle]="{color:'red',fontSize:'20px',padding:'20px'}">Nitesh khatri is color</div>
+
+  <hr/>
+
+<div [ngClass]="{one:true,two:true,three:false}">Nitesh khatri is one to three</div>
+  <hr/>
+
+
+<button (click)="btnSave($event)">Click Event</button>
+
+<hr/>
+
+<div class="item" *ngFor="let i of img;let i=index;">
+	<img class="product_i2" [src]='i' [class.active]='i === activeidx' (click)='addStyle(i)'/>
+</div>
+
+<hr/>
+
+<ul class="list_item">
+	<li [class.active]="selectedValueOne == 'One'">
+		<a (click)="selectedValueOne = 'One'">One</a>
+	</li>
+	<li [class.active]="selectedValueOne == 'Two'">
+		<a (click)="selectedValueOne = 'Two'">Two</a>
+	</li>
+</ul>
+<div [ngSwitch]="selectedValueOne">
+	<div *ngSwitchCase="'One'">Map View Content</div>
+	<div *ngSwitchCase="'Two'">List View Content</div>
+	<div *ngSwitchDefault>Otherwise</div>
+</div>
+
+<hr/>
+
+<!-- <select [(ngModel)]="selectedValueOne">
+	<option *ngFor="let item of trans" [value]="item.name">
+		{{item.name}}
+	</option>
+</select>
+<div class="row" [ngSwitch]="selectedValueOne">
+	<div *ngSwitchCase="'One'">One is pressed</div>
+	<div *ngSwitchCase="'Two'">Two is pressed</div>
+	<div *ngSwitchDefault>No result</div>
+</div>
+{{selectedValueOne}} -->
+
+<hr/>
+
+<div [ngSwitch]="value">
+	<span *ngSwitchCase="0">Text one</span>
+	<span *ngSwitchCase="1">Text two</span>
+	<span *ngSwitchDefault>no result</span>
+</div>
+
+<hr/>
+
+<ul>
+	<div *ngIf="items1">
+	  <li *ngFor="let item of items1;">
+		{{item.name}}
+	  </li>
+	</div>
+   </ul>
+
+
+
+
+
+  <!-- Count: {{count}}
+  <button (click)="increment()">Increment</button> -->
+
+  <hr/> 
+
+  <p [innerText]="100*80"></p>
+  <p [innerText]="67*67+100"></p>
+  <p [innerText]="Content ? 'true' : 'false'"></p>
+  <hr/>
+
+<!-- START -->
+<app-name-editor></app-name-editor>
+<!-- END -->
+
+<hr/>
+
+<!-- START, DATE: 24112022, TITLE: FORM -->
+<input type="text" [(ngModel)]="favoriteColorControl"/>
+{{favoriteColorControl}}
+<!-- END, DATE: 24112022, TITLE: FORM -->
+
+<hr/>
+
+<!-- START, DATE: 24112022, TITLE: Pipes-->
+{{subtitle | uppercase}}   
+<br/>
+{{todaydate | date:'d/M/y'}}
+<br/>
+<b>{{todaydate | date:'shortDate'}}</b>  
+<br/>
+<b>{{todaydate | date:'shortTime'}}</b>  
+<br/>
+{{jsonval | json}}
+<br/>
+{{months | slice:2:6}}
+<br/>
+Square root of 625 is {{625 | sqrt}}
+<br/>
+Square root of 144 is {{144 | sqrt}}
+<br/>
+Square root of 81 is {{81 | sqrt}}
+<br/>
+Square root of 9 is {{9 | sqrt}}
+<br/>
+Square root of 25 is {{25 | sqrt}}
+<br/>
+Square root of 36 is {{36 | sqrt}}
+<br/>
+Square root of 49 is {{49 | sqrt}}
+<br/>
+Square root of 16 is {{16 | sqrt}}
+
+<!-- END, DATE: 24112022, TITLE: Pipes -->
+
+<hr/>
+
+<!-- START, DATE: 24112022, TITLE: EVENT BINDING -->
+<button (click)="onCreateServer()" [disabled]="!allowNewServer">Add Server</button>
+<br/>
+<h3 [innerText]= "allowNewServer"></h3>  
+<!-- END, DATE: 24112022, TITLE: EVENT BINDING -->
+
+<hr/>
+
+<!-- START, DATE: 24112022, TITLE: String Interpolation-disabled -->
+<button [disabled]="isDisabled" (click)="btnDisabled()">Disabled me</button>
+<!-- END, DATE: 24112022, TITLE: String Interpolation disabled-->
+
+<!-- START, DATE: 24112022, TITLE: Angular 10 Tutorial #82 - ViewChild Tutorial | Angular 10 Tutorial For Beginners-->
+<h2 #headline>This is viewchild tutorial</h2>
+<!-- END, DATE: 24112022, TITLE: Angular 10 Tutorial #82 - ViewChild Tutorial | Angular 10 Tutorial For Beginners -->
+
+<!-- START, DATE: 24112022, TITLE:Angular 10 Tutorial #80 - Ng Template vs Ng Container Tutorial | Angular 10 Tutorial For Beginners
+ -->
+ <ng-container *ngIf="ifRoleIsDefined">
+	<div *ngIf="adminRole;else notAdmin" [ngStyle]="{backgroundColor:'orange',marginBottom:'20px'}">
+		user admin role
+	</div>
+	<ng-template #notAdmin>
+		Nitesh is not admin
+	</ng-template>
+</ng-container>
+
+<ng-template >
+	this text will not be displayed or rendered 
+</ng-template>
+<!-- START, DATE: 24112022, TITLE:Angular 10 Tutorial #80 - Ng Template vs Ng Container Tutorial | Angular 10 Tutorial For Beginners
+ -->
+
+
+<!-- START, DATE: 24112022, TITLE:Style elements dynamically with ngStyle -->
+<p [ngStyle]="{backgroundColor:getColor()}">Server with ID {{serverID}} is {{serverStatus}}. </p>  
+<!-- END, DATE: 24112022, TITLE:Style elements dynamically with ngStyle -->
+
+
+<!-- START, DATE: 24112022, TITLE:Angular 13: Actual use of ng-container -->
+<!-- <div id="outercontent" *ngIf="letSomeData">
+	<div *ngFor="let data of letSomeData">
+		{{data.title}}
+	</div>
+</div>
+<ng-container id="outercontent" *ngIf="letSomeData">
+	<div *ngFor="let data of letSomeData">
+		{{data.title}}
+	</div>
+</ng-container> -->
+
+<ul>
+	<div *ngFor="let data of letSomeData">
+		<li *ngIf="data.id >= 2">
+			{{data.id}} {{data.title}} {{data.location}}
+		</li>
+	</div>
+</ul>
+<!-- END, DATE: 24112022, TITLE:Angular 13: Actual use of ng-container -->
+
+<!-- START,DATE:24112022,TITLE:Ng container in angular || Angular ng container || Ng-container in angular || Ng-container -->
+<!-- <ng-container>
+	<h1>hello 1</h1>
+	<h1>hello 2</h1>
+</ng-container>
+<select>
+	<ng-container>
+		<option>1</option>
+		<option>2</option>
+	</ng-container>
+</select> -->
+<!-- END,DATE:24112022,TITLE:Ng container in angular || Angular ng container || Ng-container in angular || Ng-container -->
+
+<!-- START, DATE:24112022, TITLE:Angular Nested loops | ngFor and ngIf together | ng-container for ngif & ngfor | Error handling -->
+<!-- <div *ngFor="let item of complexArr">
+	<div *ngIf="item.id % 2 === 0">
+		<div>{{item.id}} - {{item.name}}</div>
+	</div>
+</div> -->
+
+<!-- ng-container -->
+<ng-container *ngFor="let item of complexArr">
+	<ng-container *ngIf="item.id % 2 === 0">
+		<div>{{item.id}} - {{item.name}}</div>
+		<ng-container *ngFor="let phone of item.phoneNum">
+			{{phone}}
+		</ng-container>
+	</ng-container>
+</ng-container>
+<!-- <ng-container *ngFor="let item of complexArr" *ngIf="item.id % 2 === 0">
+	<div>{{item.id}} - {{item.name}}</div>
+</ng-container> -->
+<!-- END, DATE:24112022, TITLE:Angular Nested loops | ngFor and ngIf together | ng-container for ngif & ngfor | Error handling -->
+
+<hr/>
+
+<!-- START, DATE:24112022,TITLE:BOOTSTRAP 5 DATEPICKER -->
+<form class="form-inline">
+	<div class="form-group">
+		<div class="input-group">
+			<input type="text" class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker"/>
+			<div class="input-group-append">
+				<button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">Click</button>
+			</div>
+		</div>
+	</div>
+</form>
+<p>Model: {{model | json}}</p>
+<!-- END, DATE:24112023, TITLE:BOOTSTRAP 5 DATEPICKER -->
+
+<form [formGroup]="userForm">
+    <div class="mt-5 box">
+      <div class="form-row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Name</label>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <input
+                type="text"
+                formControlName="name"
+                class="form-control"
+                placeholder="name"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Address</label>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <input
+                type="text"
+                formControlName="address"
+                class="form-control"
+                placeholder="address"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Contact Number</label>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <input
+                type="text"
+                formControlName="contactNo"
+                class="form-control"
+                placeholder="contactNo"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Gender</label>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <input
+                type="text"
+                formControlName="gender"
+                class="form-control"
+                placeholder="gender"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-row mt-4">
+          <div class="col-md-6">
+            <button type="button" class="btn btn-primary" (click)="addItemTable()">
+              Add
+            </button>
+            <button type="button" class="btn btn-primary" (click)="resetForm()">
+              Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+<input type="text" placeholder="start searching name" [(ngModel)]="searchText" autocomplete="off"/>
+<br/>
+<table class="table">
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Address</th>
+		<th>Contact Number</th>
+		<th>Gender</th>
+		<th>
+			Status
+		</th>
+	</tr>
+	<tr *ngFor="let person of persons | filter:searchText">
+		<td>{{person.id}}</td>
+		<td>{{person.name}}</td>
+		<td>{{person.address}}</td>
+		<td>{{person.contactNo}}</td>
+		<td>{{person.gender}}</td>
+		<td>
+			<button (click)="btnEditTable(person.id)">Edit</button>
+			<button (click)="btnRemoveTable(person.id)">Remove</button>
+		</td>
+	</tr>
+</table>
+
+<hr/>
+
+<select [(ngModel)]="selectedObject">
+	<option *ngFor="let cat of categories" [ngValue]="cat">{{cat.name}}</option>
+</select>
+{{selectedObject | json}}
+
+<ul>
+	<li *ngFor="let item of ItemArray">
+		<ng-container *ngTemplateOutlet="myTemplate;context:{$implicit:item}"></ng-container>
+	</li>
+</ul>
+<ng-template let-item #myTemplate>
+	<h5>Name: {{item.name}}</h5>
+	<p>Id: {{item.id}}</p>
+	<button (click)="btnRemove(item.id)">Remove</button>
+</ng-template>
+
+<app-child [itemTemplate]="template" [items]="items"></app-child>
+<label for="mode">Display mode:</label>
+<select [(ngModel)]="mode">
+	<option *ngFor="let item of modeOptions" [ngValue]="item.mode" >
+		{{item.mode}}
+	</option>
+</select>
+<ng-template let-items #cardTemplate>
+	<div *ngFor="let item of items">
+		<h1>{{item.header}}</h1>
+		<p>{{item.content}}</p>
+	</div>
+</ng-template>
+<ng-template let-items #listTemplate>
+	<ul>
+		<li *ngFor="let item of items">
+			<strong>{{item.header}}</strong> {{item.content}}
+		</li>
+	</ul>
+</ng-template>
+
+<hr/>
+
+
+<div>
+	<ul>
+		<li *ngFor="let option of options2" (click)="selectOption(option)">
+			{{option}}
+		</li>
+	</ul>
+</div>
+
+<ul *ngFor="let number of numbers">
+    <ng-container [ngTemplateOutlet]='number % 2 == 0 ? even_tpl : odd_tpl' [ngTemplateOutletContext]="{number:number}"></ng-container>
+  </ul>
+
+<ng-template #even_tpl let-number="number">
+	<li>Even: {{number}}</li>
+</ng-template>
+<ng-template #odd_tpl let-number="number">
+	<li>Odd: {{number}}</li>
+</ng-template>
+
+
+
+<!-- <input [(ngModel)]="myProperty" type="checkbox" >
+<h1>{{ myProperty }}</h1> -->
+
+
 
   <select [(ngModel)]="selectedValue" (ngModelChange)="onValueChange()">
 	<option *ngFor="let item of myArray"
