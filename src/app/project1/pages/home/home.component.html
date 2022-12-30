@@ -12,3 +12,28 @@
 <br/>
 <h1>Full Name:{{firstName}} - {{lastName ? lastName:'Last Name Not Available'}}</h1>
 <button [ngClass]="condition ? 'active' :'nonactive'" [style.color]="condition ? 'red' : 'blue'" (click)="btnToggle()">{{condition ? 'active' : 'nonactive'}}</button>
+<p>{{1 + 1}}</p>
+<button (click)="btnCount()">Count</button>
+{{counter}}
+
+<a [href]="myProp1">Nitesh Khatri</a>
+<div [innerHTML]="myProp2">Sameet Khatri</div>
+<img [src]="myProp3" class="img-fluid"/>
+<div [class]="counter >= 0 ? 'green' : 'red'">
+    {{counter >= 0 ? 'positive' : 'negative'}}
+</div>
+
+<div [ngClass]="{'active' : conditionone}">attribute directive 1</div>
+<div [ngStyle]="{'font-size':counter + 'px'}">attribute directive 2</div>
+<div [style.font-size.px]="counter">attribute directive 3</div>
+<!-- STRUCTURAL DIRECTIVES -->
+<!-- <div *ngIf="boolean | conditionexample">some content</div>
+<div *ngFor="let item of items">{{item.prop}}</div> -->
+
+<!-- custom directive -->
+<!-- <button *ifLogged>Some content</button> -->
+
+<!-- pipes -->
+<!-- you can use angular pipes to format dates, numbers, strinify objects/arrays subscribe an observable in a template and more -->
+{{todayNumber}}
+

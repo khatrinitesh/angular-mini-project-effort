@@ -17,6 +17,30 @@ export class HomeComponent implements OnInit {
   lastName:string=null;
   firstName:string='nitesh'
   public condition:boolean=true
+  public counter:number = 1 
+  public myProp2:string='sameet khatri'
+  public myProp3:string = 'https://reviverestore.org/wp-content/uploads/2017/05/placeholder-image-cropped.jpg'
+  public active:Boolean=true;
+  ifLogged=true;
+  public todayNumber = new Date().toISOString();
+
+  public items = [
+    {
+      prop:'nitesh',
+    },
+    {
+      prop:'sameet',
+    },
+    {
+      prop:'arvind',
+    },
+    {
+      prop:'urvashi',
+    },
+  ]
+  btnCount(){
+    this.counter++
+  }
 
   btnToggle(){
     this.condition = !this.condition

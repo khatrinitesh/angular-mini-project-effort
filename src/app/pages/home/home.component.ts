@@ -327,23 +327,23 @@ num=-1
     }
       }
 
-      users = [
-        {
-          id:1,
-          name:'a',
-          age:33,
-        },
-        {
-          id:2,
-          name:'b',
-          age:40,
-        },
-        {
-          id:3,
-          name:'c',
-          age:43,
-        },
-      ]
+      // users = [
+      //   {
+      //     id:1,
+      //     name:'a',
+      //     age:33,
+      //   },
+      //   {
+      //     id:2,
+      //     name:'b',
+      //     age:40,
+      //   },
+      //   {
+      //     id:3,
+      //     name:'c',
+      //     age:43,
+      //   },
+      // ]
 
       delBtnList(id){
         this.users.splice(id,1)
