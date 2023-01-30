@@ -1,0 +1,108 @@
+<p>regiser works!</p>
+
+<h2 [style.display]="'block'">simple 1</h2>
+<h2 [style.display]="'none'">simple 2</h2>
+
+<p [style.display]="'block'">
+    Expression sets display to "block".
+    This paragraph is visible.
+</p>
+<p [style.display]="'none'">
+    Expression sets display to "none".
+This paragraph is hidden but still in the DOM.
+</p>
+
+<p *ngIf="true">
+    Expression is true and ngIf is true.
+    This paragraph is in the DOM.
+</p>
+<p *ngIf="false">
+    Expression is false and ngIf is false.
+    This paragraph is not in the DOM.
+</p>
+
+<table class='table table-bordered table-sm '>
+    <thead class="thead-dark">
+      <tr>
+        <th>Name</th>
+        <th>Mail</th>
+        <th>Skills</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees;">
+        <td>{{employee.name}}</td>
+        <td>{{employee.email}}</td>
+        <td>
+          <table class='table table-sm '>
+            <tbody>
+              <tr *ngFor="let skill of employee.skills;">
+                <td>{{skill.skill}}</td>
+                <td>{{skill.exp}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </td>
+        <td>
+            <button (click)="btnDel(id)">&times;</button>
+        </td>
+      </tr>
+    </tbody>
+</table>
+<p [ngStyle]="{'color':statustwo === 'success' ? 'green' : 'red'}">success</p>
+<div [ngStyle]="{'background-color':status === 'error' ? 'red' : 'blue'}">adsad</div>
+<table class='table table-bordered table-sm '>
+    <thead class="thead-dark">
+      <tr>
+        <th>Index</th>
+        <th>Title</th>
+        <th>Director</th>
+        <th>Cast</th>
+        <th>Release Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let movie of movies; let i=index; let first= first; let last=last;"
+        [ngClass]="{ first: first, last: last }">
+        <td> {{i}} </td>
+        <td>{{movie.title}}</td>
+        <td>{{movie.director}}</td>
+        <td>{{movie.cast}}</td>
+        <td>{{movie.releaseDate}}</td>
+      </tr>
+    </tbody>
+  </table>
+<div [ngClass]="cssStringVar">This is paragraph.</div>
+<!-- <ul>
+    <li>item 1</li>
+    <li>Item 2</li>
+</ul>
+<div *ngIf="item1">item 1 content</div>
+<div *ngIf="item2">item 2 content</div> -->
+<h4 [ngClass]="{'red':false,'size20':true}">Red text with size 20px</h4>
+<h3 [ngStyle]="{'background':'red','color':'#fff','padding':'10px'}">sameet khatri</h3>
+<h2 [style.color]="'red'">this is inline styling</h2>
+<h2 [ngClass]="['class1','class2']">heading title 2</h2>
+<p [ngClass]="['class1','class2']">This is multiple class name</p>
+<div [class.red]="true" [class.size20]="true">Test</div>
+ 
+<h3 [class.headtitle]="!isPresent">{{title}}</h3>
+<ul>
+    <li *ngFor="let car of cars">{{car}}
+        <button (click)="btnRemove(i)">&times;</button>
+    </li>
+</ul>
+
+<p>{{currentCustomer}}</p>
+
+
+<div><img alt="item" src="{{itemImageUrl}}"></div>
+
+<div style="padding-top: 30px">
+    <span *ngIf="isPresent; else condition1">Statement is true.</span>
+    <ng-template #condition1>NgTemplate condition is working!</ng-template>
+  </div>
+
+  

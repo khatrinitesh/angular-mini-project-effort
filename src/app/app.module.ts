@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 // MODULE FOR INSTALL ANY LIBRARY
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 // Material Modules
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -58,6 +59,11 @@ import { ApplistComponent } from './components/applist/applist.component';
 // project1 with components and pages
 import {HomeComponent} from './project1/pages/home/home.component';
 import { StudentComponent } from './project1/components/student/student.component';
+import { RegiserComponent } from './components/register/regiser/regiser.component';
+import { Project2Component } from './project2/project2.component';
+import { EmployeeCreateComponent } from './project2/employee-create/employee-create.component';
+import { EmployeeEditComponent } from './project2/employee-edit/employee-edit.component';
+import { EmployeeListComponent } from './project2/employee-list/employee-list.component';
 
 
 
@@ -102,6 +108,11 @@ import { StudentComponent } from './project1/components/student/student.componen
     MusicdetailsComponent,
     CustomchildComponent,
     ApplistComponent,
+    RegiserComponent,
+    Project2Component,
+    EmployeeCreateComponent,
+    EmployeeEditComponent,
+    EmployeeListComponent,
   ],
   imports: [
     BrowserModule,

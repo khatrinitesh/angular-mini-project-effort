@@ -37,19 +37,31 @@ import { Routes, RouterModule, Router } from '@angular/router';
 
 
 // PROJECT 1 
-import {HomeComponent} from './project1/pages/home/home.component';
+import {Project2Component} from './project2/project2.component';
 
-const routes:Routes = [
-  {
-    path:'',
-    pathMatch:'full',
-    component:HomeComponent
-  },
-  {
-    path:'home',
-    component:HomeComponent
-  }
-]
+import { EmployeeCreateComponent } from './project2/employee-create/employee-create.component';
+import { EmployeeEditComponent } from './project2/employee-edit/employee-edit.component';
+import { EmployeeListComponent } from './project2/employee-list/employee-list.component';
+
+// const routes:Routes = [
+//   {
+//     path:'',
+//     pathMatch:'full',
+//     component:Project2Component
+//   },
+//   {
+//     path:'project',
+//     component:Project2Component
+//   }
+// ]
+
+const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'create-employee' },
+  { path: 'create-employee', component: EmployeeCreateComponent },
+  { path: 'employees-list', component: EmployeeListComponent },
+  { path: 'employee-edit/:id', component: EmployeeEditComponent },
+];
+
 
 
 // const routes: Routes = [
