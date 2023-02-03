@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+
 // Material Modules
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -57,15 +58,14 @@ import { CustomchildComponent } from './components/customchild/customchild.compo
 import { ApplistComponent } from './components/applist/applist.component';
 
 // project1 with components and pages
-import {HomeComponent} from './project1/pages/home/home.component';
+// import {HomeComponent} from './project1/pages/home/home.component';
 import { StudentComponent } from './project1/components/student/student.component';
 import { RegiserComponent } from './components/register/regiser/regiser.component';
 import { Project2Component } from './project2/project2.component';
+import {HomeComponent} from './project2/pages/home/home.component';
 import { EmployeeCreateComponent } from './project2/employee-create/employee-create.component';
 import { EmployeeEditComponent } from './project2/employee-edit/employee-edit.component';
 import { EmployeeListComponent } from './project2/employee-list/employee-list.component';
-
-
 
 @NgModule({
   declarations: [
@@ -127,7 +127,7 @@ import { EmployeeListComponent } from './project2/employee-list/employee-list.co
     MatCheckboxModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    DateInputsModule
+    DateInputsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

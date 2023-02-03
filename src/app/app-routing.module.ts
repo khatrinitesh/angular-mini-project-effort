@@ -37,9 +37,8 @@ import { Routes, RouterModule, Router } from '@angular/router';
 
 
 // PROJECT 1 
-import {Project2Component} from './project2/project2.component';
-
-import { EmployeeCreateComponent } from './project2/employee-create/employee-create.component';
+// import {Project2Component} from './project2/project2.component';
+import { HomeComponent } from './project2/pages/home/home.component';
 import { EmployeeEditComponent } from './project2/employee-edit/employee-edit.component';
 import { EmployeeListComponent } from './project2/employee-list/employee-list.component';
 
@@ -56,8 +55,8 @@ import { EmployeeListComponent } from './project2/employee-list/employee-list.co
 // ]
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'create-employee' },
-  { path: 'create-employee', component: EmployeeCreateComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: 'home', component: HomeComponent },
   { path: 'employees-list', component: EmployeeListComponent },
   { path: 'employee-edit/:id', component: EmployeeEditComponent },
 ];
