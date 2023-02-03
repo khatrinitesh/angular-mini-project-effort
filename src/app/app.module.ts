@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 // MODULE FOR INSTALL ANY LIBRARY
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {ColorPickerModule} from 'ng-color-picker';
 
 
 // Material Modules
@@ -66,6 +67,9 @@ import {HomeComponent} from './project2/pages/home/home.component';
 import { EmployeeCreateComponent } from './project2/employee-create/employee-create.component';
 import { EmployeeEditComponent } from './project2/employee-edit/employee-edit.component';
 import { EmployeeListComponent } from './project2/employee-list/employee-list.component';
+import { FirstletterucasePipe } from './pipe/firstletterucase.pipe';
+import { ShortenTextPipe } from './pipe/shorten-text.pipe';
+import { DatepipePipe } from './pipe/datepipe.pipe';
 
 @NgModule({
   declarations: [
@@ -113,6 +117,9 @@ import { EmployeeListComponent } from './project2/employee-list/employee-list.co
     EmployeeCreateComponent,
     EmployeeEditComponent,
     EmployeeListComponent,
+    FirstletterucasePipe,
+    ShortenTextPipe,
+    DatepipePipe,
   ],
   imports: [
     BrowserModule,
@@ -127,7 +134,7 @@ import { EmployeeListComponent } from './project2/employee-list/employee-list.co
     MatCheckboxModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    DateInputsModule,
+    ColorPickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

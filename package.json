@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~8.1.0",
     "@angular/platform-browser-dynamic": "~8.1.0",
     "@angular/router": "~8.1.0",
+    "@iplab/ngx-color-picker": "^15.0.0",
     "@ng-bootstrap/ng-bootstrap": "^5.3.1",
     "@ng-select/ng-select": "^9.0.2",
     "@progress/kendo-angular-common": "^2.0.0",
@@ -30,9 +31,11 @@
     "@progress/kendo-angular-popup": "^4.0.0",
     "@progress/kendo-licensing": "^1.1.1",
     "@progress/kendo-theme-default": "^5.0.0",
+    "angular2-color-picker": "^1.0.4",
     "bootstrap": "^5.2.2",
     "jquery": "^3.6.1",
     "json-server": "^0.17.1",
+    "ng-color-picker": "^2.0.5-mp.1",
     "ng-image-slider": "^6.1.0",
     "ng2-search-filter": "^0.5.1",
     "ngx-color-picker": "^13.0.0",
@@ -40,6 +43,7 @@
     "popper.js": "^1.16.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
+    "webcam": "^3.2.1",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {

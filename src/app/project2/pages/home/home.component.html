@@ -1,3 +1,38 @@
 <!-- <input class="colorpicker" [(colorPicker)]="colorCustom" [style.background]="colorCustom"/>
 <span class="text_picker">{{ colorCustom }}</span> -->
-adda
+<!-- how to use pipes so it could be btter to read something like: -->
+<input [(colorPicker)]="color1" [style.background]="color1" [value]="color1"/>
+{{color1}}
+<img [src]="image" [style.height.px]="imageHeight" [style.width.px]="imageWidth"/>
+<div class="container mt-5 text-center">
+    <h2 class="mb-3">Angular Bind Select Element to Object Example</h2>
+    <select [(ngModel)]="chosenObj" class="form-control">
+      <option *ngFor="let data of Data" [ngValue]="data">
+        {{ data.name }}
+      </option>
+    </select>
+    <div class="d-flex mt-5">
+      {{ chosenObj | json }}
+    </div>
+  </div>
+  <hr/>
+<span>{{ date | date:'fullDate' }}</span>
+<span>{{ lastName | uppercase }}</span>
+<p>{{Value | currency:'INR'}}</p>
+<p>{{ customDate | date: "d" }}</p>
+      <p>{{ customDate | date: "M" }}</p>
+      <p>{{ customDate | date: "y" }}</p>
+      <p>{{ customDate | date: "s" }}</p>
+      <p>{{ customDate | date: "m" }}</p>
+      <p>{{ customDate | date: "h" }}</p>
+      <p>{{ customDate | date: "H" }}</p>
+      <p>{{ customDate | date: "E" }}</p>
+      <p>{{ customDate | date: "z" }}</p>
+      <p>{{ customDate | date: "dd:MMM:yyyy hh-mm-ss z" }}</p>
+      <p>{{ customDate | date: "short" }}</p>
+      <p>{{ customDate | date: "medium" }}</p>
+      <p>{{ customDate | date: "long" }}</p>
+      <p>{{ customDate | date: "shortDate" }}</p>
+      <p>{{ customDate | date: "mediumDate" }}</p>
+      <p>{{ customDate | date: "longTime" }}</p>
+      <p>{{ customDate | date: "fullTime" }}</p>
