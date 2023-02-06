@@ -1,6 +1,130 @@
-<!-- <input class="colorpicker" [(colorPicker)]="colorCustom" [style.background]="colorCustom"/>
-<span class="text_picker">{{ colorCustom }}</span> -->
-<!-- how to use pipes so it could be btter to read something like: -->
+<div>
+  <table>
+    <tbody>
+      <tr>
+        <td [attr.colSpan]="1 + 1" style="background-color: yellow;">2 cols</td>
+      </tr>
+      <tr>
+        <td>1 col</td>
+        <td>1 col</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<input type="checkbox" (change)="showHideText();">
+<p *ngIf="!isDisplayed">This is some random text.</p>
+
+<hr/>
+
+<input type="text" [disabled]="isDisabled"  placeholder="Enter your name">
+
+<h1>Angular 8 Multiple File Upload Example - ItSolutionStuff.com</h1>
+       
+<form [formGroup]="myForm" (ngSubmit)="submit()">
+  
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input 
+            formControlName="name"
+            id="name" 
+            type="text" 
+            class="form-control">
+        <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+            <div *ngIf="f.name.errors.required">Name is required.</div>
+            <div *ngIf="f.name.errors.minlength">Name should be 3 character.</div>
+        </div>
+    </div>
+      
+    <div class="form-group">
+        <label for="file">File</label>
+        <input 
+            formControlName="file"
+            id="file" 
+            type="file" 
+            multiple
+            class="form-control"
+            (change)="onFileChange($event)">
+        <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+            <div *ngIf="f.file.errors.required">File is required.</div>
+        </div>
+    </div>
+          
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+
+<hr/>
+<div *ngFor="let product of myProducts">
+   
+  <p [ngClass]="{
+    'text-success':product.status === 'active',
+    'text-warning':product.status === 'pending',
+    'text-danger':product.status === 'expired'
+  }">{{ product.title }}
+  </p>
+ 
+</div>
+
+<ul class="list_item">
+  <li *ngFor="let item of items;let i=index;" [class.active]="i === activeItemIndex" (click)="activeItemIndex = i">
+    Item: {{item}}
+  </li>
+</ul>
+
+
+<div *ngIf="!exampleone">
+  One example
+</div>
+<h2 [style.fontSize]="check ? '100px' : '200px'">Resources</h2>
+<ul>
+  <li *ngFor="let course of courses" [style.color]="course.color" [style.background]="course.background">
+    {{course.name}}
+  </li>
+</ul>
+<button (click)="btnToggle()" [style.font-weight]="IsBold ? 'bold' : 'normal'">Click Me
+</button>
+{{IsBold ? 'bold' : 'normal'}}
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+  <div>
+    <label>
+      Name:
+      <input formControlName="name" placeholder="Your name">
+    </label>
+    <div *ngIf="myForm.get('name').invalid && (myForm.get('name').dirty || myForm.get('name').touched)">
+      Please provide a name.
+    </div>
+  </div>
+  <div>
+    <label>
+      Email:
+      <input formControlName="email" placeholder="Your email">
+    </label>
+    <div *ngIf="myForm.get('email').invalid && (myForm.get('email').dirty || myForm.get('email').touched)">
+      Please provide a valid email address.
+    </div>
+  </div>
+  <div>
+    <label>
+      Message:
+      <input formControlName="message" placeholder="Your message">
+    </label>
+    <div *ngIf="myForm.get('message').invalid && (myForm.get('message').dirty || myForm.get('message').touched)">
+      Messages must be at least 15 characters long.
+    </div>
+  </div>
+  <button type="submit" [disabled]="myForm.invalid">Send</button>
+</form>
+
+<input name="colorTxt" type="color" [ngModel]="customcolor" (ngModelChange)="colorSelected($event)">
+<span>{{customcolor}}</span>
+<hr/>
+<button 
+    (click)="enableDisableRule()" 
+    [ngClass]="{'green' : toggle, 'red': !toggle}">
+    {{status}}
+</button>
 <input [(colorPicker)]="color1" [style.background]="color1" [value]="color1"/>
 {{color1}}
 <img [src]="image" [style.height.px]="imageHeight" [style.width.px]="imageWidth"/>
