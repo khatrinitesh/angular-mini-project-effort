@@ -102,13 +102,13 @@ export class HomeComponent implements OnInit {
     this.customcolor = newColor;
   }
 
-  myFiles:string [] = [];
-  
+  myFiles:string [] = [];  
   myForm = new FormGroup({
    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
    file: new FormControl('', [Validators.required])
  });
 
+ 
  get f(){
   return this.myForm.controls;
 }
@@ -133,8 +133,7 @@ submit(){
       alert('Uploaded Successfully.');
     })
 }
-   
-
+  
   btnToggle(){
     this.IsBold = !this.IsBold;
   }
