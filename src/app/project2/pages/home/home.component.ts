@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit {
   public imageWidth: number = 200;
   public toggle:boolean = true;
   public status = 'Enable'; 
+  public nameexample:string = 'name example'
+
   // public color:any;
   public IsBold:boolean=true;
   public check:boolean=true;
@@ -34,8 +36,45 @@ export class HomeComponent implements OnInit {
     { id: 'three', name: 'Education' },
     { id: 'four', name: 'Goverment' },
   ];
+  LoginText: string = 'Log in';
+  SignUpText: string = 'Sign up';
+
+  login(){
+    console.log('Logged in');
+  }
+
+  signup(){
+    console.log('signed up');
+  }
   public customcolor = '#ff0000';
+  public list:any[]=[
+    {
+      name:'nk'
+    },
+    {
+      name:'sk'
+    },
+    {
+      name:'ak'
+    },
+  ]
+
   public isCourse:boolean = true;
+  public numbers:any[] = [1,2,3,4,5]
+  
+  public itemsTwo:any[]=[
+    {
+      id:1,
+      name:'nk'
+    },
+    {
+      id:2,
+      name:'sk'
+    },
+  ]
+
+
+
   public courses:Courses[] = [
       {
         name: "Introduction to Web Development",

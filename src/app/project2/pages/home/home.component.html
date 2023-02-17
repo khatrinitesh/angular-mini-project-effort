@@ -1,3 +1,15 @@
+<div *ngIf="flag else module">
+  this is an example.
+</div>
+
+<ng-template #module>
+  <span>This text is rendered because it resides in a template that's invoked.</span>
+  <br/>
+  <button class="tab-button" (click)="login()">{{LoginText}}</button>
+  <button class="tab-button" (click)="signup()">{{SignUpText}}</button>
+</ng-template>
+
+<hr/>
 <div>
   <table>
     <tbody>

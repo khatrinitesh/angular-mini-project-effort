@@ -43,7 +43,7 @@ import { SqrtPipe } from './sqrt.pipe';
 import { ProjectcontentComponent } from './components/projectcontent/projectcontent.component';
 import { UsernameCheckerFormComponent } from './components/username-checker-form/username-checker-form.component';
 import { ScrollbacktopComponent } from './components/scrollbacktop/scrollbacktop.component';
-import { DescPipePipe } from './pipe/desc-pipe.pipe';
+
 import { LeadsListingComponent } from './components/leads-listing/leads-listing.component';
 import { LeadsGridComponent } from './components/leads-grid/leads-grid.component';
 import { LeadsToolsComponent } from './components/leads-tools/leads-tools.component';
@@ -67,9 +67,8 @@ import {HomeComponent} from './project2/pages/home/home.component';
 import { EmployeeCreateComponent } from './project2/employee-create/employee-create.component';
 import { EmployeeEditComponent } from './project2/employee-edit/employee-edit.component';
 import { EmployeeListComponent } from './project2/employee-list/employee-list.component';
-import { FirstletterucasePipe } from './pipe/firstletterucase.pipe';
-import { ShortenTextPipe } from './pipe/shorten-text.pipe';
-import { DatepipePipe } from './pipe/datepipe.pipe';
+
+
 
 @NgModule({
   declarations: [
@@ -98,7 +97,6 @@ import { DatepipePipe } from './pipe/datepipe.pipe';
     ProjectcontentComponent,
     UsernameCheckerFormComponent,
     ScrollbacktopComponent,
-    DescPipePipe,
     LeadsListingComponent,
     LeadsGridComponent,
     LeadsToolsComponent,
@@ -117,9 +115,6 @@ import { DatepipePipe } from './pipe/datepipe.pipe';
     EmployeeCreateComponent,
     EmployeeEditComponent,
     EmployeeListComponent,
-    FirstletterucasePipe,
-    ShortenTextPipe,
-    DatepipePipe,
   ],
   imports: [
     BrowserModule,
